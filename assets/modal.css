@@ -1,0 +1,77 @@
+.modal{
+    position: relative;
+    display: block;
+    top: 10%;
+    left: 40%;
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 100%;
+    height: 80%;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 10px 32px 0 black;
+}
+.modal_window{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.modal_window div{
+    padding: 8px;
+}
+
+.closeBtn:hover{
+    cursor: pointer;
+}
+
+.title{
+    z-index: 2;
+    text-align: center;
+    display: inline;
+    color: white;
+    
+    position: relative;
+    top: 40px;
+    transform: translateX(-50%);
+}
+
+.contentsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contentsContainer img{
+    border-radius: 7px;
+}
+.contentsContainer div{
+    margin: 5px;
+}
+
+.optionsContainer{
+    display: flex;
+    flex-direction: row;
+}
+.optionsContainer div{
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.305);
+    margin: 10px;
+}
+.optionsContainer div:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.392);
+}
+
+.resultImg{
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    
+    width: 50px;
+    height: 50px;
+}
