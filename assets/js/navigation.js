@@ -44,61 +44,61 @@ $(next_button).click(function () {
         next_button.addClass("disabled");
         next_button.removeClass("next");
     }
-    //  else if(current_page === 3){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 5){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 7){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 9){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 11){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 13){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 15){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 17){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 19){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 21){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 23){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
+     else if(current_page === 3){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 5){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 7){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 9){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 11){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 13){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 15){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 17){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 19){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 21){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
+     else if(current_page === 23){
+        console.log(current_page);
+        next_button.addClass('disabled');
+        next_button.removeClass('next');
+    } 
     // else if (current_page === 5) {
     //     console.log(current_page)
     //     /* https://stackoverflow.com/questions/1227286/get-class-list-for-element-with-jquery */

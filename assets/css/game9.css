@@ -5,7 +5,7 @@
 #ingameText_game9{
     color: black;position: absolute;
     left: 76%;
-    top: 125px;
+    top: 20%;
 
     animation: flash 2.5s infinite;
 }
@@ -15,8 +15,8 @@
 
 #game9_qMark{
     position: absolute;
-    top: 160px;
-    left: 1520px;
+    top: 30%;
+    left: 79%;
     width: 95px;
     height: 105px;
     /* background-color: red; */

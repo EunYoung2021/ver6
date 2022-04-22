@@ -4,8 +4,8 @@
 
 #ingameText_game10{
     color: black;position: absolute;
-    left: 1470px;
-    top: 125px;
+    left: 77%;
+    top: 24%;
 
     animation: flash 2.5s infinite;
 }
@@ -15,8 +15,8 @@
 
 #game10_qMark{
     position: absolute;
-    top: 160px;
-    left: 1520px;
+    top: 30%;
+    left: 79%;
     width: 95px;
     height: 105px;
     /* background-color: red; */
