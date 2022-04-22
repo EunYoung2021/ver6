@@ -89,7 +89,7 @@
     transform: translateX(-50%) translateY(-50%);
 
     display: block;
-    background-image: url('/assets/img/mission.png');
+    background-image: url('../img/mission.png');
     width: 700px;
     height: 600px;
     background-repeat: no-repeat;
