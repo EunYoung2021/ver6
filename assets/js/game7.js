@@ -7,6 +7,8 @@ var qMark = document.getElementById('game7_qMark');
 qMark.addEventListener("click", function(){
     $('#game7_qMark').css('display', 'none');
     $('.game7_board').css('display', 'block');
+	$('#ingameText_game7').css('display', 'none');
+
 })
 
 const gameRange = 20; // Game Range Between 1 - 20
