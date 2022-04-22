@@ -20,8 +20,8 @@
 
 #ingameText_game6{
     color: black;position: absolute;
-    left: 865px;
-    top: 215px;
+    left: 44.5%;
+    top: 40%;
 
     animation: flash 2.5s infinite;
 }
@@ -30,8 +30,8 @@
 }
 #game6_qMark{
     position: absolute;
-    top: 275px;
-    left: 921px;
+    top: 51%;
+    left: 48%;
     width: 60px;
     height: 120px;
     /* background-color: red; */

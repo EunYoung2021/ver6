@@ -12,7 +12,7 @@
 #ingameText_game7{
     color: black;position: absolute;
     left: 78%;
-    top: 150px;
+    top: 30%;
 
     animation: flash_game7 2.5s infinite;
 }
@@ -22,11 +22,11 @@
 
 #game7_qMark{
     position: absolute;
-    top: 10px;
-    left: 1695px;
+    top: 1%;
+    left: 88.5%;
     width: 220px;
     height: 500px;
-    /* background-color: red; */
+    background-color: red;
 }
 #game7_qMark:hover{
     cursor: pointer;
