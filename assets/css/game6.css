@@ -71,7 +71,7 @@
     height: 115px;
     width: 200px;
 
-    background-image: url('/assets/img/close.png');
+    background-image: url('../img/close.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
