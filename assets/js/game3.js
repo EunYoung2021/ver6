@@ -58,7 +58,7 @@ function onDrop_game3(event){
             next_button.addClass('next');
 
             var quizContainer = $('.game3_quizContainer');
-            quizContainer.css('backgroundImage', 'url("/assets/img/open.png")');
+            quizContainer.css('backgroundImage', 'url("../img/open.png")');
         } else{
             result = 'wrong';
             setTimeout(() => {

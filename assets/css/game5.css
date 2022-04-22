@@ -18,8 +18,8 @@
 }
 #ingameText_game5{
     position: absolute;
-    left: 435px;
-    top: 140px;
+    left: 23%;
+    top: 26%;
 
     animation: flash 2.5s infinite;
 }
@@ -29,7 +29,7 @@
 
 #game5_qMark{
     position: absolute;
-    top: 175px; left: 480px;
+    top: 33%; left: 25%;
     /* background-color: red; */
     width: 105px;
     height: 205px;  

@@ -19,8 +19,8 @@
 
 #ingameText_game3{
    position: absolute;
-   left: 1430px;
-   top: 110px;
+   left: 75.5%;
+   top: 12%;
 
    animation: flash 2.5s infinite;
 }
@@ -31,13 +31,13 @@
 
 #game_3 #qMark{
    position: absolute;
-   top: 280px; left: 79.5%;
+   top: 30%; left: 79.5%;
    transform: translateX(-50%) translateY(-50%);
    width: 120px;
    height: 200px;
    color: rgba(255, 255, 0, 0.006);
    
-   /* background-color: red; */
+   background-color: red;
    font-size: 4.6rem;
    font-weight: bolder;
 }
