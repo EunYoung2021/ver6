@@ -37,7 +37,7 @@
    height: 200px;
    color: rgba(255, 255, 0, 0.006);
    
-   background-color: red;
+   /* background-color: red; */
    font-size: 4.6rem;
    font-weight: bolder;
 }
