@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Press Start 2P', cursive; */
+}
+
+.game7_board{
+    height: 390px;
+}
+
+#ingameText_game7{
+    color: black;position: absolute;
+    left: 1505px;
+    top: 150px;
+
+    animation: flash 2.5s infinite;
+}
+@keyframes flash{
+    0%, 20%, 40%, to {opacity: 1; color: rgb(212, 0, 255);} 10%, 30%{color: black;}
+}
+
+#game7_qMark{
+    position: absolute;
+    top: 10px;
+    left: 1695px;
+    width: 220px;
+    height: 500px;
+    /* background-color: red; */
+}
+#game7_qMark:hover{
+    cursor: pointer;
+}
+  
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,242 @@
+:root {
+    --pixel-size: 4px;
+    --grid-cell: calc( var(--pixel-size) * 16);
+    --bg: #9fa7e4;
+ }
+
+#game_3 {
+   /* background: url(../assets/img/game-3-img/spookytown.jpg); */
+   background: url(../img/background-img/a4.jpg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+ /* Camera and map*/
+
+.frame {
+   width: 650px;
+}
+
+#ingameText_game3{
+   position: absolute;
+   left: 1430px;
+   top: 110px;
+
+   animation: flash 2.5s infinite;
+}
+
+@keyframes flash{
+   0%, 20%, 40%, to {opacity: 1; color: yellow;} 10%, 30%{color: black;}
+}
+
+#game_3 #qMark{
+   position: absolute;
+   top: 280px; left: 79.5%;
+   transform: translateX(-50%) translateY(-50%);
+   width: 120px;
+   height: 200px;
+   color: rgba(255, 255, 0, 0.006);
+   
+   /* background-color: red; */
+   font-size: 4.6rem;
+   font-weight: bolder;
+}
+/* #game_3 img{
+   position: absolute;
+   top: 50%; left: 50%;
+   transform: translateX(-50%) translateY(-50%);
+   width: 100%;
+   height: 100%;
+} */
+#game_3 #qMark:hover{
+   cursor: pointer;
+}
+
+.game3_board{
+   width: 480px;
+   height: 420px;
+   position: absolute;
+   left: 50%;
+   top: 40%;
+   transform: translateX(-50%) translateY(-50%);
+   padding: 20px;
+
+   display: flex;
+   /* flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center; */
+
+   border: 10px black;
+   border-radius: 10px;
+   border-style: double;
+
+   background-color: white;
+}
+
+.game3_board .game3_question{
+   margin: 8px;
+}
+.game_3container{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
+   width: 80%;
+   height: 20%;
+   
+   border: 10px black;
+   
+   position: absolute;
+   top: 40%;
+   left: 9%;
+}
+
+.game3_question{
+   text-align: center;
+   color: black;
+}
+.game3_quizContainer, .moveContainer{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
+
+.quizImg, .answerImg{
+   position: relative;
+   margin: 3%;
+
+   border: 1px solid black;
+   /* border-radius: 10px; */
+}
+.quizImg{
+   width: 70px;
+   height: 71px;
+   background-color: white;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+}
+
+.answerImg{
+   width: 70px;
+   height: 70px;
+}
+.answerImg img{
+   width: 68px;
+   height: 68px;
+}
+
+.resetButton_game3{
+   cursor: pointer;
+   color: black;
+   border: 1px solid black;
+   border-radius: 5px;
+   background-color: beige;
+   box-shadow: 2px 2px 3px;
+   margin-top: 50px;
+}
+
+.title{
+   text-align: center;
+}
+.board{
+   width: 50%;
+   height: 70%;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translateX(-50%) translateY(-50%);
+
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+
+   border: 10px black;
+   border-radius: 10px;
+   border-style: double;
+
+   background-color: white;
+}
+.container{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
+   padding: 5%;
+   width: 80%;
+   height: 60%;
+   
+   border: 10px black;
+   border-radius: 10px;
+}
+
+.question{
+   text-align: center;
+   color: black;
+}
+.game3_quizContainer{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: nowrap;
+
+   height: 100px;
+
+   background-image: url('/assets/img/close.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+.answerImg{
+   margin: 3% 6.5%;
+
+   border: 1px solid black;
+   border-radius: 10px;
+}
+
+.game3_qi{
+   width: 80px;
+   height: 80px;
+
+   /* border: 1px solid black; */
+   border-radius: 10px;
+}
+.game3_qi img{
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translateX(-50%) translateY(-50%);
+
+   width: 70px;
+   height: 70px;
+   padding: 10px;
+
+   display: none;
+}
+
+.moveContainer{
+   height: 50%;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+
+   padding: 3%;
+   margin-top: 40px;
+}
+
+.answerImg{
+   float: left;
+   width: 50px;
+   height: 50px;
+}
+
+.answerImg img{
+   border-radius: 10px;
+   display: block;
+   height: 100%;
+   width: 100%;
+}

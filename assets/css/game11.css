@@ -1,0 +1,38 @@
+#game_11_board{
+    height:100%;
+    width:100%;
+}
+#game_11_board{
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    cursor: none;
+}
+.balloon{
+    width: 96px; /* 96*4 = 384 */
+    height: 123px;   /* 371 / 3 = 123.3333 */
+    background-image:url(../img/game-11-img/balloon.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 500px;/*풍선이 바닥에서 나오는 위치를 설정합니다.*/
+} 
+
+.blow{
+    animation: blow .5s forwards;
+}
+
+.quiz-text {
+    z-index: 100;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@keyframes blow{
+    0%{ transform: scale(1); }
+    60%{ transform: scale(5); opacity: 0;}
+    100%{ transform: scale(5); opacity: 0;}
+
+}

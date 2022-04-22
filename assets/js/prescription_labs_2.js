@@ -87,7 +87,7 @@ $("#dice").css({
     // document.getElementById(player + 'diceoutput').innerHTML = dice;
   
       player1.playerMovementTotal = Number(player1.playerMovementTotal) + Number(rnd);
-      console.log(player1.playerMovementTotal);
+      // console.log(player1.playerMovementTotal);
       
   
     // SET THE OUTPUT DIV TO DISPLAY THE ADDITION OF ALL PLAYER MOVEMENT 

@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/* line 2, ../sass/freakystylie.scss */
+.boardwrapper {
+  position: relative;
+  width: 800px;
+  height: 650px;
+  float: left;
+  background-image: url("../img/snakesladders.jpg");
+  background-size: 772px;
+  background-repeat: no-repeat;
+  left: 30%;
+  transform: translateX(-50%);
+}
+/* line 9, ../sass/freakystylie.scss */
+.boardwrapper .playertoken {
+  width: 135px;
+  height: 135px;
+  position: absolute;
+  bottom: 0px;
+  left: -6px;
+  transition: all 0.3s linear;
+}
+/* line 16, ../sass/freakystylie.scss */
+.boardwrapper .playertoken.moveto1, .boardwrapper .playertoken.moveto12, .boardwrapper .playertoken.moveto13, .boardwrapper .playertoken.moveto24, .boardwrapper .playertoken.moveto25 {
+  left: 0px;
+}
+/* line 19, ../sass/freakystylie.scss */
+.boardwrapper .playertoken.moveto2, .boardwrapper .playertoken.moveto11, .boardwrapper .playertoken.moveto14, .boardwrapper .playertoken.moveto23, .boardwrapper .playertoken.moveto26 {
+  left: 130px;
+}
+/* line 22, ../sass/freakystylie.scss */
+.boardwrapper .playertoken.moveto3, .boardwrapper .playertoken.moveto10, .boardwrapper .playertoken.moveto15, .boardwrapper .playertoken.moveto22, .boardwrapper .playertoken.moveto27 {
+  left: 260px;
+}
+/* line 25, ../sass/freakystylie.scss */
+.boardwrapper .playertoken.moveto4, .boardwrapper .playertoken.moveto9, .boardwrapper .playertoken.moveto16, .boardwrapper .playertoken.moveto21, .boardwrapper .playertoken.moveto28 {
+  left: 390px;
+}
+/* line 28, ../sass/freakystylie.scss */
+.boardwrapper .playertoken.moveto5, .boardwrapper .playertoken.moveto8, .boardwrapper .playertoken.moveto17, .boardwrapper .playertoken.moveto20, .boardwrapper .playertoken.moveto29 {
+  left: 520px;
+}
+/* line 31, ../sass/freakystylie.scss */
+.boardwrapper .playertoken.moveto6, .boardwrapper .playertoken.moveto7, .boardwrapper .playertoken.moveto18, .boardwrapper .playertoken.moveto19, .boardwrapper .playertoken.moveto30 {
+  left: 650px;
+}
+/* line 35, ../sass/freakystylie.scss */
+.boardwrapper #player1token {
+  background-image: url("../img/pigplayer.png");
+}
+
+/* line 43, ../sass/freakystylie.scss */
+.controlswrapper {
+  font-family: Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 0.8em;
+  float: left;
+  position: absolute;
+  left: 1000px;
+}
+/* line 47, ../sass/freakystylie.scss */
+.controlswrapper .playercontrol {
+  text-align: center;
+  background-color: yellow;
+  width: 300px;
+  height: 450px;
+  font-size: 2em;
+  left: 100%;
+}
+/* line 52, ../sass/freakystylie.scss */
+.controlswrapper .playercontrol h2 {
+  margin: 0px;
+}
+/* line 55, ../sass/freakystylie.scss */
+.controlswrapper .playercontrol input {
+  color: #08233e;
+  font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 70%;
+  padding: 14px;
+  background-color: #ffcc00;
+  border: 1px solid #ffcc00;
+  border-radius: 10px;
+  border-bottom: 1px solid #9f9f9f;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+/* line 66, ../sass/freakystylie.scss */
+.controlswrapper .playercontrol input:disabled {
+  background-color: #d2d2d2;
+}
+/* line 70, ../sass/freakystylie.scss */
+.controlswrapper .playercontrol.player1control {
+  background-color: #eecfef;
+}
+/* line 73, ../sass/freakystylie.scss */
+.controlswrapper .playercontrol.player2control {
+  background-color: #e1e1e1;
+}

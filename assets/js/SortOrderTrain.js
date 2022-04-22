@@ -915,6 +915,10 @@ var SortOrderTrain = {
     },
     
     moveTrain: function(/*int*/ dx) {
+        var next_button = $("#next");
+        next_button.removeClass('disabled');
+        next_button.addClass('next');
+
         var track = SortOrderTrain.track;
         SortOrderTrain.loco.attrs.x += dx;
         

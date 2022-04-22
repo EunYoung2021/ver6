@@ -1,0 +1,105 @@
+.modal{
+    position: absolute;
+    display: block;
+    top: 300px;
+    left: -50px;
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 500px;
+    height: 590px;
+
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 10px 32px 0 black;
+}
+.modal_window{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+.modal_window div{
+    padding: 8px;
+}
+
+.closeBtn{
+    width: 20px;
+    /* float: right; */
+}
+.closeBtn:hover{
+    cursor: pointer;
+}
+
+.title{
+    z-index: 2;
+    text-align: center;
+    display: inline;
+    color: black;
+/*     
+    position: relative;
+    top: 40px;
+    transform: translateX(-50%); */
+}
+
+.contentsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contentsContainer img{
+    border-radius: 7px;
+}
+.contentsContainer div{
+    margin: 5px;
+}
+
+.optionsContainer{
+    display: flex;
+    flex-direction: row;
+}
+.optionsContainer div{
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.305);
+    margin: 10px;
+    color: black;
+}
+.optionsContainer div:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.392);
+}
+
+.resultImg{
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    
+    width: 50px;
+    height: 50px;
+}
+
+#game_1_Modal{
+    position: absolute;
+    left: -50px;
+    top: 300px;
+    transform: translateX(-50%) translateY(-50%);
+
+    display: block;
+    background-image: url('/assets/img/mission.png');
+    width: 700px;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    color: black;
+
+    padding: 247px;
+}

@@ -1,4 +1,4 @@
-var answer = 3;
+var answer = 2;
 
 $('.closeBtn').on('click', function(){
     $('.modal').css('display', 'none');
@@ -13,9 +13,14 @@ function checkAnswer(num){
         for(var i = 0; i < $('.optionsContainer').children().length; i++){
             $('.option'+(i+1)).removeAttr('onclick');
             $('.option'+(i+1)).css('pointer-events', 'none');
-            // var next_button = $("#next");
-            // next_button.removeClass('disabled');
-            // next_button.addClass('next');
+
+            $('#game_1_Modal').css('display', 'block');
+            $('#game_1_Modal').fadeIn(800);
+            $('.modal').css('display', 'none');
+
+            var next_button = $("#next");
+            next_button.removeClass('disabled');
+            next_button.addClass('next');
         }
     } else{
         result = 'wrong';
