@@ -60,7 +60,7 @@ function onDrop(event){
             next_button.addClass('next');
 
             var quizContainer = $('.game6_quizContainer');
-            quizContainer.attr('style', 'background-image: url("../img/open.png")');
+            quizContainer.attr('style', 'background-image: url("./assets/img/open.png")');
         } else{
             result = 'wrong';
             // resultColor = 'red';
