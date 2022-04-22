@@ -2,6 +2,7 @@ var qMark = document.getElementById('qMark');
 qMark.addEventListener("click", function(){
    $('#qMark').css('display', 'none');
    $('.game3_board').css('display', 'block');
+   $('#ingameText_game3').css('visibility', 'hidden');
 })
 
 // drag N drop

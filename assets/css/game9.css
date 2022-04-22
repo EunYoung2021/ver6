@@ -4,7 +4,7 @@
 
 #ingameText_game9{
     color: black;position: absolute;
-    left: 1470px;
+    left: 76%;
     top: 125px;
 
     animation: flash 2.5s infinite;

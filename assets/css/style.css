@@ -29,7 +29,7 @@ h2, h3, h4, h5 {
     opacity: 0.8;
     border-radius: 20px;
     position: relative;
-    animation: mymove 8s 1 ease-in reverse;
+    animation: mymove 6s 1 ease-in reverse;
 }
 
 @keyframes mymove {
@@ -50,7 +50,9 @@ pre {
     -moz-background-clip: text;
     -webkit-background-clip: text;
     line-height: 1.3;
-    margin: 10px 0;
+    /* margin: 10px 0; */
+    margin-top: 60px;
+    padding-right: 90px;
 }
 
 section {
@@ -104,7 +106,7 @@ section {
     opacity: 0.8;
     border-radius: 20px;
     position: relative;
-    animation: mymove 8s 1 ease-in reverse;
+    animation: mymove 6s 1 ease-in reverse;
 }
 
 #story_link_2_append{
@@ -124,7 +126,7 @@ section {
     opacity: 0.8;
     border-radius: 20px;
     position: relative;
-    animation: mymove 8s 1 ease-in reverse;
+    animation: mymove 6s 1 ease-in reverse;
 }
 
 @keyframes mymove {

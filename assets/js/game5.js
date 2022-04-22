@@ -8,6 +8,7 @@ var qMark = document.getElementById('game5_qMark');
 qMark.addEventListener("click", function(){
     $('#game5_qMark').css('display', 'none');
     $('.game5_board').css('display', 'block');
+    $('#ingameText_game5').css('visibility', 'hidden');
 })
 
 function onDragOver_game5(event){

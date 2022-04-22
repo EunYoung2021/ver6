@@ -11,13 +11,13 @@
 
 #ingameText_game7{
     color: black;position: absolute;
-    left: 1505px;
+    left: 78%;
     top: 150px;
 
-    animation: flash 2.5s infinite;
+    animation: flash_game7 2.5s infinite;
 }
-@keyframes flash{
-    0%, 20%, 40%, to {opacity: 1; color: rgb(212, 0, 255);} 10%, 30%{color: black;}
+@keyframes flash_game7{
+    0%, 20%, 40%, to {opacity: 1; color: yellow;} 10%, 30%{color: black;}
 }
 
 #game7_qMark{
