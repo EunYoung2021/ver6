@@ -39,7 +39,6 @@ function onDrop_game3(event){
         var corrNum = dropZone.getAttribute('value');
         // console.log(corrNum);
         var result;
-        var resultImg;
         var getId = dropZone.getAttribute('class');
         console.log(getId)
         // var setColorElem = $('#'+getId);
@@ -52,14 +51,10 @@ function onDrop_game3(event){
     
         if(corrNum === choice){
             result = 'corr';
-            resultImg = 'open';
             ++corrCnt;
         } else{
             result = 'wrong';
-            resultImg = 'close';
         }
-        // setColorElem.css('backgroundColor', resultColor);
-        setColorElem.setAttribute('style', 'background-color: '+resultColor);
         ++cnt;
         // console.log(cnt);
 
