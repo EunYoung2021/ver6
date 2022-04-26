@@ -117,11 +117,13 @@ const playSound_10 = (voice, sound) => {
     $10_audioTag.src = soundsUrls_10[voice][sound];
     if($('#gaem10_board'))
     $10_audioTag.pause();
+    $10_audioTag.currentTime = 0;
     $10_audioTag.play();
 };
 
 const genderVoice_10 = (voice, sound) => {
     $10_audioTag.pause();
+    $10_audioTag.currentTime = 0;
     $10_audioTag.src = soundsUrls_10[voice][sound];
     $10_audioTag.play();
 }
