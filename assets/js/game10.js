@@ -116,9 +116,16 @@ const soundsUrls_10  = {
 const playSound_10 = (voice, sound) => {
     $10_audioTag.src = soundsUrls_10[voice][sound];
     if($('#gaem10_board'))
-    $10_audioTag.pause();
-    $10_audioTag.currentTime = 0;
     $10_audioTag.play();
+
+    if($10_audioTag.play() !== undefined){
+        $10_audioTag.then(_ => {
+            $10_audioTag.pause();
+        })
+        .catch(error => {
+            console.log('error!');
+        })
+    }
 };
 
 const genderVoice_10 = (voice, sound) => {
