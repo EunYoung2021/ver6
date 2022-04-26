@@ -249,7 +249,7 @@ currentQuestion = 0; 	  /*현재 문제*/
 				document.querySelector('.quiz-text').innerHTML = `${koreanQuestions[currentQuestion]}를 맞춰주세요.`;
 			},
 			gameover:function(){
-				document.querySelector('.quiz-text').innerHTML = `Stage Clear!! 다음 방으로 이동해주세요!`;
+				document.querySelector('.quiz-text').innerHTML = `Stage Clear!! 탈출에 성공하셨습니다!`;
 			}
 		}
 
@@ -296,13 +296,15 @@ currentQuestion = 0; 	  /*현재 문제*/
 								}
 								// 문제가 다 되면
 								if(questions.isEmpty()) {
-									alert('클리어하였습니다!');
+									let current_page = parseInt(document.getElementById('current-page').innerText);
+									// console.log("여기는 22가 나와야 함 : "+current_page); //23이 나오넹??ㅎ
+									setTimeout(() => {
+										sections[22].addClass("hidden");
+										sections[23].removeClass("hidden");
+									}, 2000);
+									// alert('클리어하였습니다!');
 									gun.ele.remove();
 									$('#game_11_board').css('cursor', 'default');
-									var next_button = $("#next");
-									next_button.removeClass('disabled');
-									next_button.addClass('next');
-									$('quiz-text').css('top', '50%');
 									koreanQuestionsWirte.gameover();
 									Balloon.prototype.gameover();
 								}

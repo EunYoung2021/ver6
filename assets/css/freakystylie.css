@@ -51,7 +51,7 @@
 
 /* line 43, ../sass/freakystylie.scss */
 .controlswrapper {
-  font-family: Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  /* font-family: Futura, ‘Century Gothic’, AppleGothic, sans-serif; */
   font-size: 0.8em;
   float: left;
   position: absolute;
@@ -73,7 +73,8 @@
 /* line 55, ../sass/freakystylie.scss */
 .controlswrapper .playercontrol input {
   color: #08233e;
-  font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font: 2.4em;
+  /* font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif; */
   font-size: 70%;
   padding: 14px;
   background-color: #ffcc00;

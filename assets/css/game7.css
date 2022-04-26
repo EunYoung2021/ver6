@@ -26,7 +26,7 @@
     left: 88.5%;
     width: 220px;
     height: 500px;
-    background-color: red;
+    /* background-color: red; */
 }
 #game7_qMark:hover{
     cursor: pointer;

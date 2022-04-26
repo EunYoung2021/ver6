@@ -1,15 +1,19 @@
+* {
+    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+}
+
 body {
     background-color: black;
     color: #fafafa;
-    font-family: 'Montserrat', Arial, sans-serif;
+    /* font-family: 'Montserrat', Arial, sans-serif; */
 }
 
 h1 {
-    font-family: 'ZCOOL KuaiLe', sans-serif;
+    /* font-family: 'ZCOOL KuaiLe', sans-serif; */
 }
 
 h2, h3, h4, h5 {
-    font-family: "Bubblegum Sans", fantasy;
+    /* font-family: "Bubblegum Sans", fantasy; */
 }
 
 #title_sequence {
@@ -38,7 +42,7 @@ h2, h3, h4, h5 {
   }
 
 pre {
-    font-family: "Bubblegum Sans", fantasy;
+    /* font-family: "Bubblegum Sans", fantasy; */
     display: flex;
     justify-content: flex-start;
     font-size: 1.7vw;
@@ -135,7 +139,7 @@ section {
   }
 
 .story-link-2-append-para {
-    font-family: "Bubblegum Sans", fantasy;
+    /* font-family: "Bubblegum Sans", fantasy; */
     display: flex;
     justify-content: flex-start;
     font-size: 1.6vw;
