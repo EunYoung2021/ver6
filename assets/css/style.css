@@ -1,5 +1,5 @@
-* {
-    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+*{
+    font-family: 'Nanum Barun Gothic';
 }
 
 body {
@@ -42,7 +42,7 @@ h2, h3, h4, h5 {
   }
 
 pre {
-    /* font-family: "Bubblegum Sans", fantasy; */
+    font-family: "Bubblegum Sans", fantasy;
     display: flex;
     justify-content: flex-start;
     font-size: 1.7vw;

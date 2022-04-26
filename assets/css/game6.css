@@ -1,6 +1,6 @@
 .game6_board{
     width: 760px;
-    height: 470px;
+    height: 380px;
     position: absolute;
     left: 50%;
     top: 265px;
@@ -47,7 +47,7 @@
 
     padding: 5%;
     width: 580px;
-    height: 60%;
+    height: 350px;
     
     border: 10px black;
     border-radius: 10px;
@@ -68,7 +68,7 @@
     align-items: center;
     flex-wrap: nowrap;
 
-    height: 115px;
+    height: 130px;
     width: 200px;
 
     background-image: url('../img/close.png');
@@ -107,6 +107,7 @@
 
 .game6_moveContainer{
     height: 50%;
+    width: 615px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

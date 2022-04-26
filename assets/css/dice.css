@@ -21,6 +21,7 @@
 	vertical-align:middle;
 	background:#0d9e36;
 	color:#fff;
+	font-family: 'Nanum Barun Gothic';
 	font-size:.7em;
 	text-shadow:1px 1px 0 #07812a;
 	border:1px solid #0a7d2a;
@@ -374,6 +375,7 @@
 }
 
 #player1diceoutput{
+	font-family: 'Nanum Barun Gothic';
 	font-size: medium;
 }
 

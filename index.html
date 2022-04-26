@@ -401,12 +401,6 @@
 							<div class="answerImg" id="game3_aDiv4">
 								<img id="ai4" src="./assets/img/game-3-img/a4.png" draggable="true" ondragstart="onDragStart(event)" value="4">
 							</div>
-							<div class="answerImg" id="game3_aDiv5">
-								<img id="ai5" src="./assets/img/game-3-img/a5.png" draggable="true" ondragstart="onDragStart(event)" value="5">
-							</div>
-							<div class="answerImg" id="game3_aDiv6">
-								<img id="ai6" src="./assets/img/game-3-img/a6.png" draggable="true" ondragstart="onDragStart(event)" value="6">
-							</div>
 						</div>
 					</div>
 				</div>
@@ -512,12 +506,6 @@
 						<div class="game5_answerImg" id="game5_aDiv4">
 							<img id="game5_ai4" src="./assets/img/game-5-img/a4.png" draggable="true" ondragstart="onDragStart_game5(event)" value="4">
 						</div>
-						<div class="game5_answerImg" id="game5_aDiv5">
-							<img id="game5_ai5" src="./assets/img/game-5-img/a5.png" draggable="true" ondragstart="onDragStart_game5(event)" value="5">
-						</div>
-						<div class="game5_answerImg" id="game5_aDiv6">
-							<img id="game5_ai6" src="./assets/img/game-5-img/a6.png" draggable="true" ondragstart="onDragStart_game5(event)" value="6">
-						</div>
 					</div>
 				</div>
 			</div>
@@ -557,12 +545,6 @@
 						<div class="game6_answerImg" id="game6_aDiv4">
 							<img id="game6_ai4" src="./assets/img/game-6-img/a4.png" draggable="true" ondragstart="onDragStart(event)" value="4">
 						</div>
-						<div class="game6_answerImg" id="game6_aDiv5">
-							<img id="game6_ai5" src="./assets/img/game-6-img/a5.png" draggable="true" ondragstart="onDragStart(event)" value="5">
-						</div>
-						<div class="game6_answerImg" id="game6_aDiv6">
-							<img id="game6_ai6" src="./assets/img/game-6-img/a6.png" draggable="true" ondragstart="onDragStart(event)" value="6">
-						</div>
 					</div>
 				</div>
 			</div>
@@ -579,50 +561,8 @@
 			</div>
 		</section>
 		<section id="game_7" class="text-center hidden">
-			<div id="ingameText_game7">우측 책장을 눌러보세요</div>
-			<div id="game7_qMark"></div>
-			<div class="container mx-auto p-4 m-4 bg-green-100 border-2 border-green-50 rounded-xl game7_board">
-				<header class="">
-					<div class="flex flex-col md:grid md:grid-cols-2">
-						<div>
-							<button class="retry bg-green-200 rounded-lg w-full md:w-64 hover:bg-green-300 hover:text-green-50">재시작!</button>
-						</div>
-						<div>
-							<p class="flex justify-center md:flex md:justify-end">(1에서 20 사이)</p>
-						</div>
-					</div>
-					
-					<div>
-						<h1 class="text-xl font-bold text-center md:text-3xl p-6">숫자 추측하기!</h1>
-					</div>
-					
-				</header>
-				<main>
-					<div class="border-8 rounded mt-8"></div>
-					
-					<div class="flex justify-center -mt-12">
-						<p class="secretNumber bg-green-300 text-green-50 box-content h-20 w-20 rounded-lg flex content-center text-center grid justify-self-auto">?</p>
-					</div>
-					
-					<div class="flex flex-col md:grid md:grid-cols-2 mt-6">
-					
-						<div class="flex flex-col mb-6 md:items-center">
-							<div>숫자를 입력한 뒤 확인하기 버튼을 눌러보세요!</div>
-							<span>숫자입력 >> 
-								<input type="number" name="guessNumber" class="guessNumber text-center p-2 rounded border-2 border-green-100 border-opacity-25 md:w-64"/>
-							</span>
-							<button class="check bg-green-200 rounded-lg w-full md:w-64 mt-6 p-1 hover:bg-green-300 hover:text-green-50">확인하기!
-							</button>
-						</div>
-						
-						<div>
-							<p class="message mb-8 flex justify-center md:justify-start">추측하기를 시작하세요...</p>
-							<p class="flex justify-center md:justify-start">🎰 Score: <span class="score_game7">?</span></p>
-							<p class="flex justify-center md:justify-start">🏆 High Score: <span class="highScore">?</span></p>
-						</div>
-					</div>
-				</main>
-			</div>
+			<!-- memory game -->
+			<div id="game7-screen"></div>
 		</section>
 		<section id="story_link_8" class="hidden">
 			<div class="story-link-two-append">

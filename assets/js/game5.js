@@ -72,7 +72,7 @@ function onDrop_game5(event){
             // }, 600);
         }
         setTimeout(() => {
-            for(var i = 0; i < 6; i++){
+            for(var i = 0; i < 4; i++){
                 var returnDiv = document.getElementById('game5_aDiv'+(i+1));
                 if(returnDiv.children[0] === undefined){
                     var returnImg = document.getElementById(id);

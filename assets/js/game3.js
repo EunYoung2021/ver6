@@ -69,7 +69,7 @@ function onDrop_game3(event){
         }
         // setColorElem.css('backgroundColor', resultColor);
         setTimeout(() => {
-            for(var i = 0; i < 6; i++){
+            for(var i = 0; i < 4; i++){
                 var returnDiv = document.getElementById('game3_aDiv'+(i+1));
                 if(returnDiv.children[0] === undefined){
                     // console.log(id);

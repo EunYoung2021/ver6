@@ -53,7 +53,7 @@
 }
 
 .game3_board{
-   width: 480px;
+   width: 800px;
    height: 420px;
    position: absolute;
    left: 50%;
@@ -117,11 +117,6 @@
    background-position: center;
    background-size: contain;
 }
-
-.answerImg{
-   width: 70px;
-   height: 70px;
-}
 .answerImg img{
    width: 68px;
    height: 68px;
@@ -183,7 +178,7 @@
    align-items: center;
    flex-wrap: nowrap;
 
-   height: 100px;
+   height: 135px;
 
    background-image: url('../img/close.png');
    background-position: center;
@@ -195,6 +190,10 @@
 
    border: 1px solid black;
    border-radius: 10px;
+   
+   float: left;
+   width: 70px;
+   height: 70px;
 }
 
 .game3_qi{
@@ -226,12 +225,6 @@
 
    padding: 3%;
    margin-top: 40px;
-}
-
-.answerImg{
-   float: left;
-   width: 50px;
-   height: 50px;
 }
 
 .answerImg img{
