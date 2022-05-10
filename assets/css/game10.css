@@ -2,21 +2,40 @@
     display: none;
   }
 
-#ingameText_game10{
+  #ingameText_game10{
     color: black;position: absolute;
-    left: 77%;
-    top: 24%;
-
-    animation: flash 2.5s infinite;
-}
-@keyframes flash{
-    0%, 20%, 40%, to {opacity: 1; color: rgb(212, 0, 255);} 10%, 30%{color: black;}
-}
+    left: 79%;
+    top: 52%;  
+ 
+    -webkit-animation:blink .5s ease-in-out infinite alternate;
+    -moz-animation:blink .5s ease-in-out infinite alternate;
+    animation:blink .5s ease-in-out infinite alternate; 
+ }
+ 
+ @-webkit-keyframes blink{
+    0% {opacity:0;} 100%
+    {opacity:1;}
+ } 
+ @-moz-keyframes blink{
+    0% {opacity:0;} 
+    100% {opacity:1;}
+ }
+ 
+ @keyframes blink{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ #ingameText_game10 img{
+    width: 70px;
+    height: 70px;
+    transform: rotate(-180deg);
+ }
 
 #game10_qMark{
     position: absolute;
-    top: 30%;
-    left: 79%;
+    top: 39%;
+    left: 78.5%;
     width: 95px;
     height: 105px;
     /* background-color: red; */

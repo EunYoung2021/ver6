@@ -18,15 +18,32 @@
 }
 
 #ingameText_game3{
-   position: absolute;
-   left: 75.5%;
-   top: 12%;
+   color: black;position: absolute;
+   left: 77%;
+   top: 6%;
 
-   animation: flash 2.5s infinite;
+   -webkit-animation:blink .5s ease-in-out infinite alternate;
+   -moz-animation:blink .5s ease-in-out infinite alternate;
+   animation:blink .5s ease-in-out infinite alternate; 
 }
 
-@keyframes flash{
-   0%, 20%, 40%, to {opacity: 1; color: yellow;} 10%, 30%{color: black;}
+@-webkit-keyframes blink{
+   0% {opacity:0;} 100%
+   {opacity:1;}
+} 
+@-moz-keyframes blink{
+   0% {opacity:0;} 
+   100% {opacity:1;}
+}
+
+@keyframes blink{
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+}
+
+#ingameText_game3 img{
+   width: 70px;
+   height: 70px;
 }
 
 #game_3 #qMark{

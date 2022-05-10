@@ -3,25 +3,28 @@
 }
 
 body {
+    overflow: hidden;
     background-color: black;
     color: #fafafa;
     /* font-family: 'Montserrat', Arial, sans-serif; */
 }
 
-h1 {
-    /* font-family: 'ZCOOL KuaiLe', sans-serif; */
+/* h1 {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
 }
 
 h2, h3, h4, h5 {
-    /* font-family: "Bubblegum Sans", fantasy; */
-}
+    font-family: "Bubblegum Sans", fantasy;
+} */
 
 #title_sequence {
     background-image: url(../img/halloween-background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 536px;
+    height: 100%;
+
+    margin-top: 20px;
 }
 
 .start_container {
@@ -62,19 +65,19 @@ pre {
 section {
     height: 100vh;
     width: 100%;
-    overflow:hidden;
+    /* overflow:hidden; */
 }
 
 #story_link_1, #game-1 {
     background-image: url(../img/row-of-houses.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 536px;
+    background-size: contain;
+    background-position: bottom;
+    height: 83%;
 }
-#game-1{
+/* #game-1{
     height: 700px;
-}
+} */
 
 .story-link-one {
     display: flex;
@@ -96,9 +99,9 @@ section {
 #story_link_2{
     background-image: url(../img/row-of-houses.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 536px;
+    background-size: contain;
+    background-position: bottom;
+    height: 83%;
 }
 
 .story-link-two {
@@ -157,129 +160,138 @@ section {
 #story_link_3{
     background-image: url(../img/background-img/a4.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 
 #story_link_4{
     background-image: url(../img/background-img/a3.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_5{
     background-image: url(../img/background-img/a7.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_6{
     background-image: url(../img/background-img/a9.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_7{
     background-image: url(../img/background-img/a10.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_8{
     background-image: url(../img/background-img/a16.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_9{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_10{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #story_link_11{
     background-image: url(../img/row-of-houses.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 536px;
+    background-size: contain;
+    background-position: bottom;
+    height: 83%;
 }
 #game_2 {
     background-image: url(../img/row-of-houses.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 650px;
+    background-size: contain;
+    background-position: bottom;
+    height: 83%;
 }
 #game_3{
     background-image: url(../img/background-img/a4.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
+    height: 100%;
 } 
 #game_4 {
-    background-image: url(../img/run-game-background.jpg);
+    background-image: url(../img/background-img/a3.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #game_5{
     background-image: url(../img/background-img/a7.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #game_6{
     background-image: url(../img/background-img/a9.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #game_7{
     color: black;
     background-image: url(../img/background-img/a10.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 807px;
+    height: 100%;
+}
+#game_8{
+    color: black;
+    background-image: url(../img/background-img/a16.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100%;
 }
 #game_9{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #game_10{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 #ending_sequence {
     background-image: url(../img/background-img/a18.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 536px;
+    height: 100%;
 }
 
 .sound-button-icon {
