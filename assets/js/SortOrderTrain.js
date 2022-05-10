@@ -227,6 +227,9 @@ function BoxCar(/*int*/ x, /*int*/ y, /*Kinetic.Layer*/ layer, /*Number or Alpha
                     }
                 }
                 if (allGood) {
+                    const trainSound = document.getElementById('trainSound');
+                    trainSound.pause();
+                    trainSound.play();
                     SortOrderTrain.loco.moveTo(SortOrderTrain.boxLayer);
                     SortOrderTrain.bgLayer.draw();
                     SortOrderTrain.boxLayer.draw();

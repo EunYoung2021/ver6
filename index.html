@@ -26,21 +26,21 @@
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="./assets/css/spider.css">
 	<link rel="stylesheet" href="./assets/css/pumpkin.css">
-	<link rel="stylesheet" href="./assets/css/game3.css">
 	<link rel="stylesheet" href="./assets/css/put-dog-together.css">
 	<link rel="stylesheet" href="./assets/css/navigation.css">
 	<!-- <link rel="stylesheet" href="./assets/get-out-the-house.css"> -->
 	<link rel="stylesheet" href="./assets/css/run-home-game.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/freakystylie.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/freakystylie.css"> -->
 	<link rel="stylesheet" type="text/css" href="assets/css/modal.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/dice.css">
 	<script defer src="./assets/js/prescription_labs_2.js"></script>
 	<script charset="utf-8" src="./assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>    
     <script type="text/javascript" src="./assets/js/kinetic-v3.9.2.min.js"></script>
     <script type="text/javascript" src="./assets/js/config.js"></script>
     <script type="text/javascript" src="./assets/js/SortOrderTrain.js"></script>
     <link rel="stylesheet" href="./assets/css/SortOrderTrain.css">
+	<!-- game1 -->
+	<link rel="stylesheet" type="text/css" href="assets/css/game1.css">
+    <script defer src="./assets/js/game1.js"></script>
 	<!-- game3 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/css/game3.css">
@@ -57,9 +57,10 @@
     <script defer src="./assets/js/game6.js"></script>
 	<!-- game7 -->
 	<!-- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/> -->
+	<script defer src="./assets/js/jquery-3.5.0.min.js"></script>
 	<link rel="stylesheet" href="./build/tailwind.css" />
 	<link rel="stylesheet" href="./assets/css/game7.css" />
-	<script defer src="./assets/js/game7.js"></script>
+	<script src="./assets/js/game7.js"></script>
 	<!-- game9 -->
 	<link rel="stylesheet" href="./assets/css/game9.css" />
 	<script defer src="./assets/js/game9.js"></script>
@@ -233,109 +234,108 @@
 		<section id="story_link_1" class="hidden">
 			<div class="story-link-one">
 				<pre>
-					여러분은
-					주사위를 굴려 
-					최종점에 도착하여야 합니다.
-					최종점에서 문제를 풀면 
+					여러분들은 
+					성으로 가기 위해 탈 말을 골라야합니다.
+					가장 빠를 것 같은 말을 선택해주세요.
+					선택한 말이 가장 빠른 경우
 					여러분들을 위한 힌트가 주어집니다.
 					힌트를 꼼꼼히 보시고
-					다음 방으로 이동해주세요
+					다음 방으로 이동해주세요.
 				</pre>
 			</div>
 		</section>
 		<section id="game-1" class="text-center hidden">
-			<div class="game1_container">
-				<div class="boardwrapper">
-					<div id="player1token" class="playertoken" ></div>
-					<!-- <div id="player2token" class="playertoken" ></div> -->
+			<div class="game1_board">
+				<div id="horse1" class="horse standRight">
+					<div class="rider">
+						<div class="head">
+						</div>
+						<div class="body">
+						</div>
+					</div>
 				</div>
-					<div class="controlswrapper">
-					<div class="playercontrol player1control">
-						<img src="./assets/img/pigplayer.png"><br />
-						<h2>PLAYER 1</h2>
-						<div class="dice-wrapper">
-										<div id="dice" class="result-5 init" tabindex="1" style="width: 80px; height: 80px;">
-											<div class="dice-side dice-innner-color x"></div>
-											<div class="dice-side dice-innner-color y"></div>
-											<div class="dice-side dice-innner-color z"></div>
-											<div class="side1 dice-side outer">
-												<div class="circle circle-center"></div>
-											</div>
-											<div class="side1 dice-side inner"></div>
-											<div class="side2 dice-side outer">
-												<div class="circle circle-top-right"></div>
-												<div class="circle circle-bottom-left"></div>
-											</div>
-											<div class="side2 dice-side inner"></div>
-											<div class="side3 dice-side outer">
-												<div class="circle circle-top-left"></div>
-												<div class="circle circle-center"></div>
-												<div class="circle circle-bottom-right"></div>
-											</div>
-											<div class="side3 dice-side inner"></div>
-											<div class="side4 dice-side outer">
-												<div class="circle circle-top-left"></div>
-												<div class="circle circle-top-right"></div>
-												<div class="circle circle-bottom-left"></div>
-												<div class="circle circle-bottom-right"></div>
-											</div>
-											<div class="side4 dice-side inner"></div>
-											<div class="side5 dice-side outer">
-												<div class="circle circle-top-left"></div>
-												<div class="circle circle-top-right"></div>
-												<div class="circle circle-center"></div>
-												<div class="circle circle-bottom-left"></div>
-												<div class="circle circle-bottom-right"></div>
-											</div>
-											<div class="side5 dice-side inner"></div>
-											<div class="side6 dice-side outer">
-												<div class="circle circle-top-left"></div>
-												<div class="circle circle-middle-top"></div>
-												<div class="circle circle-top-right"></div>
-												<div class="circle circle-bottom-left"></div>
-												<div class="circle circle-middle-bottom"></div>
-												<div class="circle circle-bottom-right"></div>
-											</div>
-											<div class="side6 dice-side inner"></div>
-										</div>
-							<div class="dice-actions">
-								<div class="expand"></div>
-								<button type="button" id="roll-dice" class="btn btn-primary h100" onclick="DiceRollPlayer()">주사위 굴리기</button>
-							</div>
-									</div>
-					<div class="dicebox">
-						<div id="player1diceoutput">
-							주사위를 굴려 미션을 획득하세요!
+			
+			
+				<div id="horse2" class="horse standRight">
+					<div class="rider">
+						<div class="head">
+						</div>
+						<div class="body">
 						</div>
 					</div>
-				
-					<div class="movementbox">
-						<div>
-						현재 칸:
+				</div>
+			
+			
+				<div id="horse3" class="horse standRight">
+					<div class="rider">
+						<div class="head">
 						</div>
-						<div id="player1movementoutput">
-							1
+						<div class="body">
 						</div>
 					</div>
-					</div>
-					<div class="modal" id="modal" style="display: none;">
-					<div class="modal_window">
-						<div class="closeBtn" style="padding: 0px;  color: black;">X</div>
-						<div class="title" style="font-weight: bolder; font-size: 1.3rem;">4분음표는 몇 박인가요?</div>
-						<div class="contentsContainer">
-						<img src="./assets/img/testImg.jpg">
-						<div class="optionsContainer">
-							<div class="option1" value="1" onclick="checkAnswer(1)">반 박</div>
-							<div class="option2" value="2" onclick="checkAnswer(2)">한 박</div>
-							<div class="option3" value="3" onclick="checkAnswer(3)">두 박</div>
-							<div class="option4" value="4" onclick="checkAnswer(4)">세 박</div>
-							<div class="option5" value="5" onclick="checkAnswer(5)">네 박</div>
+				</div>
+			
+			
+				<div id="horse4" class="horse standRight">
+					<div class="rider">
+						<div class="head">
 						</div>
+						<div class="body">
 						</div>
-						<div class="resultImg" style="background-image: url('./assets/img/corr.png'); display: none; "></div>
 					</div>
+				</div>
+			
+			
+				<div class="track">
+					<div id="startline">
 					</div>
-					<div id="game_1_Modal" style="display: none;"></div>
+			
+					<div class="inner">
+						<button id="start">Start Race</button><!-- Make it a button -->
+			
+						<div id="bet">
+							<!-- <p>You currently have <span id="funds">100</span></p>
+							<label>Bet Amount (£)</label>
+							<input type="number" id="amount" value="0"> -->
+							<label>Bet on horse:</label>
+							<select id="bethorse">
+								<option value="1">White</option>
+								<option value="2">Blue</option>
+								<option value="3">Green</option>
+								<option value="4">Brown</option>
+							</select>
+							<!-- <label>Number of lap</label> Add Number of Laps
+							<input type="number" id="num_lap" name="num_lap" value="1"> -->
+						</div>
+						<img src="assets/img/game-1-img/tree.png" class="tree" />
+						<br>
+						<table id="results">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1st</td>
+									<td class="result horse1"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td class="result horse2"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td class="result horse3"></td>
+								</tr>
+								<tr>
+									<td>4th</td>
+									<td class="result horse4"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -351,6 +351,7 @@
 			</div>
 		</section>
 		<section id="game_2" class="text-center hidden">
+			<audio id="trainSound" src="assets/sounds/game_2/train_sound.wav"></audio>
 			<div id="container">
 				<div id="title">
 					<span id="questionText" class="title"></span>
@@ -381,9 +382,10 @@
 		<section id="game_3" class="text-center hidden">
 			<div id="ingameText_game3">이 방패를 눌러보세요</div>
 			<div id="qMark">?</div>
-			<div class="game3_board" ondragover="onDragOver_game3(event)" style="display: none;">
+			<div class="game3_board" ondragover="onDragOver_game3(event)" style="visibility: hidden;">
 				<div class="game3_boards" ondragover="onDragOver_game3(event)">
 					<div class="container">
+						<div class="game3_question">이 중 다른 하나를 선택하세요.</div>
 						<div class="game3_quizContainer">
 							<!-- <div class="quizImg" id="qi"></div> -->
 							<div class="game3_qi" value="3" ondrop="onDrop_game3(event)"></div>
@@ -524,29 +526,26 @@
 			</div>
 		</section>
 		<section id="game_6" class="text-center hidden">
-			<div id="ingameText_game6">아래 의자를 눌러보세요</div>
-			<div id="game6_qMark"></div>
-			<div class="game6_board" ondragover="onDragOver(event)">
-				<div class="game6_container">
-					<div class="game6_quizContainer">
-						<!-- <div class="quizImg" id="qi"></div> -->
-						<div class="game6_qi" value="3" ondrop="onDrop(event)"></div>
-					</div>
-					<div class="game6_moveContainer">
-						<div class="game6_answerImg" id="game6_aDiv1">
-							<img id="game6_ai1" src="./assets/img/game-6-img/a1.png" draggable="true" ondragstart="onDragStart(event)" value="1">
-						</div>
-						<div class="game6_answerImg" id="game6_aDiv2">
-							<img id="game6_ai2" src="./assets/img/game-6-img/a2.png" draggable="true" ondragstart="onDragStart(event)" value="2">
-						</div>
-						<div class="game6_answerImg" id="game6_aDiv3">
-							<img id="game6_ai3" src="./assets/img/game-6-img/a3.png" draggable="true" ondragstart="onDragStart(event)" value="3">
-						</div>
-						<div class="game6_answerImg" id="game6_aDiv4">
-							<img id="game6_ai4" src="./assets/img/game-6-img/a4.png" draggable="true" ondragstart="onDragStart(event)" value="4">
-						</div>
-					</div>
-				</div>
+			<div class="game6_modal">
+				<p class="game6_modal_close" onclick="closeModal_game6()">X</p>
+				<p>모든 벽돌을 없애 다음 방으로 넘어가보세요!</p>
+			</div>
+			<canvas id="canvas1" width="730px" height="500px"></canvas>
+			<div id="tudo">
+			<div class="gameover">
+				<p id="res1">GAME</p>
+				<p id="res2">OVER</p>
+			</div>
+
+			<div class="continue">
+				<p>Score: <span id="scr"></span></p>
+				<div class="yes" id="playAgainYes">Play Again</div>
+			</div>
+
+			<!-- <div class="opcoes">
+				<div class="yes" id="playAgainYes">YES</div>
+				<div class="no" id="playAgainNo">NO</div>
+			</div> -->
 			</div>
 		</section>
 		<section id="story_link_7" class="hidden">
@@ -561,8 +560,30 @@
 			</div>
 		</section>
 		<section id="game_7" class="text-center hidden">
-			<!-- memory game -->
-			<div id="game7-screen"></div>
+			<!-- clawMachine game -->
+			<div id="main">
+				<div id="box">
+					<div id="catcher">
+						<div id="roll"></div>
+						<div class="hook" id="left-hook"></div>
+						<div class="hook" id="right-hook"></div>
+					</div>
+					<div id="game7_modal">
+						<p class="game7_modal_close" onclick="closeModal_game7()">x</p>
+						<p>10마리의 버섯을 잡아 다음 방으로 이동해보세요!</p>
+					</div>
+					<div id="gap"></div>
+				</div>
+				<div id="gift"></div>
+				<div id="control">
+					<div id="stickbar">
+						<div id="stick"></div>
+					</div>
+					<input type="button" class="btn" id="btn-right">
+					<input type="button" class="btn" id="btn-left">
+					<input type="button" id="btn-catch">
+				</div>>
+			</div>
 		</section>
 		<section id="story_link_8" class="hidden">
 			<div class="story-link-two-append">
@@ -676,7 +697,7 @@
 		<section id="game_9" class="text-center hidden">
 			<div id="ingameText_game9">아래 수정구슬을 눌러보세요</div>
 			<div id="game9_qMark"></div>
-			<audio id="game9_audio"></audio>
+			<audio id="game9_audio" src="https://chrd.cafe24.com/mono20/1/3.MP3"></audio>
 			<ul id="game9_board"></ul>
 
 			<select name="voice" id="game9_voice" class="hide">
@@ -705,7 +726,7 @@
 		<section id="game_10" class="text-center hidden">
 			<div id="ingameText_game10">아래 수정구슬을 눌러보세요</div>
 			<div id="game10_qMark"></div>
-			<audio id="game10_audio"></audio>
+			<audio id="game10_audio"  src="https://chrd.cafe24.com/mono20/1/2.MP3"></audio>
 			<ul id="game10_board"></ul>
 			
 			<select name="voice" id="game10_voice" class="hide">

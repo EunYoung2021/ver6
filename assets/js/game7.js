@@ -1,221 +1,280 @@
-// 첫번째 카드 묶음
-const firstCards = [
-    'a.png', 'b.png', 'c.png', 'd.png', 'e.png', 'f.png'
-]
-
-// 매치할 카드 묶음
-const secondCards = [
-    'h.png', 'i.png', 'j.png', 'k.png', 'l.png', 'm.png'
-]
-
-/* 
-img/cards 폴더 안에 이미지를 넣고 여기에 파일 이름을 적어 주시면 됩니다.
-첫번째 카드 묶음의 첫번째 사진과 매치할 카드 묶음의 첫번째 사진이 매치,
-각 묶음의 두번째 사진이 서로 매치 되는 방식입니다.
-(예) 1.png - 2.png 가 매치, c1.png - c2.png 가 매치 ...
-순서에 신경 써주시면서 넣어주시면 됩니다.
-*/
-
-/*
-*   Here are the collections of the cards located
-*   Has array of card which have properties of a name and image
-*   The images are chibi's because i like anime characters
-*   that are cute 
-*/
-
-let cards = [];
-
-for(let i = 0; i < firstCards.length; i++) {
-    cards.push({
-        name: `c${i}`,
-        img: `./assets/img/game-7-img/${firstCards[i]}`
-    })
-}
-
-let cards2 = [];
-
-for(let i = 0; i < secondCards.length; i++) {
-    cards2.push({
-        name: `c${i}`,
-        img: `./assets/img/game-7-img/${secondCards[i]}`
-    })
-}
-
-/*
-*   Functions are located here
-*/
-
-// Fetch elements in the html
-const gameScreen = document.getElementById('game7-screen');
-
-//sounds in the game
-let clickSound = new Audio('./assets/sounds/game_7/clickCut.mp3');
-let backgroundMusic = new Audio('./assets/sounds/game_7/bgMusicCut.mp3'); 
-let correctSound = new Audio('./assets/sounds/game_7/correctCut.mp3');
-let congratSound = new Audio('./assets/sounds/game_7/endingCut.mp3');   
-
-//Lets recreate welcome screen using vanilla javascript
-let welcomeScreen = function(){
-
-    /*
-    * <div class="welcomeScreen">
-    *  <img src="img/test3.png" id="gamelogo" alt="Welcome Logo"> <br>
-    *  <button id="start"> <img src="img/play.png"> </button>
-    * </div>
-    */
-
-    const welcome = document.createElement('div');
-    welcome.classList.add('welcomeScreen');
-
-    const img1 = document.createElement('img');
-    img1.setAttribute('class','gamelogo');
-    img1.setAttribute('alt','Welcome Logo');
-    img1.src="./assets/img/game-7-img/test3.png"
-
-    const but = document.createElement('button');
-    but.setAttribute('id', 'start');
-
-    const img2 = document.createElement('img');
-    img2.src="./assets/img/game-7-img/play.png"
-
-    const br = document.createElement('br');
-
-    //Append every element to each other
-    gameScreen.appendChild(welcome);
-    welcome.appendChild(img1);
-    welcome.appendChild(br);
-    welcome.appendChild(but);
-    but.appendChild(img2);
-
-    // call playGame function when clicking a button and hides welcome screen 
-    but.addEventListener('click', function(){
-        clickSound.play();
-        backgroundMusic.play();
-        backgroundMusic.loop = true;
-        backgroundMusic.volume = 0.65;
-        welcome.classList.add('hide');
-        setTimeout(gameStart, 500);
-    });
-    
-
-}
-
-// functions that starts a game
-
-let gameStart = function(){
-
-    //Create a section with a class of grid-game
-    const gameGrid = document.createElement('section');
-    gameGrid.setAttribute('class','grid-game');
-    gameScreen.appendChild(gameGrid);
-
-    //lets duplicate the cards array
-    let doubleCards = cards.concat(cards2);
-
-    //game variables
-    let gameCount = 0;
-    let firstGuess = '';
-    let secondGuess = '';
-    let congratsGame = 0;
-    let previousClick = null;
-    let gameDelay = 1200;
-
-    //create a match function 
-    let gameMatch = function(){
-        let select = document.querySelectorAll('.selected');
-        select.forEach(function(card){
-            card.classList.add('match');
-        });
-    }
-
-    //create a reset function 
-    let gameReset = function(){
-        gameCount = 0;
-        firstGuess = '';
-        secondGuess = '';
-        previousClick = null;
-        
-        let select = document.querySelectorAll('.selected');
-        select.forEach(function(card){
-            card.classList.remove('selected');
-        });
-    }
-
-
-    //shuffles the cards every reload of the page
-    doubleCards.sort(function(){
-        return 0.5 - Math.random();
-    });
-
-    //for every items inside the card lets create in html
-    doubleCards.forEach(function(item){
-        let name = item.name;
-        let backgroundImage = `url(${item.img})`;
-
-        const gameCard = document.createElement('div');
-        gameCard.classList.add('card');
-        gameCard.dataset.name = name;
-
-        const frontCard = document.createElement('div');
-        frontCard.classList.add('frontCard');
-
-        const backCard = document.createElement('div');
-        backCard.classList.add('backCard');
-        backCard.style.backgroundImage = backgroundImage;
-
-        gameGrid.appendChild(gameCard);
-        gameCard.appendChild(frontCard);
-        gameCard.appendChild(backCard);
-    });
-
-    //when clicking each card;
-    gameGrid.addEventListener('click', function(e){
-        let click = e.target;
-
-        if(!(click.nodeName == 'SECTION' || click == previousClick || click.parentNode.classList.contains('selected') || click.parentNode.classList.contains('match'))){
-            if(gameCount < 2){
-                gameCount++;
-                if(gameCount === 1){
-                    firstGuess = click.parentNode.dataset.name;
-                    click.parentNode.classList.add('selected');
-                }else {
-                    secondGuess = click.parentNode.dataset.name;
-                    click.parentNode.classList.add('selected');
-                }
-    
-                if(firstGuess !== '' && secondGuess !== ''){
-                    if(firstGuess === secondGuess){
-                        congratsGame++;
-                        correctSound.play();
-                        correctSound.volume = 0.3;
-                        setTimeout(gameMatch, gameDelay);
-                        setTimeout(gameReset, gameDelay);
-                    }else {
-                        setTimeout(gameReset, gameDelay);
-                    }
-                }
-                previousClick = click;
-            } 
-            
-            if(congratsGame == cards.length){
-                setTimeout(gameFinish, 1400);
+var catched = 0;
+        let ingame = false;
+        // 向右邊----------------------------------------------------------
+        const moveRight = () => {
+            if (parseInt($("#catcher").css("left")) > 1050) {
+                $("#catcher").stop(true)
+            }
+            else {
+                $("#catcher").animate({
+                    left: `+=10px`,
+                }, 1, "linear", function () {
+                    moveRight()
+                })
             }
         }
-    });
-}
+        $("#btn-right").mousedown(function () {
+            $("#stick").css("transform", "rotate(45deg)")
+            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
+                moveRight()
+            }
+        })
+        $("#btn-right").mouseup(function () {
+            $("#stick").css("transform", "rotate(0deg)")
+            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
+                $("#catcher").stop(true)
+            }
+        })
+        // 向左邊----------------------------------------------------------
+        const moveLeft = () => {
+            if (parseInt($("#catcher").css("left")) < 50) {
+                $("#catcher").stop(true)
+            }
+            else {
+                $("#catcher").animate({
+                    left: `-=10px`
+                }, 1, "linear", function () {
+                    moveLeft()
+                })
+            }
+        }
+        $("#btn-left").mousedown(function () {
+            $("#stick").css("transform", "rotate(-45deg)")
+            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
+                moveLeft()
+            }
+        })
+        $("#btn-left").mouseup(function () {
+            $("#stick").css("transform", "rotate(0deg)")
+            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
+                $("#catcher").stop(true)
+            }
+        })
+        // 牛----------------------------------------------------------
+        let ring = 0
+        const rand = (num) => {
+            return Math.round(Math.random() * num)
+        }
 
-let gameFinish = function(){
-    congratSound.play();
-    congratSound.volume = 0.45;
+        const moveleft = (ring) => {
+            $(`#ring${ring}`).animate({
+                left: `-=5px`
+            }, 1, "swing", function () {
+                if (parseInt($(`#ring${ring}`).css("left")) < 220) {
+                    $(`#ring${ring}`).stop(true);
+                    move(ring)
+                }
+                else {
+                    moveleft(ring)
+                }
+            })
+        }
 
-    gameScreen.innerHTML = `
-        <img src="./assets/img/game-7-img/congrats.png" class="gamecongrats"/>
-    `;
+        const move = (ring) => {
+            $(`#ring${ring}`).animate({
+                left: `+=5px`
+            }, 1, "swing", function () {
+                if (parseInt($(`#ring${ring}`).css("left")) > 1000) {
+                    $(`#ring${ring}`).stop(true);
+                    moveleft(ring)
+                }
+                else {
+                    move(ring)
+                }
+            })
+        }
+        function setting(){
+            for(var i = 0; i < 13; i++){
+                $("#box").append(`<img src="./assets/img/game-7-img/ring.gif" id="ring${ring}">`)
+                $(`#ring${ring}`).css({
+                    top: "450px",
+                    left: `${rand(700) + 300}px`
+                })
+                let random = rand(1)
+                if (random == 0) {
+                    move(ring)
+                }
+                else {
+                    moveleft(ring)
+                }
+                ring++;
+            }
+            if($('img').length > 10){
+                clearInterval();
+            }
+        }
 
-    backgroundMusic.pause();
-}
+        // 夾取----------------------------------------------------------
+        const moveback = () => {
+            if (parseInt($("#catcher").css("left")) < 50) {
+                $("#catcher").stop(true)
+                $("#left-hook").addClass("leftclip-reverse")
+                $("#left-hook").removeClass("leftclip")
+                $("#right-hook").addClass("rightclip-reverse")
+                $("#right-hook").removeClass("rightclip")
+                ingame = false
+                incatch = false
+            }
+            else {
+                $("#catcher").animate({
+                    left: `-=10px`
+                }, 1, "linear", function () {
+                    moveback()
+                })
+            }
+        }
 
-// Call the function
-window.onload = function(){
-    welcomeScreen();
-}
+        const layup = () => {
+            if (parseInt($("#catcher").css("top")) < 0) {
+                $("#catcher").stop(true)
+                $("#catcher").css("top", "0px")
+                incatch = true
+                moveback()
+            }
+            else {
+                $("#catcher").animate({
+                    top: `-=5px`
+                }, 1, "linear", function () {
+                    layup()
+                })
+            }
+        }
+
+        const roll = () => {
+            if (parseInt($("#catcher").css("top")) == 0) {
+                $("#roll").stop(true)
+                $("#roll").css("height", "0px")
+            }
+            else {
+                $("#roll").animate({
+                    height: "-=5px"
+                }, 1, "linear", function () {
+                    roll()
+                })
+            }
+        }
+
+        const shippingback = (i) => {
+            if (parseInt($("img").eq(i).css("left")) < 30) {
+                $("img").eq(i).stop(true)
+                $("img").eq(i).attr("src", "./assets/img/game-7-img/fall.gif")
+                $("img").eq(i).animate({
+                    top: "400px"
+                }, 1000, "linear", function () {
+                    $("img").eq(i).attr("src", "./assets/img/game-7-img/no.gif")
+                    $("img").eq(i).addClass("opcity")
+                    setTimeout(() => {
+                        for (let i = 0; i < $("img").length; i++) {
+                            if ($("img").eq(i).css("top") == "400px") {
+                                $("img").eq(i).remove()
+                            }
+                        }
+                    }, 500)
+                })
+            }
+            else {
+                $("img").eq(i).animate({
+                    left: `-=8px`
+                }, 1, "linear", function () {
+                    shippingback(i)
+                })
+            }
+        }
+
+        const shipping = (i) => {
+            $("img").eq(i).stop(true)
+            if (parseInt($("img").eq(i).css("top")) < 120) {
+                $("img").eq(i).stop(true)
+                shippingback(i)
+            }
+            else {
+                $("img").eq(i).animate({
+                    top: `-=5px`
+                }, 1, "linear", function () {
+                    shipping(i)
+                })
+            }
+        }
+        let incatch = false;
+        $("#btn-catch").click(function () {
+            ingame = true;
+            if (parseInt($("#catcher").css("top")) <= 0 && incatch == false) {
+                $("#catcher").stop(true)
+                $("#roll").animate({
+                    height: "250px"
+                }, 1000, "linear")
+                $("#catcher").animate({
+                    top: `250px`
+                }, 1000, "linear", function () {
+                    $("#left-hook").addClass("leftclip")
+                    $("#left-hook").removeClass("leftclip-reverse")
+                    $("#right-hook").addClass("rightclip")
+                    $("#right-hook").removeClass("rightclip-reverse")
+                    incatch = true
+                    for (let i = 0; i < $("img").length; i++) {
+                        if (
+                            (parseInt($("#catcher").css("left")) + 50 < parseInt($("img").eq(i).css("left")) + 75) &&
+                            (parseInt($("img").eq(i).css("left")) + 75 < parseInt($("#catcher").css("left")) + 150)
+                        ) {
+                            $("img").eq(i).stop(true)
+                            $("img").eq(i).css("left", `${parseInt($("#catcher").css("left")) - 10}px`)
+                            setTimeout(() => {
+                                $("img").eq(i).attr("src", "./assets/img/game-7-img/catch.gif")
+                                shipping(i);
+                                ++catched;
+                                console.log(catched);
+                            }, 100)
+                        }
+                    }
+                    setTimeout(() => {
+                        roll()
+                        layup()
+                    }, 100)
+                })
+            }
+            else if (($("#catcher").css("top") !== "0px") && incatch == false) {
+                incatch = true
+                $("#catcher").stop(true)
+                $("#roll").stop(true)
+                $("#left-hook").addClass("leftclip")
+                $("#left-hook").removeClass("leftclip-reverse")
+                $("#right-hook").addClass("rightclip")
+                $("#right-hook").removeClass("rightclip-reverse")
+                setTimeout(() => {
+                    layup()
+                    roll()
+                }, 100)
+            }
+        })
+        // 按鈕行為----------------------------------------------------------
+        $(window).keydown(function (event) {
+            switch (event.keyCode) {
+                case 39: $("#btn-right").mousedown();
+                    break;
+                case 37: $("#btn-left").mousedown()
+                    break;
+            }
+        })
+        $(window).keyup(function (event) {
+            switch (event.keyCode) {
+                case 39: $("#btn-right").mouseup();
+                    break;
+                case 37: $("#btn-left").mouseup();
+                    break;
+            }
+        })
+        $(window).keydown(function (event) {
+            if (event.keyCode == 32) {
+                $("#btn-catch").click();
+                $("#btn-catch").css("background-size", "190px 190px")
+                setTimeout(() => {
+                    $("#btn-catch").css("background-size", "200px 200px")
+                }, 100)
+            }
+        })
+
+
+/* modal */
+    function closeModal_game7(){
+        $('#game7_modal').css('visibility', 'hidden');
+    }

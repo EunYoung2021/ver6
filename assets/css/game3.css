@@ -71,6 +71,8 @@
    border-style: double;
 
    background-color: white;
+   flex-direction: row;
+   justify-content: center;
 }
 
 .game3_board .game3_question{
@@ -154,22 +156,25 @@
 
    background-color: white;
 }
-.container{
+.game3_boards .container{
    display: flex;
    flex-direction: column;
    justify-content: center;
 
    padding: 5%;
    width: 80%;
-   height: 60%;
+   height: 350px;
    
    border: 10px black;
    border-radius: 10px;
+   align-items: center;
 }
 
-.question{
-   text-align: center;
+.game3_question{
    color: black;
+   font-family: none;
+   text-align: center;
+   font-weight: bolder;
 }
 .game3_quizContainer{
    display: flex;
@@ -197,8 +202,8 @@
 }
 
 .game3_qi{
-   width: 80px;
-   height: 80px;
+   width: 180px;
+   height: 140px;
 
    /* border: 1px solid black; */
    border-radius: 10px;
@@ -218,6 +223,7 @@
 
 .moveContainer{
    height: 50%;
+   width: 660px;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;

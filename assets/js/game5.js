@@ -2,12 +2,12 @@ var cnt = 0;
 var corrCnt = 0;
 
 var game5Board = $('.game5_board');
-game5Board.css('display', 'none');
+game5Board.css('visibility', 'hidden');
 
 var qMark = document.getElementById('game5_qMark');
 qMark.addEventListener("click", function(){
     $('#game5_qMark').css('display', 'none');
-    $('.game5_board').css('display', 'block');
+    $('.game5_board').css('visibility', 'visible');
     $('#ingameText_game5').css('visibility', 'hidden');
 })
 

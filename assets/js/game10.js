@@ -83,64 +83,39 @@ const soundsUrls_10  = {
             19: '/assets/sounds/game_10/male/20.mp3',
             20: '/assets/sounds/game_10/male/21.mp3',
             21: '/assets/sounds/game_10/male/22.mp3'
-        },
-        female: {
-            find: '/assets/sounds/game_10/female/find.mp3',
-            correct: '/assets/sounds/game_10/female/correct.mp3',
-            wrong: '/assets/sounds/game_10/female/wrong.mp3',
-            0: '/assets/sounds/game_10/female/1.mp3',
-            1: '/assets/sounds/game_10/female/2.mp3',
-            2: '/assets/sounds/game_10/female/3.mp3',
-            3: '/assets/sounds/game_10/female/4.mp3',
-            4: '/assets/sounds/game_10/female/5.mp3',
-            5: '/assets/sounds/game_10/female/6.mp3',
-            6: '/assets/sounds/game_10/female/7.mp3',
-            7: '/assets/sounds/game_10/female/8.mp3',
-            8: '/assets/sounds/game_10/female/9.mp3',
-            9: '/assets/sounds/game_10/female/10.mp3',
-            10: '/assets/sounds/game_10/female/11.mp3',
-            11: '/assets/sounds/game_10/female/12.mp3',
-            12: '/assets/sounds/game_10/female/13.mp3',
-            13: '/assets/sounds/game_10/female/14.mp3',
-            14: '/assets/sounds/game_10/female/15.mp3',
-            15: '/assets/sounds/game_10/female/16.mp3',
-            16: '/assets/sounds/game_10/female/17.mp3',
-            17: '/assets/sounds/game_10/female/18.mp3',
-            18: '/assets/sounds/game_10/female/19.mp3',
-            19: '/assets/sounds/game_10/female/20.mp3',
-            20: '/assets/sounds/game_10/female/21.mp3',
-            21: '/assets/sounds/game_10/female/22.mp3'
-        }   
+        }
     };
 
-const playSound_10 = (voice, sound) => {
-    $10_audioTag.src = soundsUrls_10[voice][sound];
-    if($('#gaem10_board'))
-    $10_audioTag.play();
+// const playSound_10 = (voice, sound) => {
+//     $10_audioTag.src = soundsUrls_10[voice][sound];
+//     if($('#gaem10_board'))
+//     $10_audioTag.play();
 
-    if($10_audioTag.play() !== undefined){
-        $10_audioTag.then(_ => {
-            $10_audioTag.pause();
-        })
-        .catch(error => {
-            console.log('error!');
-        })
-    }
-};
+//     if($10_audioTag.play() !== undefined){
+//         $10_audioTag.then(_ => {
+//             $10_audioTag.pause();
+//         })
+//         .catch(error => {
+//             console.log('error!');
+//         })
+//     }
+// };
 
-const genderVoice_10 = (voice, sound) => {
-    $10_audioTag.pause();
-    $10_audioTag.currentTime = 0;
-    $10_audioTag.src = soundsUrls_10[voice][sound];
-    $10_audioTag.play();
-}
+// const genderVoice_10 = (voice, sound) => {
+//     $10_audioTag.pause();
+//     $10_audioTag.currentTime = 0;
+//     $10_audioTag.src = soundsUrls_10[voice][sound];
+//     $10_audioTag.play();
+// }
 
-const playSounds_10 = (number) => {
+const playSounds_10 = () => {
     // playSound($voice.value, 'find');
-    playSound_10($10_voice.value, number);
+    // playSound_10($10_voice.value, number);
     /* setTimeout(() => {
         playSound($voice.value, number);
     }, 4300) */
+    $10_audioTag.load();
+    $10_audioTag.play();
 }
 
 const selectedAnswer_10 = ($event) => {

@@ -73,6 +73,7 @@ $(next_button).click(function () {
     //     console.log(current_page);
     //     next_button.addClass('disabled');
     //     next_button.removeClass('next');
+    //     // setInterval(draw, 7);
     // } 
     //  else if(current_page === 15){
     //     console.log(current_page);
