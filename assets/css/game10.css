@@ -102,7 +102,7 @@
   #game10_board li {
       list-style: none;
       width: 250px;
-      height: 250px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,10 +150,10 @@
   }
   @media only screen and (max-height : 860px){
     .game10_modal{
-      top: 40%;
+      top: 34%;
     }
     #game10_board{
-      top: 0px;
+      top: 6px;
     }
     #game10_board li.play-sound{
       height: 50px;

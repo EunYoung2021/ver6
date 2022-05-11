@@ -74,7 +74,7 @@ section {
     background-size: contain;
     background-position: bottom;
     height: 100%;
-    margin-top: 20px;
+    margin-top: -30px;
 }
 #game-1{
     height: 100%;
@@ -103,7 +103,7 @@ section {
     background-size: contain;
     background-position: bottom;
     height: 100%;
-    margin-top: 20px;
+    margin-top: -20px;
 }
 
 .story-link-two {
@@ -311,6 +311,17 @@ section {
         background-size: contain;
         background-position: bottom;
         height: 100%;
-        margin-top: -20px;
+        margin-top: -55px;
+    }
+    #title_sequence{
+        margin-top: -38px;
+    }
+    #story_link_2{
+        background-image: url(../img/row-of-houses.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+        height: 100%;
+        margin-top: -55px;
     }
 }

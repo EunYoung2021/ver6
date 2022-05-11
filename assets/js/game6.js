@@ -112,7 +112,7 @@ function collisonDetection() {
           dy = -dy;
           b.status = 0;
           ++score;
-          var audio1 = new Audio("../a_sound/Blocks.mp3");
+          var audio1 = new Audio("./assets/sounds/game_6/Blocks.mp3");
           audio1.play();
           if (brickCCount * brickRCount == score) {
             // WIN
@@ -156,7 +156,7 @@ function draw() {
   } else if (y + dy > canvas.height - 2 * ballRadius) {
     if (x > paddleX && x < paddleX + paddleWidth) {
       dy = -dy;
-      var audio3 = new Audio("../a_sound/Paddlesound.mp3");
+      var audio3 = new Audio("./assets/sounds/game_6/Paddlesound.mp3");
       audio3.play();
     } else {
       lives = lives - 1;
@@ -177,7 +177,7 @@ function draw() {
   if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
     dx = -dx;
     if (lives && brickCCount * brickRCount != score) {
-      var audio2 = new Audio("../a_sound/Wall.mp3");
+      var audio2 = new Audio("./assets/sounds/game_6/Wall.mp3");
       audio2.play();
     }
   }

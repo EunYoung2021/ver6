@@ -9,7 +9,6 @@
     position: relative;
     background-color: rgba(0, 0, 0, 0.8);
     margin: auto;
-    margin-top: 25px;
     border: 20px solid rgba(255, 215, 0);
     border-bottom: 0;
     border-radius: 20px 20px 0 0;
@@ -229,7 +228,7 @@
 
 @media only screen and (max-height : 860px){
     #gift{
-        top: 310px;
+        top: 290px;
         left: 168px;
     }
 }

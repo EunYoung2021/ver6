@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Black+Ops+One");
-
+/* 
 * {
   padding: 0;
   margin: 0;
-}
+} */
 
 /* body {
   display: flex;
@@ -33,7 +33,7 @@ h1 {
   box-shadow: 0 0 10px plum;
   background-color: #ffffff73;
   position: relative;
-  top: 220px;
+  top: 115px;
 }
 
 @keyframes animacao1 {
@@ -212,7 +212,7 @@ canvas:hover{
     box-shadow: 0px 3px 20px white;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 39%;
     transform: translateX(-50%) translateY(-50%);
 }
 .game6_modal p{
@@ -230,9 +230,9 @@ canvas:hover{
     box-shadow: 0 0 10px plum;
     background-color: #ffffff73;
     position: relative;
-    top: 60px;
+    top: 30px;
   }
   #tudo{
-    top: 43%;
+    top: 39%;
   }
 }
