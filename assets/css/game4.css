@@ -1,6 +1,7 @@
 #game_4_board{
     position: absolute;
     left: 50%;
+    top: 155px;
     transform: translateX(-50%);
     width: 50%;
 
@@ -155,4 +156,10 @@
   to {
     transform: rotate(359deg);
   }
+}
+
+@media only screen and (max-height : 860px){
+    #game_4_board{
+        top: 75px;
+    }
 }

@@ -4,7 +4,7 @@
 
 #ingameText_game9{
     color: black;position: absolute;
-    left: 78.8%;
+    left: 79.5%;
     top: 53%;
 
     -webkit-animation:blink .5s ease-in-out infinite alternate;
@@ -35,7 +35,7 @@
 #game9_qMark{
     position: absolute;
     top: 38%;
-    left: 78.4%;
+    left: 79.2%;
     width: 95px;
     height: 105px;
     /* background-color: red; */
@@ -196,7 +196,7 @@ select:hover {
   #ingameText_game9 {
     color: black;
     position: absolute;
-    left: 77.4%;
+    left: 79.2%;
     top: 53%;
     -webkit-animation: blink .5s ease-in-out infinite alternate;
     -moz-animation: blink .5s ease-in-out infinite alternate;
@@ -204,8 +204,8 @@ select:hover {
   }
   #game9_qMark {
     position: absolute;
-    top: 38%;
-    left: 76.4%;
+    top: 37%;
+    left: 78.4%;
     width: 95px;
     height: 105px;
   }

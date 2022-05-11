@@ -83,26 +83,27 @@ var catched = 0;
                 }
             })
         }
-        function setting(){
-            for(var i = 0; i < 13; i++){
-                $("#box").append(`<img src="./assets/img/game-7-img/ring.gif" id="ring${ring}">`)
-                $(`#ring${ring}`).css({
-                    top: "450px",
-                    left: `${rand(700) + 300}px`
-                })
-                let random = rand(1)
-                if (random == 0) {
-                    move(ring)
-                }
-                else {
-                    moveleft(ring)
-                }
-                ring++;
+		function setting(){
+				for(var i = 0; i < 13; i++){
+					$("#box").append(`<img src="./assets/img/game-7-img/ring.gif" id="ring${ring}">`)
+					$(`#ring${ring}`).css({
+						top: "330px",
+						left: `${rand(700) + 300}px`
+					})
+					let random = rand(1)
+					if (random == 0) {
+						move(ring)
+					}
+					else {
+						moveleft(ring)
+					}
+					ring++
+				}
+
+				if($('img').length > 10){
+					clearInterval();
+				}
             }
-            if($('img').length > 10){
-                clearInterval();
-            }
-        }
 
         // 夾取----------------------------------------------------------
         const moveback = () => {
@@ -159,13 +160,14 @@ var catched = 0;
                 $("img").eq(i).stop(true)
                 $("img").eq(i).attr("src", "./assets/img/game-7-img/fall.gif")
                 $("img").eq(i).animate({
-                    top: "400px"
+                    top: "360px"
                 }, 1000, "linear", function () {
-                    $("img").eq(i).attr("src", "./assets/img/game-7-img/no.gif")
+					// ++catched;
+                    $("img").eq(i).attr("src", "./assets/img/game-7-img/no.gif");
                     $("img").eq(i).addClass("opcity")
                     setTimeout(() => {
                         for (let i = 0; i < $("img").length; i++) {
-                            if ($("img").eq(i).css("top") == "400px") {
+                            if ($("img").eq(i).css("top") == "360px") {
                                 $("img").eq(i).remove()
                             }
                         }
@@ -221,8 +223,17 @@ var catched = 0;
                             setTimeout(() => {
                                 $("img").eq(i).attr("src", "./assets/img/game-7-img/catch.gif")
                                 shipping(i);
-                                ++catched;
+								++catched;
                                 console.log(catched);
+								
+								if(catched > 10){
+									var next_button = $("#next");
+									next_button.removeClass('disabled');
+									next_button.addClass('next');
+
+
+									$('#game4_modal').css('visibility', 'visible');
+								}
                             }, 100)
                         }
                     }
@@ -277,4 +288,5 @@ var catched = 0;
 /* modal */
     function closeModal_game7(){
         $('#game7_modal').css('visibility', 'hidden');
+		setting();
     }

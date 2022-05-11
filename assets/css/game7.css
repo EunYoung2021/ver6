@@ -59,7 +59,7 @@
 #stickbar {
     width: 200px;
     height: 200px;
-    background-image: url(/assets/img/game-7-img/joystick-bar.png);
+    background-image: url('../img/game-7-img/joystick-bar.png');
     background-position: bottom;
     background-size: 200px 60px;
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@
 #stick {
     width: 200px;
     height: 150px;
-    background-image: url(/assets/img/game-7-img/joystick.png);
+    background-image: url('../img/game-7-img/joystick.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto 150px;
@@ -82,7 +82,7 @@
     height: 150px;
     position: absolute;
     left: 50px;
-    background-image: url(/assets/img/game-7-img/machine.png);
+    background-image: url('../img/game-7-img/machine.png');
     background-size: auto 120px;
     background-repeat: no-repeat;
     background-position: center top;
@@ -93,7 +93,7 @@
     position: absolute;
     width: 20px;
     bottom: 150px;
-    background-image: url(/assets/img/game-7-img/roll.png);
+    background-image: url('../img/game-7-img/roll.png');
     background-size: cover;
     left: calc(50% - 10px);
 }
@@ -107,7 +107,7 @@
 
 #left-hook {
     left: 0;
-    background-image: url(/assets/img/game-7-img/machine-left.png);
+    background-image: url('../img/game-7-img/machine-left.png');
     background-size: auto 90px;
     background-repeat: no-repeat;
     background-position: 10px 3px;
@@ -145,7 +145,7 @@
 
 #right-hook {
     right: 0;
-    background-image: url(/assets/img/game-7-img/machine-right.png);
+    background-image: url('../img/game-7-img/machine-right.png');
     background-size: auto 90px;
     background-repeat: no-repeat;
     background-position: 16px 3px;
@@ -190,7 +190,7 @@
     height: 200px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
-    background-image: url(/assets/img/game-7-img/start.png);
+    background-image: url('../img/game-7-img/start.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -224,4 +224,12 @@
 }
 .game7_modal_close:hover{
     cursor: pointer;
+}
+
+
+@media only screen and (max-height : 860px){
+    #gift{
+        top: 310px;
+        left: 168px;
+    }
 }

@@ -32,6 +32,8 @@ h1 {
   margin: 0 auto;
   box-shadow: 0 0 10px plum;
   background-color: #ffffff73;
+  position: relative;
+  top: 220px;
 }
 
 @keyframes animacao1 {
@@ -218,4 +220,19 @@ canvas:hover{
 }
 .game6_modal_close:hover{
     cursor: pointer;
+}
+
+
+@media only screen and (max-height : 860px){
+  #canvas1 {
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 10px plum;
+    background-color: #ffffff73;
+    position: relative;
+    top: 60px;
+  }
+  #tudo{
+    top: 43%;
+  }
 }

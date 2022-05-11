@@ -65,7 +65,7 @@ pre {
 section {
     height: 100vh;
     width: 100%;
-    /* overflow:hidden; */
+    overflow:hidden;
 }
 
 #story_link_1, #game-1 {
@@ -73,11 +73,12 @@ section {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom;
-    height: 83%;
+    height: 100%;
+    margin-top: 20px;
 }
-/* #game-1{
-    height: 700px;
-} */
+#game-1{
+    height: 100%;
+}
 
 .story-link-one {
     display: flex;
@@ -101,7 +102,8 @@ section {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom;
-    height: 83%;
+    height: 100%;
+    margin-top: 20px;
 }
 
 .story-link-two {
@@ -182,35 +184,35 @@ section {
 #story_link_6{
     background-image: url(../img/background-img/a9.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
 #story_link_7{
     background-image: url(../img/background-img/a10.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
 #story_link_8{
     background-image: url(../img/background-img/a16.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
 #story_link_9{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
 #story_link_10{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
@@ -252,7 +254,7 @@ section {
 #game_6{
     background-image: url(../img/background-img/a9.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
@@ -260,7 +262,7 @@ section {
     color: black;
     background-image: url(../img/background-img/a10.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
@@ -268,21 +270,21 @@ section {
     color: black;
     background-image: url(../img/background-img/a16.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
 #game_9{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
 #game_10{
     background-image: url(../img/background-img/a12.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 100%;
 }
@@ -300,4 +302,15 @@ section {
 
 .sound-button {
     margin-left: 25px;
+}
+
+@media only screen and (max-height : 860px){
+    #story_link_1, #game-1 {
+        background-image: url(../img/row-of-houses.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+        height: 100%;
+        margin-top: -20px;
+    }
 }

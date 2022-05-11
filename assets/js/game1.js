@@ -122,7 +122,7 @@ function Horse(id, x, y){
 			}else{
 				console.log(this.number);
 			}
-			document.getElementById('funds').innerText = funds;
+			// document.getElementById('funds').innerText = funds;
 		}else if (results.length == 4){
 			//All horse arrived, enable again the Start Button
 			document.getElementById('start').disabled = false;
