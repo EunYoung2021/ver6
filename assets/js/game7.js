@@ -1,292 +1,233 @@
-var catched = 0;
-        let ingame = false;
-        // 向右邊----------------------------------------------------------
-        const moveRight = () => {
-            if (parseInt($("#catcher").css("left")) > 1050) {
-                $("#catcher").stop(true)
-            }
-            else {
-                $("#catcher").animate({
-                    left: `+=10px`,
-                }, 1, "linear", function () {
-                    moveRight()
-                })
-            }
-        }
-        $("#btn-right").mousedown(function () {
-            $("#stick").css("transform", "rotate(45deg)")
-            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
-                moveRight()
-            }
-        })
-        $("#btn-right").mouseup(function () {
-            $("#stick").css("transform", "rotate(0deg)")
-            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
-                $("#catcher").stop(true)
-            }
-        })
-        // 向左邊----------------------------------------------------------
-        const moveLeft = () => {
-            if (parseInt($("#catcher").css("left")) < 50) {
-                $("#catcher").stop(true)
-            }
-            else {
-                $("#catcher").animate({
-                    left: `-=10px`
-                }, 1, "linear", function () {
-                    moveLeft()
-                })
-            }
-        }
-        $("#btn-left").mousedown(function () {
-            $("#stick").css("transform", "rotate(-45deg)")
-            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
-                moveLeft()
-            }
-        })
-        $("#btn-left").mouseup(function () {
-            $("#stick").css("transform", "rotate(0deg)")
-            if (parseInt($("#catcher").css("top")) <= 0 && ingame == false) {
-                $("#catcher").stop(true)
-            }
-        })
-        // 牛----------------------------------------------------------
-        let ring = 0
-        const rand = (num) => {
-            return Math.round(Math.random() * num)
-        }
+var canvas = document.getElementById("canvas1");
+var box = canvas.getContext("2d");
 
-        const moveleft = (ring) => {
-            $(`#ring${ring}`).animate({
-                left: `-=5px`
-            }, 1, "swing", function () {
-                if (parseInt($(`#ring${ring}`).css("left")) < 220) {
-                    $(`#ring${ring}`).stop(true);
-                    move(ring)
-                }
-                else {
-                    moveleft(ring)
-                }
-            })
+var x = canvas.width / 2;
+var y = canvas.height - 30;
+var dx = 2;
+var dy = -2;
+var ballRadius = 10;
+var paddleHeight = 15;
+var paddleWidth = 100;
+var paddleX = (canvas.width - paddleWidth) / 2;
+var rightPressed = false;
+var leftPressed = false;
+var brickRCount = 6;
+var brickCCount = 8;
+var brickWidth = 75;
+var brickHeight = 20;
+var brickPadding = 10;
+var brickOffSetTop = 30;
+var brickOffSetLeft = 30;
+var game7_score = 0;
+var lives = 3;
+
+const scoreScreen = document.getElementById("tudo");
+const scr = document.getElementById("scr");
+
+var bricks = [];
+for (let c = 0; c < brickCCount; c++) {
+    bricks[c] = [];
+    for (let r = 0; r < brickRCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
+    }
+}
+
+document.addEventListener("keydown", keydown);
+document.addEventListener("keyup", keyup);
+
+document.addEventListener("mousemove", movepaddle);
+
+function movepaddle(e) {
+  var relativeX = e.clientX - canvas.offsetLeft;
+  if (
+    relativeX > 0 + paddleWidth / 2 &&
+    relativeX < canvas.width - paddleWidth / 2
+  ) {
+    paddleX = relativeX - paddleWidth / 2;
+  }
+}
+function drawBricks() {
+  for (let c = 0; c < brickCCount; c++) {
+    for (let r = 0; r < brickRCount; r++) {
+      if (bricks[c][r].status == 1) {
+        var brickX = c * (brickWidth + brickPadding) + brickOffSetLeft;
+        var brickY = r * (brickHeight + brickPadding) + brickOffSetTop;
+        bricks[c][r].x = brickX;
+        bricks[c][r].y = brickY;
+
+        box.beginPath();
+        box.rect(brickX, brickY, brickWidth, brickHeight);
+        box.fillStyle = "pink";
+        box.fill();
+        box.strokeStyle = "white";
+        box.stroke();
+        box.closePath();
+      }
+    }
+  }
+}
+
+function keydown(e) {
+  if (e.key == "ArrowLeft") {
+    rightPressed = true;
+  } else if (e.key == "ArrowRight") {
+    leftPressed = true;
+  }
+}
+
+function keyup(e) {
+  if (e.key == "ArrowLeft") {
+    rightPressed = false;
+  } else if (e.key == "ArrowRight") {
+    leftPressed = false;
+  }
+}
+
+function drawBall() {
+  box.beginPath();
+  box.arc(x, y, ballRadius, 0, Math.PI * 2);
+  box.fillStyle = "yellow";
+  box.fill();
+  box.closePath();
+}
+
+function drawPaddle() {
+  box.beginPath();
+  box.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+  box.fillStyle = "black";
+  box.fill();
+  box.closePath();
+}
+function collisonDetection() {
+  for (var c = 0; c < brickCCount; c++) {
+    for (var r = 0; r < brickRCount; r++) {
+      var b = bricks[c][r];
+      if (b.status == 1) {
+        if (
+          x > b.x &&
+          x < b.x + brickWidth &&
+          y > b.y &&
+          y < b.y + brickHeight
+        ) {
+          dy = -dy;
+          b.status = 0;
+          ++game7_score;
+          var audio1 = new Audio("./assets/sounds/game7/Blocks.mp3");
+          audio1.play();
+          if (brickCCount * brickRCount == game7_score) {
+            // WIN
+            // document.getElementById("res1").innerHTML = "축하합니다!";
+            // document.getElementById("res2").innerHTML = "스테이지를 클리어하셨습니다!";
+            alert('축하합니다, 모든 퀴즈를 다 푸셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+            scoreScreen.style.display = "block";
+            scr.innerHTML = game7_score;
+
+            let current_page = parseInt(document.getElementById('current-page').innerText);
+            if(current_page + 1 === 16){
+                sections[current_page-1].addClass("hidden");
+                sections[current_page].removeClass("hidden");
+                console.log(sections[current_page])
+                document.getElementById('current-page').innerText = current_page+1;
+            }
+          }
         }
+      }
+    }
+  }
+}
 
-        const move = (ring) => {
-            $(`#ring${ring}`).animate({
-                left: `+=5px`
-            }, 1, "swing", function () {
-                if (parseInt($(`#ring${ring}`).css("left")) > 1000) {
-                    $(`#ring${ring}`).stop(true);
-                    moveleft(ring)
-                }
-                else {
-                    move(ring)
-                }
-            })
-        }
-		function setting(){
-				for(var i = 0; i < 13; i++){
-					$("#box").append(`<img src="./assets/img/game-7-img/ring.gif" id="ring${ring}">`)
-					$(`#ring${ring}`).css({
-						top: "330px",
-						left: `${rand(700) + 300}px`
-					})
-					let random = rand(1)
-					if (random == 0) {
-						move(ring)
-					}
-					else {
-						moveleft(ring)
-					}
-					ring++
-				}
+function drawScore() {
+  box.font = "20px Arial";
+  box.fillStyle = "white";
+  box.fillText("Score:" + game7_score, 8, 20);
+}
 
-				if($('img').length > 10){
-					clearInterval();
-				}
-            }
+function drawLives() {
+  box.font = "20px Arial";
+  box.fillStyle = "white";
+  box.fillText("Lives:" + lives, canvas.width - 65, 20);
+}
+function draw() {
+  box.clearRect(0, 0, canvas.width, canvas.height);
+  drawBricks();
+  drawLives();
+  drawBall();
+  drawPaddle();
+  drawScore();
+  collisonDetection();
 
-        // 夾取----------------------------------------------------------
-        const moveback = () => {
-            if (parseInt($("#catcher").css("left")) < 50) {
-                $("#catcher").stop(true)
-                $("#left-hook").addClass("leftclip-reverse")
-                $("#left-hook").removeClass("leftclip")
-                $("#right-hook").addClass("rightclip-reverse")
-                $("#right-hook").removeClass("rightclip")
-                ingame = false
-                incatch = false
-            }
-            else {
-                $("#catcher").animate({
-                    left: `-=10px`
-                }, 1, "linear", function () {
-                    moveback()
-                })
-            }
-        }
+  if (y + dy < ballRadius) {
+    dy = -dy;
+  } else if (y + dy > canvas.height - 2 * ballRadius) {
+    if (x > paddleX && x < paddleX + paddleWidth) {
+      dy = -dy;
+      var audio3 = new Audio("./assets/sounds/game7/Paddlesound.mp3");
+      audio3.play();
+    } else {
+      lives = lives - 1;
+      if (!lives) {
+        // "GAME OVER"
+        scoreScreen.style.display = "block";
+        scr.innerHTML = game7_score;
+      } else {
+        x = canvas.width / 2;
+        y = canvas.height - 30;
+        dx = 2;
+        dy = -2;
+        paddleX = (canvas.width - paddleWidth) / 2;
+      }
+    }
+  }
 
-        const layup = () => {
-            if (parseInt($("#catcher").css("top")) < 0) {
-                $("#catcher").stop(true)
-                $("#catcher").css("top", "0px")
-                incatch = true
-                moveback()
-            }
-            else {
-                $("#catcher").animate({
-                    top: `-=5px`
-                }, 1, "linear", function () {
-                    layup()
-                })
-            }
-        }
+  if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
+    dx = -dx;
+    if (lives && brickCCount * brickRCount != game7_score) {
+      var audio2 = new Audio("./assets/sounds/game7/Wall.mp3");
+      audio2.play();
+    }
+  }
+  if (rightPressed && paddleX < canvas.width - paddleWidth) {
+    paddleX += 7;
+  } else if (leftPressed && paddleX > 0) {
+    paddleX -= 7;
+  }
+  if (!lives || brickCCount * brickRCount == game7_score) {
+    x = 0;
+    y = 0;
+  } else {
+    x += dx;
+    y += dy;
+  }
+}
 
-        const roll = () => {
-            if (parseInt($("#catcher").css("top")) == 0) {
-                $("#roll").stop(true)
-                $("#roll").css("height", "0px")
-            }
-            else {
-                $("#roll").animate({
-                    height: "-=5px"
-                }, 1, "linear", function () {
-                    roll()
-                })
-            }
-        }
+// document.getElementById("playAgainYes").addEventListener("click", () => {
+//     scoreScreen.style.display = "none";
+//     lives = 3;
+//     game7_score = 0;
+//     x = canvas.width / 2;
+//     y = canvas.height - 30;
+//     dx = 2;
+//     dy = -2;
+//     paddleX = (canvas.width - paddleWidth) / 2;
 
-        const shippingback = (i) => {
-            if (parseInt($("img").eq(i).css("left")) < 30) {
-                $("img").eq(i).stop(true)
-                $("img").eq(i).attr("src", "./assets/img/game-7-img/fall.gif")
-                $("img").eq(i).animate({
-                    top: "360px"
-                }, 1000, "linear", function () {
-					// ++catched;
-                    $("img").eq(i).attr("src", "./assets/img/game-7-img/no.gif");
-                    $("img").eq(i).addClass("opcity")
-                    setTimeout(() => {
-                        for (let i = 0; i < $("img").length; i++) {
-                            if ($("img").eq(i).css("top") == "360px") {
-                                $("img").eq(i).remove()
-                            }
-                        }
-                    }, 500)
-                })
-            }
-            else {
-                $("img").eq(i).animate({
-                    left: `-=8px`
-                }, 1, "linear", function () {
-                    shippingback(i)
-                })
-            }
-        }
+//     bricks = [];
+//         for (let c = 0; c < brickCCount; c++) {
+//         bricks[c] = [];
+//         for (let r = 0; r < brickRCount; r++) {
+//             bricks[c][r] = { x: 0, y: 0, status: 1 };
+//         }
+//     }
+//     drawBricks();
+// //   location.reload();
+// });
 
-        const shipping = (i) => {
-            $("img").eq(i).stop(true)
-            if (parseInt($("img").eq(i).css("top")) < 120) {
-                $("img").eq(i).stop(true)
-                shippingback(i)
-            }
-            else {
-                $("img").eq(i).animate({
-                    top: `-=5px`
-                }, 1, "linear", function () {
-                    shipping(i)
-                })
-            }
-        }
-        let incatch = false;
-        $("#btn-catch").click(function () {
-            ingame = true;
-            if (parseInt($("#catcher").css("top")) <= 0 && incatch == false) {
-                $("#catcher").stop(true)
-                $("#roll").animate({
-                    height: "250px"
-                }, 1000, "linear")
-                $("#catcher").animate({
-                    top: `250px`
-                }, 1000, "linear", function () {
-                    $("#left-hook").addClass("leftclip")
-                    $("#left-hook").removeClass("leftclip-reverse")
-                    $("#right-hook").addClass("rightclip")
-                    $("#right-hook").removeClass("rightclip-reverse")
-                    incatch = true
-                    for (let i = 0; i < $("img").length; i++) {
-                        if (
-                            (parseInt($("#catcher").css("left")) + 50 < parseInt($("img").eq(i).css("left")) + 75) &&
-                            (parseInt($("img").eq(i).css("left")) + 75 < parseInt($("#catcher").css("left")) + 150)
-                        ) {
-                            $("img").eq(i).stop(true)
-                            $("img").eq(i).css("left", `${parseInt($("#catcher").css("left")) - 10}px`)
-                            setTimeout(() => {
-                                $("img").eq(i).attr("src", "./assets/img/game-7-img/catch.gif")
-                                shipping(i);
-								++catched;
-                                console.log(catched);
-								
-								if(catched > 10){
-									var next_button = $("#next");
-									next_button.removeClass('disabled');
-									next_button.addClass('next');
-
-
-									$('#game4_modal').css('visibility', 'visible');
-								}
-                            }, 100)
-                        }
-                    }
-                    setTimeout(() => {
-                        roll()
-                        layup()
-                    }, 100)
-                })
-            }
-            else if (($("#catcher").css("top") !== "0px") && incatch == false) {
-                incatch = true
-                $("#catcher").stop(true)
-                $("#roll").stop(true)
-                $("#left-hook").addClass("leftclip")
-                $("#left-hook").removeClass("leftclip-reverse")
-                $("#right-hook").addClass("rightclip")
-                $("#right-hook").removeClass("rightclip-reverse")
-                setTimeout(() => {
-                    layup()
-                    roll()
-                }, 100)
-            }
-        })
-        // 按鈕行為----------------------------------------------------------
-        $(window).keydown(function (event) {
-            switch (event.keyCode) {
-                case 39: $("#btn-right").mousedown();
-                    break;
-                case 37: $("#btn-left").mousedown()
-                    break;
-            }
-        })
-        $(window).keyup(function (event) {
-            switch (event.keyCode) {
-                case 39: $("#btn-right").mouseup();
-                    break;
-                case 37: $("#btn-left").mouseup();
-                    break;
-            }
-        })
-        $(window).keydown(function (event) {
-            if (event.keyCode == 32) {
-                $("#btn-catch").click();
-                $("#btn-catch").css("background-size", "190px 190px")
-                setTimeout(() => {
-                    $("#btn-catch").css("background-size", "200px 200px")
-                }, 100)
-            }
-        })
+// document.getElementById("playAgainNo").addEventListener("click", () => {
+//   location.href = "../First Page/firstPage.html";
+// });
 
 
 /* modal */
-    function closeModal_game7(){
-        $('#game7_modal').css('visibility', 'hidden');
-		setting();
-    }
+function closeModal_game7(){
+    $('.game7_modal').css('visibility', 'hidden');
+    setInterval(draw, 7);
+}

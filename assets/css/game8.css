@@ -1,0 +1,223 @@
+.indexs{
+    object-fit: fill;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 0px;
+}
+
+.indexs li img{
+    object-fit: cover;
+    height: 31px;
+}
+
+/* Keeping footer at the bottom */
+.backGroundImg{
+    display: flex;
+    justify-content: center;     
+}
+
+.d-flex {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Italianno', cursive, sans-serif;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 21px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--font-white);
+}
+
+div>.timeLeft {
+    margin-bottom: 0;
+    font-size: 20px;
+    text-shadow: 0 0 black;
+    color: black;
+}
+div>.restart{
+    width: 60px;
+    margin-bottom: 0;
+    font-size: 20px;
+    text-shadow: 0 0 black;
+    color: black;
+}
+
+.justify-center button {
+    border: none;
+}
+
+#game-panel{
+    background-color: #655949;
+}
+
+.game-stop {
+    color: var(--nav-color);
+}
+
+.game-stop>button {
+    font-size: 1.5rem;
+    background-color: var(--body-color);
+}
+
+.display-area {
+    width: 60%;
+    max-width: 700px;
+    min-height: 250px;
+    border: 1px solid var(--nav-color);
+    border-radius: 5%;
+    margin: auto;
+    height: 270px;
+    background-color: var(--display-color);
+}
+
+.note-img {
+    object-fit: scale-down;
+    display: inline-block;
+    max-width: 80%;
+    margin-top: 5px;
+    background-color: white;
+}
+
+.judge {
+    line-height: 2rem;
+}
+
+.is-correct {
+    color: white;
+}
+
+/*setting for flashing start button */
+
+.game-start {
+    font-size: 2rem;
+    border: none;
+    animation: blinking 2s infinite;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    margin-top: 300px;
+    width: 340px;
+}
+
+@keyframes blinking {
+    10% {
+        color: transparent;
+    }
+
+    50% {
+        color: yellow;
+    }
+}
+
+
+/* For hint button in the nav bar */
+.hint {
+    height: fit-content;
+    margin-top: 0;
+    color: var(--font-white);
+    background-color: var(--nav-color);
+}
+
+.hint::after {
+    content: "HINT";
+    font-size: 0.6rem;
+    display: inline;
+    padding: 0;
+}
+
+/* For the timer */
+.timer-container {
+    width: 60px;
+    display: inline-flex;
+    height: 3rem;
+    border-radius: 10%;
+    background-color: var(--nav-color);
+    justify-content: center;
+}
+
+.game-timer {
+    font-size: 2rem;
+    font-family: 'Bungee Inline', cursive, sans-serif;
+    color: var(--font-white);
+}
+
+/* for the keyboard layout */
+.notataions {
+    flex-wrap: nowrap;
+}
+
+.keywhite {
+    height: 150px;
+    margin: 0;
+    border: 1px solid black;
+    position: relative;
+    padding: 2px;
+    background-color: white;
+}
+
+.keywhite>btn {
+    position: absolute;
+    bottom: 2px;
+    margin: auto;
+}
+
+.keyblack {
+    background-color: black;
+    height: 80px;
+    float: right;
+    z-index: 1;
+    position: absolute;
+    width: 70%;
+    top: 0;
+    right: -35%;
+}
+
+.keynote {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    height: 40%;
+    width: 90%;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 800px) {
+    .display-area {
+        width: 80%;
+    }
+
+    .keywhite {
+        width: 12vw;
+    }
+}
+
+@media only screen and (max-height: 800px) {
+    #game_8 .game-btn{
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%);
+    }
+    #game_8 .game-stop{
+        top: 60px;
+    }
+    #game_8 #game-panel{
+        height: 670px;
+    }
+    .keynote {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        margin: auto 0;
+        padding: 6px;
+    }
+
+    .mb-2{
+        margin-top: 1rem!important;
+    }
+}

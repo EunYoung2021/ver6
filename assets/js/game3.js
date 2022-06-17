@@ -1,97 +1,185 @@
-var qMark = document.getElementById('qMark');
-qMark.addEventListener("click", function(){
-   $('#qMark').css('display', 'none');
-   $('.game3_board').css('visibility', 'visible');
-   $('#ingameText_game3').css('visibility', 'hidden');
-})
+/*
+Assignment: Javascript Assignment
+Filename: game.js
+@author: KITSANTAS FOTIOS (17421808)
+Date: 30/04/17
+*/
 
-// drag N drop
-var cnt = 0;
-var corrCnt = 0;
+/*Create a Javascript Object for a horse with 3 parameters: HTML ID, position x and y*/
+function Horse(id, x, y){
+	this.element = document.getElementById(id);/*HTML element of the horse*/
+	this.speed = Math.random()*10 + 10; /*Initiate a random speed for each horse, the greater speed, the faster horse. The value is between 10 and 20*/
+	this.originX = x;/*Original X position*/
+	this.originY = y;/*Original Y position*/
+	this.x = x; /*Current X*/
+	this.y = y; /*Current Y*/
+	this.number = parseInt(id.replace(/[\D]/g, '')); /*Number of horse, number will be 1 or 2 or 3 or 4*/
+	this.lap = 0; //Current lap of the horse
 
-function onDragOver_game3(event){
-    event.preventDefault(); 
+	this.moveRight = function(){
+		var horse = this;/*Assign horse to this object*/
+
+		/*Use setTimeout to have the delay in moving the horse*/
+		setTimeout(function(){
+			//Move the horse to right 1vw
+			horse.x ++;
+			horse.element.style.left = horse.x +'vw';
+
+			//Check if goes through the start line, if horse runs enough number of laps and has pass the start line then stop
+			if (horse.lap == num_lap && horse.x > horse.originX + 6){
+				horse.arrive();
+			}else{
+				//Make decision to move Down or not
+				//The width of the Down Road is 10wh, then the distance of each horse is 2.5vw (4 horses). The right position of the road is 82.5vw
+				//Continue to move right if not reach the point to turn
+				if (horse.x < 82.5 - horse.number*2.5){
+					horse.moveRight();
+				}else{
+					//Change HTML class of horse to runDown
+					horse.element.className = 'horse runDown';
+					//Change the speed, will be random value from 10 to 20
+					horse.speed = Math.random()*10 + 10;
+					horse.moveDown();
+				}
+			}
+
+		}, 1000/this.speed);
+		/* 1000/this.speed is timeout time*/
+	}
+
+	/*Do the same for moveDown, moveLeft, moveUp*/
+	this.moveDown = function(){
+		var horse = this;
+		setTimeout(function(){
+			horse.y ++;
+			horse.element.style.top = horse.y +'vh';
+			if (horse.y < horse.originY + 65){
+				horse.moveDown();
+			}else{
+				horse.element.className = 'horse runLeft';
+				horse.speed = Math.random()*10 + 10;
+				horse.moveLeft();
+			}
+		}, 1000/this.speed)
+	}
+	this.moveLeft = function(){
+		var horse = this;
+		setTimeout(function(){
+			horse.x --;
+			horse.element.style.left = horse.x +'vw';
+			if (horse.x > 12.5 - horse.number*2.5){
+				horse.moveLeft();
+			}else{
+				horse.element.className = 'horse runUp';
+				horse.speed = Math.random()*10 + 10;
+				horse.moveUp();
+			}
+		}, 1000/this.speed)
+	}
+	this.moveUp = function(){
+		var horse = this;
+		setTimeout(function(){
+			horse.y --;
+			horse.element.style.top = horse.y +'vh';
+			if (horse.y > horse.originY){
+				horse.speed = Math.random()*10 + 10;
+				horse.moveUp();
+			}else{
+				horse.element.className = 'horse runRight';
+				//Nearly finish the lap
+				horse.lap ++;
+				horse.moveRight();
+			}
+		}, 1000/this.speed)
+	}
+
+	/*Trigger the horse by run*/
+	this.run = function(){
+		this.element.className = 'horse runRight';
+		this.moveRight();
+	}
+	this.arrive = function(){
+		//Stop the horse run by change class to standRight
+		this.element.className = 'horse standRight';
+		this.lap = 0;//Reset the lap
+
+		/*Show the result*/
+		var tds = document.querySelectorAll('#results .result');//Get all table cell to display the result
+		//results.length is the current arrive position
+		tds[results.length].className = 'result horse'+this.number;//The class of result look like: result horse1...
+
+		//Push the horse number to results array, according the the results array, we know the order of race results
+		results.push(this.number);
+		//Win horse
+		if (results.length == 1){
+			//If win horse is the bet horse, then add the fund
+			if (this.number == bethorse ){
+					let current_page = parseInt(document.getElementById('current-page').innerText);
+					console.log(current_page);
+					if(current_page + 1 === 8){
+					sections[current_page-1].addClass("hidden");
+					sections[current_page].removeClass("hidden");
+					console.log(sections[current_page])
+					document.getElementById('current-page').innerText = current_page+1;
+				}
+			}else{
+				console.log(this.number);
+			}
+		}
+		else if (results.length == 4){
+			//All horse arrived, enable again the Start Button
+			document.getElementById('start').disabled = false;
+			if(results[0] === bethorse || results[1] === bethorse){
+				alert('축하합니다, 미션을 클리어하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+				let current_page = parseInt(document.getElementById('current-page').innerText);
+					console.log(current_page);
+					if(current_page + 1 === 8){
+					sections[current_page-1].addClass("hidden");
+					sections[current_page].removeClass("hidden");
+					console.log(sections[current_page])
+					document.getElementById('current-page').innerText = current_page+1;
+				}
+			}
+		}
+	}
 }
 
-function game3_onDragStart(event){
-    event
-        .dataTransfer
-        .setData('text', event.target.id);
-}
+var num_lap = 1, results = [], funds = 100, bethorse, amount;
 
-function onDrop_game3(event){
-    const id = event
-            .dataTransfer
-            .getData('text');
+//Start the function when the document loaded
+document.addEventListener("DOMContentLoaded", function(event) {
 
-    const dropZone = event.target;
-            
-    var draggableElement = document.getElementById(id);
-    var exElement = $('.game3_qi')[0].childNodes[0];
-    // console.log(exElement)
-    if(exElement === undefined){
-        dropZone.appendChild(draggableElement);
-    } else{
-        dropZone.appendChild(draggableElement);
-    }
+	var horse1 = new Horse('horse1', 20, 4);
+	var horse2 = new Horse('horse2', 20, 8);
+	var horse3 = new Horse('horse3', 20, 12);
+	var horse4 = new Horse('horse4', 20, 16);
 
-    checkAnswer_game3();
-    event
-    .dataTransfer
-    .clearData();
+	//Event listener to the Start button
+	document.getElementById('start').onclick = function(){
+		// amount = parseInt(document.getElementById('amount').value);
+		// num_lap = parseInt(document.getElementById('num_lap').value);
+		bethorse = parseInt(document.getElementById('bethorse').value);
 
-    function checkAnswer_game3(){
-        var corrNum;
-        var corrNum = dropZone.getAttribute('value');
-        // console.log(corrNum);
-        var result;
-        var getId = dropZone.getAttribute('class');
-        var setColorElem = $('.'+getId);
-        var choice = $('#'+id).attr('value');
-        // console.log(id)
-    
-        if(corrNum === choice){
-            result = 'corr';
-            // $('.nextButton').attr('style', 'visibilit: visible');
+		// if (funds < amount){
+		// 	alert('Not enough funds.');
+		// }
+		// else if (num_lap <= 0){
+		// 	alert('Number of lap must be greater than 1.');
+		// }else{
 
-            var next_button = $("#next");
-            next_button.removeClass('disabled');
-            next_button.addClass('next');
+			/*Started the game*/
+			this.disabled = true;/*Disable the start button*/
+			var tds = document.querySelectorAll('#results .result');//Get all cells of result table.
+			for (var i = 0; i < tds.length; i++) {
+				tds[i].className = 'result';//Reset the result.
+			}
 
-            var quizContainer = $('.game3_quizContainer');
-            quizContainer.css('backgroundImage', 'url("./assets/img/open.png")');
-        } else{
-            result = 'wrong';
-            setTimeout(() => {
-               $('#'+id).css('visibility', 'hidden');
-            //    setColorElem.css('backgroundColor', 'white'); 
-            }, 600);
-        }
-        // setColorElem.css('backgroundColor', resultColor);
-        setTimeout(() => {
-            for(var i = 0; i < 4; i++){
-                var returnDiv = document.getElementById('game3_aDiv'+(i+1));
-                if(returnDiv.children[0] === undefined){
-                    // console.log(id);
-                    var returnImg = document.querySelector('#'+id);
-                    // console.log(returnImg);
-                    returnDiv.appendChild(returnImg);
-                }
-            }
-        }, 600);
-    }
-}
-
-function reset(){
-    cnt = 0;
-    corrCnt = 0;
-
-    for(var i = 0; i < 3; i++){
-        var answerImg = document.getElementById('ai'+(i+1));
-        var answerImgDiv = document.getElementById('ad'+(i+1));
-        // var color = $('#qi'+(i+1)).css('backgroundColor', 'white');
-
-        answerImg.setAttribute('style', 'visibility: visible')
-        answerImgDiv.appendChild(answerImg);
-    }
-}
+			// document.getElementById('funds').innerText = funds;
+			results = [];//Results array is to save the horse numbers when the race is finished.
+			horse1.run();
+			horse2.run();
+			horse3.run();
+			horse4.run();
+		}
+	// }
+});

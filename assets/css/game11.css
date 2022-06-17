@@ -1,38 +1,330 @@
-#game_11_board{
-    height:100%;
-    width:100%;
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    height: 3vw;
+    width: 20vw;
+    justify-content: space-evenly
 }
-#game_11_board{
-    background-position: center center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    cursor: none;
+.buttonContainer div{
+    justify-items: center;
+    width: 10vw;
+    border-radius: 9px;
+    white-space:nowrap;
+    padding: 2%;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 2px gray;
+    font-size: 1.5vw;
 }
-.balloon{
-    width: 96px; /* 96*4 = 384 */
-    height: 123px;   /* 371 / 3 = 123.3333 */
-    background-image:url(../img/game-11-img/balloon.png);
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 500px;/*풍선이 바닥에서 나오는 위치를 설정합니다.*/
-} 
+.buttonContainer div:hover{
+    cursor: pointer;
+}
+.btn1{
+    background-color: rgb(63, 165, 255);
+    margin-left: -4%;
+    margin-right: 0%;
+    box-shadow: -.1px -3px 7px rgb(5, 24, 41) inset;;
+}
+.btn2{
+    background-color: greenyellow;
+    margin-left: -4%;
+    margin-right: 0%;
+    box-shadow: -.1px -3px 7px rgb(82, 129, 10) inset;
+}
+.btn3{
+    background-color: black;
+    box-shadow: -.1px -3px 7px black inset;
+    margin-left: -4px;
+    margin-right: -1%;
+}
+.btn4{
+    background-color: rgb(125, 16, 231);
+    box-shadow: -.1px -3px 7px rgb(55, 7, 55) inset;
+    
+    margin-left: -4px;
+    margin-right: -8px;
+}
 
-.blow{
-    animation: blow .5s forwards;
+#game_11 .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-5%);
 }
 
-.quiz-text {
-    z-index: 100;
+.game11_gameContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.board{
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.img{
+width: 36vw;
+}
+
+.scoreContainer{
+    z-index: 1;
+    position: relative;
+    top: 4vw;
+    left: 8.5vw;
+    font-size: 1vw;
+}
+
+.result{
     position: absolute;
-    top: 40%;
+    top: 10%;
+    left: 28%;
+}
+#resultImg{
+    width: 158px;
+    object-fit: cover;
+}
+
+.quiz{
+    position: absolute;
+    top: 10%;
+    left: 170%;
+}
+#quizBalloon{
+    width: 18vw;
+    object-fit: cover;
+}
+#quizImg{
+    border-radius: 6px;
+    position: absolute;
+    left: 42.2%;
+    top: 10.5%;
+    width: 10vw;
+    height: 80%;
+}
+
+.dropZone{
+    border-radius: 6px;
+    position: absolute;
+    top: 44.4%;
+    left: 45.8%;
+    width: 102px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game11_gameContainer .dropZone img{
+    position: relative;
+    top: 2px;
+    left: -7.8px;
+}
+
+.cardDeck{
+height:auto;
+
+position: absolute;
+top: 78.2%;
+left: 23.8%;
+width: 35vw;
+height: 21.7%;
+display: flex;
+}
+
+#card1, #card2, #card3, #card4, #card5{
+width: 100px;
+height: auto;
+margin: 2.6%;
+
+border-radius: 3%;
+}
+#card1{
+    margin-left: 4px;
+}
+#card2{
+    margin-left: 7px;
+}
+#card3{
+    padding-left: 23px;
+}
+#card4{
+    padding-left: 30px;
+}
+#card5{
+    /* margin-right: 2.5%; */
+    padding-left: 36.5px;
+}
+
+#card_2{
+    margin-left: 17px;
+}
+#card_1, #card_2, #card_3, #card_4, #card_5{
+    width: 5.18vw;
+    margin-top: -6px;
+}
+
+#card_1:hover, #card_2:hover, #card_3:hover, #card_4:hover, #card_5:hover{
+    cursor: pointer;
+}
+
+#timer{
+    position: absolute;
+    top: 65%;
+    left: 47.4%;
+    width: 5%;
+    height: 10%;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 3vw;
+    display: flex;
+    justify-content: center;
+}
+
+.btnContainer{
+    position: absolute;
+    width:auto;
+    top: 140%;
+    left: 174.5%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+
+.nextButton{
+    font-family: "proxima-nova", sans-serif;
+    font-weight: bolder;
+    font-size: 1vw;
+    text-transform: uppercase!important;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+    text-transform: capitalize;
+    border: 1px solid #fff;
+    border-radius:50px;
+    position: relative;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden!important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background: transparent!important;
+    z-index:10;
+    
+}
+
+.nextButton:hover{
+    border: 1px solid #08f738;
+	  color: #003608!important;
+      cursor: hand;
+}
+.nextButton::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #00ca1e;
+    position: absolute;
+	  -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg); 
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 1;
+    top: 0;
+    z-index: -12;
+    -moz-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+	   box-shadow:2px 0px 14px rgba(0,0,0,.6);
+  } 
+
+.nextButton::after {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #08f738;
+    position: absolute;
+	-ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg); 
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 0;
+    top: 0;
+    z-index: -15;
+    -webkit-transition: all .94s cubic-bezier(.2,.95,.57,.99);
+    -moz-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    -o-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+.nextButton:hover::before, .btn1O:hover::before{
+	opacity:1;
+	width: 116%;
+}
+.nextButton:hover::after, .btn1O:hover::after{
+	opacity:1;
+	width: 120%;
+}
+
+.endPopup{
+    position: absolute;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 44%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
 }
 
-@keyframes blow{
-    0%{ transform: scale(1); }
-    60%{ transform: scale(5); opacity: 0;}
-    100%{ transform: scale(5); opacity: 0;}
-
+@media only screen and (max-height: 800px) {
+    .board{
+        top: 10px;
+    }
+    #game_11 .scoreContainer{
+        top: 6vw;
+        left: 11.8vw;
+    }
+    .game11_gameContainer .quiz{
+        left: 156%;
+    }
+    .game11_gameContainer .result{
+        left: 30%;
+    }
+    .game11_gameContainer .nextButton{
+        top: -20px;
+    }
+    .game11_gameContainer #dropZone{
+        top: 42%;
+    }
+    .cardDeck{
+        left: 29%;
+    }
+    #card_1, #card_2, #card_3, #card_4, #card_5 {
+        width: 5.18vw;
+        margin-top: -4px;
+    }
+    #card1{
+        margin-left: 4px;
+    }
+    #card2{
+        margin-left: 3px;
+    }
+    #card3{
+        margin-left: -4px;
+    }
+    #card4{
+        margin-left: -8px;
+    }
+    #card5{
+        margin-left: -3.5px;
+        padding-left: 32.5px;
+    }
 }

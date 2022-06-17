@@ -9,10 +9,12 @@
 
 #spider-1{
     left: 25%;
+    z-index: 22;
 }
 
 #spider-2{
     left: 75%;
+    z-index: 22;
 }
 
 .eye {

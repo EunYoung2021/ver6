@@ -29,77 +29,54 @@ var sections = [
 
 $(next_button).click(function () {
     let current_page = parseInt(document.getElementById('current-page').innerText);
+    // for (let i = 0; i < 24; i++) {
     for (let i = 0; i < 24; i++) {
         if (i + 1 === current_page + 1) {
             sections[i].removeClass("hidden");
-            if(i === 20){
-                console.log(i);
-            }
         } else {
             sections[i].addClass("hidden");
         }
     }
     current_page++;
-    if (current_page === 24) {
-        next_button.addClass("disabled");
-        next_button.removeClass("next");
+    if(current_page === 1 || current_page % 2 === 0) {
+        $('.navigation-container').attr('style', 'display: block');
+    } else{
+        $('.navigation-container').attr('style', 'display: none')
     }
-    //  else if(current_page === 3){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 5){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 7){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 9){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 11){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 13){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    //     // setInterval(draw, 7);
-    // } 
-    //  else if(current_page === 15){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 17){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 19){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 21){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
-    //  else if(current_page === 23){
-    //     console.log(current_page);
-    //     next_button.addClass('disabled');
-    //     next_button.removeClass('next');
-    // } 
+    if (current_page === 24) {
+        $('.navigation-container').attr('style', 'display:none');
+    }
+     else if(current_page === 3){
+    } 
+     else if(current_page === 5){
+    } 
+     else if(current_page === 7){
+    } 
+     else if(current_page === 9){
+    } 
+     else if(current_page === 11){
+    } 
+     else if(current_page === 13){
+    } 
+     else if(current_page === 15){
+    } 
+     else if(current_page === 17){
+    } 
+     else if(current_page === 19){
+    } 
+     else if(current_page === 21){
+        // stopTimer();
+
+        let num = [3, 4, 5];
+        let random = Math.floor(Math.random() * num.length);
+        imagePuzzle.startGame(game10_Reimages, num[random]);
+    } 
+     else if(current_page === 23){
+        // console.log(current_page);
+        // next_button.addClass('disabled');
+        // next_button.removeClass('next');
+        timer();
+    } 
     // else if (current_page === 5) {
     //     console.log(current_page)
     //     /* https://stackoverflow.com/questions/1227286/get-class-list-for-element-with-jquery */

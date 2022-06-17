@@ -1,228 +1,521 @@
-var canvas = document.getElementById("canvas1");
-var box = canvas.getContext("2d");
+import Bomb from "./lib/bomb.js";
+import Circle from "./lib/circle.js";
+// import $ from "jquery";
 
-var x = canvas.width / 2;
-var y = canvas.height - 30;
-var dx = 2;
-var dy = -2;
-var ballRadius = 10;
-var paddleHeight = 15;
-var paddleWidth = 100;
-var paddleX = (canvas.width - paddleWidth) / 2;
-var rightPressed = false;
-var leftPressed = false;
-var brickRCount = 6;
-var brickCCount = 8;
-var brickWidth = 75;
-var brickHeight = 20;
-var brickPadding = 10;
-var brickOffSetTop = 30;
-var brickOffSetLeft = 30;
-var score = 0;
-var lives = 3;
+// let countdownStarted = false;
+let canvas = document.querySelector('canvas');
+canvas.width = 1440;
+canvas.height = 880;
+canvas.marinTop = 135;
 
-const scoreScreen = document.getElementById("tudo");
-const scr = document.getElementById("scr");
+let ctx = canvas.getContext('2d');
 
-var bricks = [];
-for (let c = 0; c < brickCCount; c++) {
+let paddleHeight = 50;
+let paddleWidth = 100;
+let paddleX = (canvas.width-paddleWidth)/2;
+
+let x = paddleX;
+let y = 24;
+let dy= 0;
+let ballRadius = 25;
+
+let my = 16;
+
+let rightPressed = false;
+let leftPressed = false;
+let downPressed = false;
+
+let brickRowCount = 1;
+let brickColumnCount = 22;
+let brickWidth = 30;
+let brickHeight = 20;
+let brickPadding = 44;
+// let brickOffsetTop = 823;
+let brickOffsetTop = 777;
+let brickOffsetLeft = 122;
+
+let game6_score = 0;
+
+// function startGame2(){
+//   reset();
+//   started = true;
+//   doAnimation = true;
+//   draw();
+// }
+
+
+function reset(){
+
+  for(let c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
-    for (let r = 0; r < brickRCount; r++) {
-        bricks[c][r] = { x: 0, y: 0, status: 1 };
-    }
-}
-
-document.addEventListener("keydown", keydown);
-document.addEventListener("keyup", keyup);
-
-document.addEventListener("mousemove", movepaddle);
-
-function movepaddle(e) {
-  var relativeX = e.clientX - canvas.offsetLeft;
-  if (
-    relativeX > 0 + paddleWidth / 2 &&
-    relativeX < canvas.width - paddleWidth / 2
-  ) {
-    paddleX = relativeX - paddleWidth / 2;
-  }
-}
-function drawBricks() {
-  for (let c = 0; c < brickCCount; c++) {
-    for (let r = 0; r < brickRCount; r++) {
-      if (bricks[c][r].status == 1) {
-        var brickX = c * (brickWidth + brickPadding) + brickOffSetLeft;
-        var brickY = r * (brickHeight + brickPadding) + brickOffSetTop;
-        bricks[c][r].x = brickX;
-        bricks[c][r].y = brickY;
-
-        box.beginPath();
-        box.rect(brickX, brickY, brickWidth, brickHeight);
-        box.fillStyle = "pink";
-        box.fill();
-        box.strokeStyle = "white";
-        box.stroke();
-        box.closePath();
-      }
+    for(let r=0; r<brickRowCount; r++) {
+      bricks[c][r] = { x: 0, y: 0, status: 1 };
     }
   }
+
+  paddleHeight = 50;
+  paddleWidth = 100;
+  paddleX = (canvas.width-paddleWidth)/2;
+
+  x = paddleX;
+  y = 24;
+  dy= 0;
+  ballRadius = 25;
+
+  my = 16;
+
+  rightPressed = false;
+  leftPressed = false;
+  downPressed = false;
+
+  brickRowCount = 1;
+  brickColumnCount = 22;
+  brickWidth = 30;
+  brickHeight = 20;
+  brickPadding = 44;
+//   brickOffsetTop = 823;
+  brickOffsetTop = 777;
+  brickOffsetLeft = 122;
+  game6_score = 0;
+  circle1.inplay = true;
+  circle2.inplay = true;
+  circle3.inplay = true;
+  // timeLeft = 45;
 }
 
-function keydown(e) {
-  if (e.key == "ArrowLeft") {
+
+function drawPaddle(){
+  ctx.beginPath();
+  ctx.rect(paddleX-47,0, paddleWidth, paddleHeight);
+  ctx.fillStyle = "#0095DD";
+  ctx.fill();
+  ctx.closePath();
+}
+
+
+var rectHeight = 0;
+var rectWidth = 6;
+
+function drawLine(){
+  ctx.beginPath();
+  ctx.rect(x, y+80, rectWidth,rectHeight);
+  ctx.fillStyle ='pink';
+  ctx.fill();
+  ctx.closePath();
+}
+
+let touch = new Audio();
+touch.src = "./assets/img/game6/touch.mp3"
+function drawMagnet(){
+  var pic1 = new Image();
+  pic1.src = "./assets/img/game6/magnet.png";
+  ctx.drawImage(pic1, paddleX-34,my+90,canvas.width/20, canvas.height/13);
+  my += dy;
+  if(my+dy< 0){
+    dy = 0;
+    touch.play();
+
+  }
+}
+
+
+function drawPinkLine(){
+  ctx.beginPath();
+  ctx.rect(paddleX, 50, rectWidth,60);
+  ctx.fillStyle ='pink';
+  ctx.fill();
+  ctx.closePath();
+}
+
+
+const bomb1 = new Bomb();
+const bomb2 = new Bomb();
+const bomb3 = new Bomb();
+
+
+const circle1 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.4, 2, 1,'./assets/img/game6/ball15.png',55,55) //제일큰 갈색공
+const circle2 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.3, 1, 2, './assets/img/game6/ball6.png',34,34) //초록색 제일 작은공
+const circle3 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.4, 1, 1, './assets/img/game6/ball20.png',60,60) //노란색 중간위치 공
+// const circle1 = new Circle(Math.random()*innerWidth/2, 800, 2, 1,'./assets/img/game6/ball15.png',55,55)
+// const circle2 = new Circle(Math.random()*innerWidth/2, 850, 1, 2, './assets/img/game6/ball6.png',34,34)
+// const circle3 = new Circle(Math.random()*innerWidth/2, 810, 1, 1, './assets/img/game6/ball20.png',60,60)
+
+////////////
+
+// let timeLeft;
+
+// let timerId = setInterval(countdown, 1000);
+
+// function countdown() {
+//   if (timeLeft == 0) {
+//     timesUp();
+//   } else {
+//     timeLeft--;
+//   }
+// }
+
+let youwin = new Audio();
+youwin.src = "./assets/img/game6/youwin.mp3"
+function draw(){
+  // if (countdownStarted === false) {
+  //   timerId;
+  //   countdownStarted = true;
+  // }
+
+  if (!doAnimation) {
+    // timesUp();
+    end();
+    youwin.play();
+
+    started = false
+  } else {
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    drawLine();
+    drawBricks();
+    drawPaddle();
+    drawScore();
+    drawPinkLine();
+    requestAnimationFrame(draw);
+
+    bomb1.draw(canvas, ctx);
+    bomb1.moveBomb(canvas);
+
+    bomb2.draw(canvas, ctx);
+    bomb2.moveBomb2(canvas);
+
+    bomb3.draw(canvas, ctx);
+    bomb3.moveBomb3(canvas);
+    if(circle1.inplay){
+      circle1.draw(ctx);
+      circle1.moveCircle(canvas);
+    }
+
+    if(circle2.inplay){
+      circle2.draw(ctx);
+      circle2.moveCircle(canvas);
+    }
+
+    if(circle3.inplay){
+      circle3.draw(ctx);
+      circle3.moveCircle(canvas);
+    }
+    collisionDetection();
+
+    drawMagnet();
+
+    y += dy;
+    rectHeight -= 8;
+    if(y+dy< 0){
+      dy = 0;
+
+    } else if(my+dy>canvas.height-155){
+      dy = -4
+    }
+
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+      paddleX += 7;
+      x += 7
+    }
+    else if (leftPressed && paddleX > 150 ) {
+      paddleX -= 7;
+      x -= 7
+    }
+  }
+}
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+
+function keyDownHandler(e) {
+  // e.preventDefault();
+
+  if(e.keyCode ==39) {
     rightPressed = true;
-  } else if (e.key == "ArrowRight") {
+  }
+  else if(e.keyCode == 37) {
     leftPressed = true;
   }
+  else if(e.keyCode == 32 && y <= 24) {
+    dy = 3;
+  }
 }
 
-function keyup(e) {
-  if (e.key == "ArrowLeft") {
+function keyUpHandler(e) {
+  if(e.keyCode == 39) {
     rightPressed = false;
-  } else if (e.key == "ArrowRight") {
-    leftPressed = false;
+  }
+  else if (e.keyCode == 37) {
+    leftPressed =false;
   }
 }
 
-function drawBall() {
-  box.beginPath();
-  box.arc(x, y, ballRadius, 0, Math.PI * 2);
-  box.fillStyle = "yellow";
-  box.fill();
-  box.closePath();
+var bricks = [];
+for(var c=0; c<brickColumnCount; c++) {
+  bricks[c] = [];
+  for(var r=0; r<brickRowCount; r++) {
+    bricks[c][r] = { x: 0, y: 0, status: 1 };
+  }
 }
 
-function drawPaddle() {
-  box.beginPath();
-  box.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-  box.fillStyle = "black";
-  box.fill();
-  box.closePath();
-}
-function collisonDetection() {
-  for (var c = 0; c < brickCCount; c++) {
-    for (var r = 0; r < brickRCount; r++) {
-      var b = bricks[c][r];
-      if (b.status == 1) {
-        if (
-          x > b.x &&
-          x < b.x + brickWidth &&
-          y > b.y &&
-          y < b.y + brickHeight
-        ) {
-          dy = -dy;
-          b.status = 0;
-          ++score;
-          var audio1 = new Audio("./assets/sounds/game_6/Blocks.mp3");
-          audio1.play();
-          if (brickCCount * brickRCount == score) {
-            // WIN
-            document.getElementById("res1").innerHTML = "축하합니다!";
-            document.getElementById("res2").innerHTML = "스테이지를 클리어하셨습니다!";
-            scoreScreen.style.display = "block";
-            scr.innerHTML = score;
 
-            var next_button = $("#next");
-            next_button.removeClass('disabled');
-            next_button.addClass('next');
-          }
-        }
+function drawBricks() {
+  for(var c=0; c<brickColumnCount; c++) {
+    for(var r=0; r<brickRowCount; r++) {
+      if(bricks[c][r].status == 1) {
+        var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+        var brickY = (r*(brickHeight+brickPadding))+document.documentElement.scrollHeight / 1.25;
+        // console.log(brickY);
+        // console.log(r*(brickHeight+brickPadding));
+        // console.log(brickOffsetTop); // 777
+        bricks[c][r].x = brickX;
+        bricks[c][r].y = brickY;
+        var pic3 = new Image();
+        pic3.src = "./assets/img/game6/ball4.png";
+        ctx.drawImage(pic3, brickX,brickY,56,56);
       }
     }
   }
 }
 
-function drawScore() {
-  box.font = "20px Arial";
-  box.fillStyle = "white";
-  box.fillText("Score:" + score, 8, 20);
-}
+let ball = new Audio();
+ball.src = "./assets/img/game6/ball.mp3"
 
-function drawLives() {
-  box.font = "20px Arial";
-  box.fillStyle = "white";
-  box.fillText("Lives:" + lives, canvas.width - 65, 20);
-}
-function draw() {
-  box.clearRect(0, 0, canvas.width, canvas.height);
-  drawBricks();
-  drawLives();
-  drawBall();
-  drawPaddle();
-  drawScore();
-  collisonDetection();
+let ball2 = new Audio();
+ball2.src = "./assets/img/game6/ball2.mp3"
 
-  if (y + dy < ballRadius) {
+let bomb = new Audio();
+bomb.src = "./assets/img/game6/bomb.mp3"
+
+function collisionDetection() {
+
+  if(x > circle1.x && x < circle1.x + 60 && y + 67 > circle1.y - 50  && y + 100 < circle1.y + 50 && dy > 0) {
     dy = -dy;
-  } else if (y + dy > canvas.height - 2 * ballRadius) {
-    if (x > paddleX && x < paddleX + paddleWidth) {
-      dy = -dy;
-      var audio3 = new Audio("./assets/sounds/game_6/Paddlesound.mp3");
-      audio3.play();
-    } else {
-      lives = lives - 1;
-      if (!lives) {
-        // "GAME OVER"
-        scoreScreen.style.display = "block";
-        scr.innerHTML = score;
-      } else {
-        x = canvas.width / 2;
-        y = canvas.height - 30;
-        dx = 2;
-        dy = -2;
-        paddleX = (canvas.width - paddleWidth) / 2;
+    game6_score += 15;
+    if(game6_score >= 20) {
+      // timesUp();
+      end();
+      // youwin.play();
+      let current_page = parseInt(document.getElementById('current-page').innerText);
+      console.log(current_page);
+      if(current_page + 1 === 14){
+          sections[current_page-1].addClass("hidden");
+          sections[current_page].removeClass("hidden");
+          console.log(sections[current_page])
+          document.getElementById('current-page').innerText = current_page+1;
+      }
+    }
+    circle1.inplay = false;
+    ball2.play();
+
+  } else if(x > circle2.x && x < circle2.x + 39 && y + 46 > circle2.y - 50  && y + 100 < circle2.y + 50 && dy > 0) {
+    dy = -dy;
+    circle2.inplay = false;
+    ball2.play();
+    game6_score += 6;
+    
+    if(game6_score >= 20) {
+      // timesUp();
+      end();
+      // youwin.play();
+      var next_button = $("#next");
+      next_button.removeClass('disabled');
+      next_button.addClass('next');
+    }
+  } else if(x > circle3.x && x < circle3.x + 65 && y + 72 > circle3.y - 50  && y + 100 < circle3.y + 50 && dy > 0) {
+    dy = -dy;
+    circle3.inplay = false;
+    ball2.play();
+    game6_score += 20;
+    
+    // timesUp();
+    end();
+    // youwin.play();
+    var next_button = $("#next");
+    next_button.removeClass('disabled');
+    next_button.addClass('next');
+  }
+
+  if(x-20 > bomb1.xx - 20 && x-20 < bomb1.xx + 20 && y + 20 > bomb1.y - 90  && y + 20 < bomb1.y + 90 && dy > 0) {
+    bomb.play();
+    // alert("GAME OVER");
+    game6_score -= 5;
+    started = false
+    // document.location.reload();
+    // startGame(e);
+  } else if (x-20 > bomb2.xx - 20 && x-20 < bomb2.xx + 20 && y + 20 > bomb2.y - 90  && y + 20 < bomb2.y + 90 && dy > 0) {
+    bomb.play();
+    game6_score -= 5;
+    // alert("GAME OVER");
+    started = false;
+   game6_score -= 5;
+    // document.location.reload();
+    // startGame(e);
+  } else if (x-20 > bomb3.xx - 20 && x-20 < bomb3.xx + 20 && y + 20 > bomb3.y - 90  && y + 20 < bomb3.y + 90 && dy > 0) {
+    bomb.play();
+    // alert("GAME OVER");
+    started = false;
+    // document.location.reload();
+    // startGame(e);
+  }
+
+  for(var c=0; c<brickColumnCount; c++) {
+    for(var r=0; r<brickRowCount; r++) {
+      var b = bricks[c][r];
+      if(b.status == 1) {
+        if(x-20 > b.x - ballRadius && x-20 < b.x + ballRadius && y+90 > b.y - ballRadius && y+ 90 < b.y + ballRadius) {
+          b.status = 2;
+          dy = -dy;
+          game6_score += 4;
+          ball.play();
+        }
+      }else if (b.status == 2 ){
+        var pic3 = new Image();
+        pic3.src = "./assets/img/game6/ball4.png";
+        ctx.drawImage(pic3, x-25,y+140,56,56);
+        b.y -=2;
+        if(b.y <= 340){
+          b.status = 0;
+        }
       }
     }
   }
+}
 
-  if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
-    dx = -dx;
-    if (lives && brickCCount * brickRCount != score) {
-      var audio2 = new Audio("./assets/sounds/game_6/Wall.mp3");
-      audio2.play();
-    }
-  }
-  if (rightPressed && paddleX < canvas.width - paddleWidth) {
-    paddleX += 7;
-  } else if (leftPressed && paddleX > 0) {
-    paddleX -= 7;
-  }
-  if (!lives || brickCCount * brickRCount == score) {
-    x = 0;
-    y = 0;
-  } else {
-    x += dx;
-    y += dy;
+
+function drawScore(){
+  ctx.beginPath();
+  ctx.rect(14, 320, 121,120);
+  ctx.fillStyle ='grey';
+  ctx.fill();
+  ctx.closePath();
+  ctx.font = 'bold 23px Arial';
+  ctx.fillStyle = "white";
+  ctx.fillText("Score:" + game6_score,29,360);
+  ctx.font = 'bold 23px Arial';
+  // ctx.fillText(timeLeft + " s", 29, 415);
+  
+  if(game6_score >= 20) {
+    // timesUp();
+    end();
+    // youwin.play();
+    var next_button = $("#next");
+    next_button.removeClass('disabled');
+    next_button.addClass('next');
   }
 }
 
-document.getElementById("playAgainYes").addEventListener("click", () => {
-    scoreScreen.style.display = "none";
-    lives = 3;
-    score = 0;
-    x = canvas.width / 2;
-    y = canvas.height - 30;
-    dx = 2;
-    dy = -2;
-    paddleX = (canvas.width - paddleWidth) / 2;
+document.addEventListener('keydown', e => startGame(e));
 
-    bricks = [];
-        for (let c = 0; c < brickCCount; c++) {
-        bricks[c] = [];
-        for (let r = 0; r < brickRCount; r++) {
-            bricks[c][r] = { x: 0, y: 0, status: 1 };
-        }
-    }
-    drawBricks();
-//   location.reload();
-});
+let started = false;
+let doAnimation;
 
-// document.getElementById("playAgainNo").addEventListener("click", () => {
-//   location.href = "../First Page/firstPage.html";
-// });
-
-
-/* modal */
-function closeModal_game6(){
-    $('.game6_modal').css('visibility', 'hidden');
-    setInterval(draw, 7);
+function startGame(e) {
+  if (e.key === "Enter" && started === false){
+    reset();
+    started = true;
+    doAnimation = true;
+    draw();
+    // setTimeout(function() {
+    //   doAnimation = false;
+    // }, 45000)
+  }
 }
+
+
+function drawStart(){
+  var game_6 = document.getElementById('game_6');
+  ctx.beginPath();
+  ctx.rect(-3, -3, 1460, 892);
+  ctx.fillStyle = '#FFB6C1';
+  ctx.fill();
+  ctx.lineWidth = 7;
+  ctx.strokeStyle = 'white';
+  ctx.font = '110px serif';
+  ctx.lineWidth = 3;
+  // ctx.strokeText('Press \'Enter\'',400, canvas.height/4);
+  // ctx.strokeText('Or',680, canvas.height/2.6);
+  // ctx.strokeText('Click \'Start\' button',250, canvas.height/2);
+
+  ctx.fillStyle = 'white';
+  ctx.font = '38px Arial';
+  // ctx.fillText('- A player has 45 seconds to grab as many balls as possible',190, canvas.height/2.5);
+  // ctx.fillText('- The game will terminate immediately if the claw touches the bomb',190, canvas.height/1.9);
+  // ctx.fillText('- Press Left or Right arrow key to move the magnet horizontally',190, canvas.height/1.5);
+  // ctx.fillText('- Press Space key to drop the magnet',190, canvas.height/1.25);
+
+  // function startGame2(){
+  //   reset();
+  //   started = true;
+  //   doAnimation = true;
+  //   draw();
+  // }
+
+  var startButton = document.createElement('button');
+  startButton.setAttribute('id', 'game6_startBtn');
+  // startButton.setAttribute('onClick', 'startGame2()');
+  startButton.addEventListener('click', function (){
+    $('canvas').css('visibility', 'visible');
+    startButton.setAttribute('style', 'display: none;');
+    reset();
+    started = true;
+    doAnimation = true;
+    draw();
+  })
+  var text = document.createTextNode('Start');
+  startButton.appendChild(text);
+  game_6.appendChild(startButton);
+}
+
+
+// function timesUp(){
+function end(){
+  console.log(1);
+  // countdownStarted = false;
+  ctx.beginPath();
+  ctx.rect(-3, -3, 1460, 892);
+  ctx.fillStyle = '#FFB6C1';
+  ctx.fill();
+  ctx.lineWidth = 7;
+  ctx.strokeStyle = 'white';
+  ctx.font = '98px serif';
+  ctx.lineWidth = 3;
+
+  if(game6_score >= 20) {
+    ctx.strokeText('You Win!',500, canvas.height/3);
+    var next_button = $("#next");
+    next_button.removeClass('disabled');
+    next_button.addClass('next');
+    doAnimation = false;
+  } else{
+    ctx.strokeText('Game Over!',500, canvas.height/3);
+    ctx.strokeText("<Press Enter To Play Again>",505,402)
+  }
+  
+  ctx.font = "34px Comic Sans MS";
+  ctx.lineWidth = 2;
+  
+  
+  ctx.font = 'bold 35px Arial';
+  ctx.fillStyle = "white";
+  ctx.fillText("Your Score:" + game6_score,617,545);
+  
+}
+
+document.addEventListener('keydown', e => playSound(e));
+
+let arrowButton = new Audio();
+arrowButton.src = "./assets/img/game6/arrowButton.mp3"
+let spaceKey = new Audio();
+spaceKey.src = "./assets/img/game6/spaceKey.mp3"
+function playSound(e) {
+  if (e.keyCode == 37){
+    arrowButton.play()
+  } else if (e.keyCode == 39){
+    arrowButton.play()
+  }else if (e.keyCode == 32){
+    spaceKey.play()
+  }
+}
+
+drawStart();

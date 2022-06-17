@@ -24,29 +24,46 @@ a:hover {
 .previous {
   background-color: #a14907;
   color: white;
+  visibility: hidden;
 }
 
 .next {
-  background-color: #a14907;
+  /* background-color: #a14907; */
   color: white;
+  width: 200px;
+    height: 100px;
 }
 
 .round {
   border-radius: 50%;
+  line-height: 75px;
 }
 
 .navigation-container {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    /* background-color: rgba(0, 0, 0, 0.8); */
     position: absolute;
-    left: 80%;
-    top: 300px;
+    left: 50%;
+    /* top: 720px; */
+    top: 90vh;
+    transform:translate(-50%);
+    /* line-height: 175px; */
+    justify-content: center;
 }
 
 .main-container {
     position: relative;
-    top: 35px;
     height: 100vh;
+}
+
+#current-page, #total-pages{
+  color: transparent;
+}
+
+@media only screen and (max-height: 800px) {
+  .navigation-container{
+    top: 66%;
+  }
 }

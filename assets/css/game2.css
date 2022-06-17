@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+* {
+  margin: 0%;
+  padding: 0%;
+}
+.wand {
+  background-color: azure;
+  text-align: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  color: black;
+  font-family: "Nova Square", cursive;
+}
+.wand:hover {
+  transform: scale(1.5);
+}
+
+.hunt {
+  display: flex;
+  flex-direction: column;
+}
+
+/* :root {
+  cursor: url("../img/cursor.png"), auto;
+  --X: 40vh;
+  --Y: 45vh;
+}
+:root::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: radial-gradient(
+    circle 10vmax at var(--X) var(--Y),
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 0.98) 100%
+  );
+  pointer-events: none;
+} */
+#game_2{
+  --X: 40vh;
+  --Y: 45vh;
+  cursor: url("../img/cursor.png"), auto;
+}
+/* :root::before{
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: radial-gradient(
+    circle 10vmax at var(--X) var(--Y),
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, .5) 80%,
+    rgba(0, 0, 0, .95) 100%,
+  );
+} */
+
+.token,
+.second {
+  max-width: 30%;
+  height: auto;
+  height: auto;
+  align-items: center;
+  margin: -8% 187px;
+  padding-top: 190px;
+  display: flex;
+  flex-direction: row;
+}
+.second {
+  padding-left: 450px;
+  padding-top: 0% !important;
+  /* margin: 0%; */
+}
+
+.goblet, .cup, .sorted, .coat, .snitch, .gem{
+    filter: brightness(1%);
+    max-width: 150px;
+    margin: 50px 40px;
+    transition: transform 0.2s;
+}
+
+.goblet{
+    margin-top: 200px;
+}
+.cup{
+    margin-top: -145px;
+    margin-left: -20px;
+}
+.sorted{
+    margin-top: 484px;
+}
+.coat{
+    margin-top: 28px;
+}
+.snitch{
+    margin-top: -100px;
+    margin-left: 300px;
+}
+.gem{
+    margin-top: 300px;
+    margin-left: -420px;
+}
+
+.goblet:hover,
+.cup:hover,
+.sorted:hover,
+.snitch:hover,
+.gem:hover,
+.coat:hover {
+  transform: scale(
+    1.1
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  filter: brightness(100%);
+}
+
+.player {
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 25%;
+  height: max-content;
+}
+.play,
+.pause,
+.volup,
+.voldown,
+.goback {
+  background-color: black;
+  box-shadow: rgb(224, 224, 40);
+  color: gold;
+  font-size: medium;
+  border: black;
+  width: 15%;
+  padding: 10px 10px;
+  margin: 2px 4px;
+  transition: transform 0.5s;
+}
+.play:hover,
+.pause:hover,
+.volup:hover,
+.voldown:hover,
+.goback:hover {
+  transform: scale(1);
+  background-color: rgb(206, 210, 233);
+  color: black;
+}
+.play {
+  font-size: small;
+  padding: 11px 10px;
+}
+.volup {
+  padding: 10px 10px 10px 5px;
+}
+.voldown {
+  font-size: large;
+  padding: 9px 10px;
+}
+.fa-home {
+  text-decoration: none;
+  color: gold;
+}
+
+/* Modal */
+.game2_quizModal_background{
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.game2_quizModal{
+  margin: 10px;
+  padding: 10px;
+
+  width: 600px;
+  height: 500px;
+  background-color: white;
+  border-radius: 7px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+
+  text-align: center;
+}
+.game2_modal_close{
+  color: black;
+  font-size: 20px;
+  text-shadow: 0 1px black;
+  width: 20px;
+  height: 20px;
+  margin-left: 550px;
+  margin-top: 0px;
+}
+.game2_modal_close:hover{
+  cursor: pointer;
+}
+#game2_mission{
+  width: 580px;
+  height: 30px;
+  /* background-color: blue; */
+
+  text-align: center;
+  color: black;
+}
+#game2_mission p{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 25px;
+  color: black;
+  text-shadow: none;
+}
+
+
+#game2_quizImg{
+  width: 100%;
+  height: 300px;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  margin: 10px;
+}
+#game2_quizOption{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#game2_quizOption div{    
+  width: 60px;
+  height: auto;
+  border-radius: 6px;
+
+  border: 1px solid gray;
+
+  margin: 0;
+  color: black;
+  text-shadow: none;
+}
+#game2_quizOption div:hover{
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.588);
+}
+
+@media only screen and (max-height: 800px) {
+  .hunt {
+    display: flex;
+    flex-direction: row;
+  }
+  .second {
+    display: flex;
+    flex-direction: column;
+
+    max-width: auto;
+    padding: 0%;
+    margin-top: 300px;
+  }
+
+  .token {
+    display: flex;
+    flex-direction: column;
+    max-width: 58%;
+  }
+  .goblet{
+    margin-top: 120px;
+    margin-left: -315px;
+  }
+  .cup{
+    margin-top: -10px;
+    margin-left: 100px;
+  }
+  .sorted{
+    margin-top: -510px;
+    margin-left: 300px;
+  }
+  .coat{
+    margin-left: 500px;
+  }
+  .snitch{
+    margin-top: -132px;
+    margin-left: 890px;
+  }
+
+  .player {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+
+  :root::before {
+    display: none;
+  }
+}

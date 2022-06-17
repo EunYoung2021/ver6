@@ -1,219 +1,210 @@
-#main {
-    margin: auto;
-    width: fit-content;
+@import url("https://fonts.googleapis.com/css?family=Black+Ops+One");
+/* 
+* {
+  padding: 0;
+  margin: 0;
+} */
+
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("main.jpeg");
+  background-repeat: no-repeat;
+  padding: 0px;
+  background-size: cover;
 }
 
-#box {
-    width: 1200px;
-    height: 500px;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin: auto;
-    border: 20px solid rgba(255, 215, 0);
-    border-bottom: 0;
-    border-radius: 20px 20px 0 0;
+h1 {
+  color: chartreuse;
+  box-shadow: 0 0 10px green;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 2vw;
+  position: absolute;
+  top: 5px;
+  right: 42%;
+} */
+
+#canvas1 {
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 10px plum;
+  background-color: #ffffff73;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-#box img {
-    position: absolute;
-    height: auto;
-    width: 150px;
-    z-index: 50;
+@keyframes animacao1 {
+  0% {
+    background: rgba(10, 9, 9, 0.815);
+  }
+  50% {
+    background: #0d0d18;
+  }
+  100% {
+    background: #080606;
+  }
 }
 
-#gap {
-    position: absolute;
-    left: 0px;
-    bottom: -20px;
-    width: 210px;
-    height: 200px;
-    border-right: 20px solid rgba(255, 215, 0);
-    border-radius: 20px 20px 0 0;
+#tudo {
+  display: none;
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  border-radius: 15px;
+  animation-name: animacao1;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
-#gift {
-    position: absolute;
-    width: 230px;
-    height: 256px;
-    display: inline-block;
-    background-color: rgba(0, 0, 0, 0.8);
-    float: left;
-    border: 20px solid rgba(255, 215, 0);
-    border-top: 0;
-    box-sizing: border-box;
-    z-index: 0;
-    border-radius: 0 0 20px 20px;
-    left: 360px;
+.gameover {
+  width: 400px;
+  height: 150px;
+  /* padding-top: 50px; */
+  margin-top: 40px;
+  padding-bottom: 15px;
+  border-radius: 15px;
 }
 
-#control {
-    border-top: 20px solid gold;
-    text-align: center;
-    padding: 25px 0;
-    height: 250px;
-    box-sizing: border-box;
-    margin-left: 250px;
+.gameover p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 50px;
+  font-family: "Black Ops One", cursive;
+  line-height: 50px;
+  text-align: center;
+  text-shadow: 5px 5px #000000;
+  color: #ffffff;
 }
 
-#stickbar {
-    width: 200px;
-    height: 200px;
-    background-image: url('../img/game-7-img/joystick-bar.png');
-    background-position: bottom;
-    background-size: 200px 60px;
-    background-repeat: no-repeat;
-    display: inline-block;
-    margin-right: 100px;
+.continue {
+  width: 300px;
+  height: 100px;
+  padding-top: 75px;
+  padding-bottom: 10px;
+  padding-left: 100px;
 }
 
-#stick {
-    width: 200px;
-    height: 150px;
-    background-image: url('../img/game-7-img/joystick.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 150px;
-    transform-origin: center bottom;
+.continue p, .continue .yes {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: corbel;
+  color: #ffffff;
+  text-shadow: 2.5px 2.5px #000000;
 }
 
-#catcher {
-    width: 100px;
-    height: 150px;
-    position: absolute;
-    left: 50px;
-    background-image: url('../img/game-7-img/machine.png');
-    background-size: auto 120px;
-    background-repeat: no-repeat;
-    background-position: center top;
-    z-index: 100;
+.opcoes {
+  width: 300px;
+  height: 50px;
+  padding-top: 0px;
+  margin: auto;
 }
 
-#roll {
-    position: absolute;
-    width: 20px;
-    bottom: 150px;
-    background-image: url('../img/game-7-img/roll.png');
-    background-size: cover;
-    left: calc(50% - 10px);
+/* .yes {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: corbel;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 2.5px 2.5px #000000;
+  padding: 20px 30px 20px 30px;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background: #006400;
+  margin-right: 80px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+  float: left;
+  cursor: pointer;
+} */
+
+@keyframes animacao2 {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 
-.hook {
-    width: 50px;
-    height: 100px;
-    position: absolute;
-    top: 110px;
+.yes:hover {
+  cursor: pointer;
+  animation-name: animacao2;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  color: yellow;
 }
 
-#left-hook {
-    left: 0;
-    background-image: url('../img/game-7-img/machine-left.png');
-    background-size: auto 90px;
-    background-repeat: no-repeat;
-    background-position: 10px 3px;
-    transform-origin: center top;
-    transform: rotate(45deg);
+.no {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: corbel;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 1.5px 1.5px #fb3733;
+  padding: 20px 30px 20px 30px;
+  border-radius: 15px;
+  background: red;
+  border: #000000;
+  cursor: pointer;
+  float: left;
 }
 
-.leftclip {
-    animation: leftclip 100ms linear forwards;
+@keyframes animacao3 {
+  0% {
+    transform: translate(-5px, 0px);
+  }
+  25% {
+    transform: translate(-2.5px, 0px);
+  }
+  50% {
+    transform: translate(0px, 0px);
+  }
+  75% {
+    transform: translate(2.5px, 0px);
+  }
+  100% {
+    transform: translate(5px, 0px);
+  }
 }
 
-.leftclip-reverse {
-    animation: leftclip-reverse 100ms linear forwards;
-}
-
-@keyframes leftclip {
-    from {
-        transform: rotate(45deg);
-    }
-
-    to {
-        transform: rotate(20deg);
-    }
-}
-
-@keyframes leftclip-reverse {
-    from {
-        transform: rotate(20deg);
-    }
-
-    to {
-        transform: rotate(45deg);
-    }
-}
-
-#right-hook {
-    right: 0;
-    background-image: url('../img/game-7-img/machine-right.png');
-    background-size: auto 90px;
-    background-repeat: no-repeat;
-    background-position: 16px 3px;
-    transform-origin: center top;
-    transform: rotate(-45deg);
-}
-
-.rightclip {
-    animation: rightclip 100ms linear forwards;
-}
-
-.rightclip-reverse {
-    animation: rightclip-reverse 100ms linear forwards;
-}
-
-@keyframes rightclip {
-    from {
-        transform: rotate(-45deg);
-    }
-
-    to {
-        transform: rotate(-20deg);
-    }
-}
-
-@keyframes rightclip-reverse {
-    from {
-        transform: rotate(-20deg);
-    }
-
-    to {
-        transform: rotate(-45deg);
-    }
-}
-
-.btn {
-    display: none;
-}
-
-#btn-catch {
-    width: 200px;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    background-image: url('../img/game-7-img/start.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: inline-block;
-    outline-color: rgba(0, 0, 0, 0);
-}
-
-.opcity {
-    top: 750px;
-    filter: opacity(0);
-    transition: .5s;
+.no:hover {
+  animation-name: animacao3;
+  animation-duration: 0.15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* modal */
-#game7_modal{
+.game7_modal{
     border-radius: 7px;
     z-index: 10;
-    background-color: rgba(255, 255, 255, 0.823);
+    background-color: white;
     display: flex;
-    width: 615px;
-    height: 80px;
+    width: 690px;
+    height: 120px;
     flex-direction: column;
     align-content: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     box-shadow: 0px 3px 20px white;
     position: absolute;
@@ -221,14 +212,34 @@
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+.game7_modal p{
+    color: black;
+    font-size: inherit;
+    text-shadow: 1px 1px 1px #0000001f;
+    margin-bottom: 0px;
+
+    border-radius: 7px;
+}
 .game7_modal_close:hover{
     cursor: pointer;
 }
-
+.game7_modal_close:active{
+  padding-left: 5px;
+  padding-top: 5px;
+  text-shadow: none;
+}
 
 @media only screen and (max-height : 860px){
-    #gift{
-        top: 290px;
-        left: 168px;
-    }
+  #canvas1 {
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 10px plum;
+    background-color: #ffffff73;
+  }
+  #tudo{
+    top: 50%;
+  }
+  .game7_modal{
+    top: 55%;
+  }
 }

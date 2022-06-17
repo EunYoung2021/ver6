@@ -1,347 +1,357 @@
-class Queue {
-    constructor() {
-      this._arr = [];
+// 초록 테두리 안에 들어가는 이미지의 사이즈는 '110 x 160px'가 가장 이상적입니다.
+
+//각 문제별 문제이미지의 '파일명.png'를 각 quiz:에다가 넣어주시고,
+//초급음악이론 퀴즈에서 띄워줄 문제이미지의 경우
+// ['bgQuiz', [{quiz:'파일명.확장자', select:[]...}]]
+
+//선택지(드래그할 수 있는 카드)의 이미지의 파일명.png를 select:[] 안에 띄워주고 싶은 순서대로 넣어주시면 됩니다.
+
+//문제별 정답의 경우 정답 문구가 아닌 선택지 번호 1~5번 이미지중 정답이미지의 순번을 입력해주시면 됩니다.
+//각 이미지는 반드시 images폴더 내에 존재해야합니다.
+
+var quiz_Card = [
+    //초급음악이론 퀴즈
+    //
+    ['bgQuiz', [{quiz:'q1.png', select:['a1.png', 'a2.png', 'a3.png', 'a4.png', 'a5.png'], answer: 1}, 
+            {quiz:'q2.png', select:['a3.png', 'a4.png', 'a2.png', 'a1.png', 'a5.png'], answer: 3}, 
+            {quiz:'q3.png', select:['a2.png', 'a3.png', 'a1.png', 'a5.png', 'a4.png'], answer: 2}, 
+            {quiz:'q4.png', select:['a5.png', 'a3.png', 'a1.png', 'a4.png', 'a2.png'], answer: 4}, 
+            {quiz:'q5.png', select:['a4.png', 'a5.png', 'a3.png', 'a2.png', 'a1.png'], answer: 2},
+			{quiz:'q6.png', select:['a10.png', 'a8.png', 'a6.png', 'a7.png', 'a9.png'], answer: 3}, 
+            {quiz:'q7.png', select:['a7.png', 'a9.png', 'a6.png', 'a10.png', 'a8.png'], answer: 1}, 
+            {quiz:'q8.png', select:['a6.png', 'a7.png', 'a10.png', 'a9.png', 'a8.png'], answer: 5}, 
+            {quiz:'q9.png', select:['a10.png', 'a9.png', 'a8.png', 'a7.png', 'a6.png'], answer: 2}, 
+            {quiz:'q10.png', select:['a7.png', 'a6.png', 'a8.png', 'a9.png', 'a10.png'], answer: 5},
+			{quiz:'q11.png', select:['a15.png', 'a14.png', 'a13.png', 'a12.png', 'a11.png'], answer: 5}, 
+            {quiz:'q12.png', select:['a11.png', 'a12.png', 'a13.png', 'a14.png', 'a15.png'], answer: 2}, 
+            {quiz:'q13.png', select:['a11.png', 'a13.png', 'a15.png', 'a12.png', 'a14.png'], answer: 2}, 
+            {quiz:'q14.png', select:['a14.png', 'a12.png', 'a11.png', 'a13.png', 'a15.png'], answer: 1}, 
+            {quiz:'q15.png', select:['a15.png', 'a13.png', 'a11.png', 'a14.png', 'a12.png'], answer: 1},
+			{quiz:'q16.png', select:['a17.png', 'a16.png', 'a18.png', 'a19.png', 'a20.png'], answer: 2}, 
+            {quiz:'q17.png', select:['a20.png', 'a19.png', 'a18.png', 'a17.png', 'a16.png'], answer: 4}, 
+            {quiz:'q18.png', select:['a16.png', 'a18.png', 'a20.png', 'a19.png', 'a17.png'], answer: 2}, 
+            {quiz:'q19.png', select:['a17.png', 'a19.png', 'a16.png', 'a18.png', 'a20.png'], answer: 2}, 
+            {quiz:'q20.png', select:['a16.png', 'a19.png', 'a20.png', 'a18.png', 'a17.png'], answer: 3}
+        ]
+    ]
+];
+
+var bgScoreCorr = 0;
+var bgScoreMis = 0;
+
+var cnt = 0;
+var add = './assets/img/game11/';
+var msg;
+
+// var scorePop = $('.scorePop')
+var quizCtt = [4]; //첫번째는 퀴즈별 인덱스값 저장, 두번째는 몇 번째 문제인지, 정답이 무엇인지 저장, 네번째는 현재 퀴즈테마
+
+window.onload = function(){
+    var randomNum = Math.floor(Math.floor(Math.random() * quiz_Card[0][1].length));
+    quizCtt[0] = 0;
+    quizCtt[1] = randomNum;
+    quizCtt[2] = quiz_Card[0][1][randomNum].answer;
+    quizCtt[3] = quiz_Card[0][0];
+
+    $('.nextButton').attr('value', quizCtt[3]);
+    
+
+    //퀴즈별 문제 이미지 출력
+    var img = quiz_Card[0][1][randomNum].quiz;
+
+    var quiz = $('.quiz');
+    var quizImg = document.createElement('img');
+    quizImg.setAttribute('id', 'quizImg');
+    quizImg.setAttribute('src', add+img);
+    quiz.append(quizImg);
+
+    for(var i=0; i < quiz_Card[0][1][randomNum].select.length; i++){
+        var cardSet = $('#card_'+(i+1));
+        var cardImg = quiz_Card[0][1][randomNum].select[i];
+        cardSet.attr('value', (i+1));
+        cardSet.attr('src', add+cardImg);
     }
-    enqueue(item) {
-      this._arr.push(item);
+
+    var corrScorePop = $('.corrScorePop');
+    var misScorePop = $('.misScorePop');
+    var corrScore = $('.corrScore');
+    var misScore = $('.misScore');
+    corrScorePop.attr('style', 'color : rgb(63, 165, 255)');
+    misScorePop.attr('style', 'color : rgb(63, 165, 255)');
+    corrScore.attr('style', 'color : rgb(63, 165, 255)');
+    misScore.attr('style', 'color : rgb(63, 165, 255)');
+
+    // timer();
+}
+
+function reloadCard(index){
+    var quizSlot = quiz_Card[index][1];
+    var quizName = quiz_Card[index][0];
+    var randomNum = Math.floor(Math.floor(Math.random() * (quizSlot.length)));
+    console.log(quizName+"의 "+(randomNum+1)+'번째 퀴즈');
+
+    //문제 이미지 변경
+    var quizImg = document.getElementById('quizImg');
+    var img = quiz_Card[index][1][randomNum].quiz;
+    console.log(img);
+    quizImg.setAttribute('src', add+img);
+
+    for(var i = 0; i < quizSlot[randomNum].select.length; i++){
+        var changeQuizElem = $('#card_'+(i+1));
+        var cardImg = quiz_Card[index][1][randomNum].select[i];
+        changeQuizElem.attr('src', add+cardImg);
     }
-    dequeue() {
-      return this._arr.shift();
-    }
-    isEmpty() {
-        if(this._arr.length == 0) {
-            return true;
+
+    quizCtt[0] = index;
+    quizCtt[1] = randomNum;
+    quizCtt[2] = quiz_Card[index][1][randomNum].answer;
+
+    var dropZone = $('#dropZone')[0];
+
+    if(dropZone.childNodes[0]){
+        var childElem = dropZone.childNodes[0].id;
+        // console.log(childElem);
+
+        var moveElem = dropZone.childNodes[0];
+        // console.log(moveElem);
+        var parentElem;
+
+        switch(childElem){
+            case 'card_1':
+                parentElem = $('#card1');
+            break;
+            case 'card_2':
+                parentElem = $('#card2');
+            break;
+            case 'card_3':
+                parentElem = $('#card3');
+            break;
+            case 'card_4':
+                parentElem = $('#card4');
+                break;
+            case 'card_5':
+                parentElem = $('#card5');
+                break;
         }
-        return false;
+        parentElem.append(moveElem);
+    }
+    fillCard(index, randomNum);
+}
+
+function setNextQuiz(){
+    var quizName = quizCtt[3];
+    var index;
+    switch(quizName){
+        case 'bgQuiz':
+            index = 0;
+            break;
+        case 'mdQuiz':
+            index = 1;
+            break;
+        case 'compQuiz':
+            index = 2;
+            break;
+        case 'rymQuiz':
+            index = 3;
+            break;
+    }
+    console.log("이번 퀴즈는 "+quizName+"입니다.");
+    $('#dropZone').attr('onDragOver', 'onDragOver(event);');
+    $('.nextButton').attr('value', quizCtt[3]);
+    $('#resultImg').attr('style', 'visibility: hidden;')
+    reloadCard(index);
+    $('.nextButton').attr('style', 'visibility: hidden;');
+    timer();
+}
+
+function check(value){
+    var answer = quizCtt[2];
+    var result;
+
+    if(answer === value){
+        result = 't';
+    } else{
+        result = 'f';
+    }
+    resultOfCheck(result);
+    scoreControl(quizCtt[3], result);
+    stopTimer();
+}
+
+function scoreControl(quizName, result){
+    var game11_score;
+    var className;
+    switch(result){
+        case 't':
+            className = 'corrScore';
+            if(quizName === 'bgQuiz'){
+                bgScoreCorr += 1;
+                game11_score = bgScoreCorr;
+            }
+            break;
+        case 'f':
+            className = 'misScore';
+            if(quizName === 'bgQuiz'){
+                bgScoreMis += 1;
+                game11_score = bgScoreMis;
+            }
+            break;
+    }
+    
+    var insertScore = $('.'+className);
+    insertScore[0].innerText = game11_score;
+
+    if(bgScoreCorr === 10){
+        $('.endPopup').attr('style', 'visibility: visible;');
+        window.setTimeout(function(){
+            alert('축하합니다! 카드퀴즈의 방을 클리어하여 모든 미션을 클리어하셨습니다!!!');
+            let current_page = parseInt(document.getElementById('current-page').innerText);
+            if(current_page + 1 === 24){
+                sections[current_page-1].addClass("hidden");
+                sections[current_page].removeClass("hidden");
+                console.log(sections[current_page])
+                document.getElementById('current-page').innerText = current_page+1;
+            }
+        }, 1000);
     }
 }
 
-function shuffle_11(array) { 
-    for (let index = array.length - 1; index > 0; index--) { 
-        // 무작위 index 값을 만든다. (0 이상의 배열 길이 값) 
-        const randomPosition = Math.floor(Math.random() * (index + 1)); 
-        // 임시로 원본 값을 저장하고, randomPosition을 사용해 배열 요소를 섞는다. 
-        const temporary = array[index]; 
-        array[index] = array[randomPosition]; 
-        array[randomPosition] = temporary; 
-    } 
-}
-const questions_rand = [0, 1, 2, 3, 4, 5, 6, 7]; // 문제 목록
-/* 
-1번 온음표
-2번 점2분음표
-3번 2분음표
-4번 4분음표
-5번 점4분음표
-6번 8분음표
-7번 16분음표
-8번 16분 쉼표
-*/
-const koreanQuestions = ['온음표', '점2분음표', '2분음표', '4분음표', '점4분음표', '8분음표', '16분음표', '16분 쉼표'];
-
-shuffle_11(questions_rand); // 무작위로 섞기
-
-const questions = new Queue();
-
-
-for(let i = 0; i < 8; i++) {
-    questions.enqueue(questions_rand[i]); // 문제 목록 큐에 넣기
+function resultOfCheck(result){
+    var resultSound = $('#resultSound');
+    var resultImg = $('#resultImg');
+    
+    if(result === 't'){
+        resultImg.attr('src', './assets/img/game11/corr.png');
+        resultImg.attr('style', 'visibility: visible;')
+        resultSound.attr('src', './assets/sounds/game11/true.wav');
+        resultSound.attr('autoplay', 'true');
+    } else{
+        resultImg.attr('src', './assets/img/game11/mis.png');
+        resultImg.attr('style', 'visibility: visible;')
+        resultSound.attr('src', './assets/sounds/game11/false.wav');
+        resultSound.attr('autoplay', 'true');
+    }
+    $('.nextButton').attr('style', 'visibility: visible;');
+    $('#dropZone').attr('onDragOver', '');
 }
 
-currentQuestion = 0; 	  /*현재 문제*/
+function fillCard(index, randomNum){
+    for(var i = 1; i <=5; i++){
+        if($('#card'+i)[0].childNodes.length === 2){
+            console.log('card'+i+'가 비어있다.')
+            var inputElem = document.createElement('img');
+            var cardImg = quiz_Card[index][1][randomNum].select[i-1];
+            inputElem.setAttribute('id', 'card_'+i);
+            inputElem.setAttribute('src', add+cardImg);
+            inputElem.setAttribute('draggable', "true");
+            inputElem.setAttribute('ondragstart', 'onDragStart(event)');
+            inputElem.setAttribute('value', i);
+            $('#card'+i).append(inputElem);
+        }
+    }
+}
 
-		//[m,n] 사이에 무작위 정수를 만드는 데 사용됩니다.
-		function getRandom(m,n){
-			return m +  Math.round((n-m)*Math.random());
-		}
-		
-		//풍선의 생성
-		function Balloon(){
-			var position = [
-				"0 0 ","-96px 0","-192px 0","-288px 0",
-				"0 -123px ","-96px -123px","-192px -123px","-288px -123px",
-			]
-			//속성 쓰기
-			this.ele = document.createElement("div");
-			this.ele.className = "balloon";//
-			this.mark  = 0;
-			this.speed = 0 ;
-			
-			this.reBirth(); //임의의 속성 설정
+var count = 10;
+var counter;
+function timer(){
+    resetTimer();
+    counter = setInterval(updateTimer, 1000);
 
-			var that = this;
+    var timer = $('#timer');
+    timer.addClass('start');
+}
 
-			this.ele.addEventListener("animationend",function(){
-				// alert("animationend");
+function updateTimer(){
+    count--;
 
-				this.className = "balloon";
-				that.reBirth();
-			})
-			// document.body.appendChild(this.ele);
-			document.getElementById('game_11_board').appendChild(this.ele);
-		}
+    //만일 카운트가 0으로 떨어진다면 타이머 div 내에 0이라는 숫자를 넣어준뒤 clearInterval로 타이머를 정지시켜준다.
+    //10초 내에 정답을 선택하지 못했으므로 문제는 틀린것으로 처리 >> resultOfCheck=f + 해당퀴즈에 틀린 문제 +1를 리턴해준다.
+    if (count <= 0){
+        $('#timer').text(0);
+        clearInterval(counter);
+        resultOfCheck('f');
+        scoreControl(quizCtt[3], 'f');
+        console.log('이제 그마안');
+        return;
+    }
+    
+    var timer = $('#timer');
+    timer.text(count);
+}
 
-		//prototype에 풍선의 움직임을 쓰는 방법
-		Balloon.prototype.move = function(){
-			
-			//현재 top 가져오기
-			//console.info( this.ele.offsetTop);
-			var currentTop = this.ele.offsetTop;
+function stopTimer(){
+    var timer = $('#timer');
+    timer.removeClass('start');
+    clearInterval(counter);
+}
 
-			// currentTop < - 123 이라면 땅속에서 다시 자란다
-			if(currentTop < 0){ //123은 풍선의 높이이다.
-				console.info("땅속에서 다시 자라나다");
-				this.reBirth();
-			}
-			else{
+function resetTimer(){
+    count = 10;
+}
 
-				//탑을 자꾸 작게 (올라가)
-				var newTop = currentTop - this.speed;
-
-				//dom 요소에 업데이트하기
-				this.ele.style.top = newTop +"px";
-			}
-
-		}
-
-		//prototype에 풍선을 써서 다시 태어나는 방법
-		Balloon.prototype.reBirth = function(){
-
-			this.ele.style.top = getRandom(500,600) +"px"; //top 값 설정
-			this.ele.style.left = (document.documentElement.offsetWidth - 96) * Math.random() + "px";
-			
-			this.mark = getRandom(1,8);//무작위로 점수가 하나 [1,8]
-
-			this.speed = this.mark;// 위로 날아가는 속도는 점수에 비례한다: 점수가 클수록 빨리 날아간다.
-			
-			//this.ele.style.backgroundPosition = position[ this.mark - 1  ] ; //여기 몇 그룹을 만들어서 - 1로 표시합니다.
-			this.ele.style.backgroundPositionX  = (this.mark-1)%4 * -96 +"px"
-			this.ele.style.backgroundPositionY  = (Math.ceil( this.mark/4) - 1)  * -123 +"px";
-			
-		}
-
-		Balloon.prototype.die = function(){
-
-				this.ele.className = "balloon blow";
-				score_11.update(this.mark);
-
-				console.info("맞았다"+this.mark);
-			}
-		
-		Balloon.prototype.gameover = function(){
-			$('.balloon').addClass('blow');
-		}
-		// var b1 = new Balloon();
-		// console.dir(b1);
-
-		// setInterval(function(){
-		// 	b1.move();
-		// },50);
-
-		//총 추가
-		var gun = {
-			ele:document.createElement("div"),
-			init:function(){
-				this.ele.style.zIndex = 100;
-				this.ele.style.width  = "96px";
-				this.ele.style.height = "96px";
-				this.ele.style.background = "url(./assets/img/game-11-img/gun.png) no-repeat center center";
-				this.ele.style.position = "absolute";
-				// document.body.appendChild(this.ele);
-				document.getElementById('game_11_board').appendChild(this.ele);
-				var that = this;
-				document.body.addEventListener("mousemove",function(e){
-					//console.info(e.clientX,e.clientY);
-					that.move(e.clientX,e.clientY);
-
-				})
-			},
-			move:function(x,y){
-				x = x - 48;
-				y = y - 48;
-				this.ele.style.left = x +"px";
-				this.ele.style.top  = y +"px";
-			}
-		}
-
-		//점수 추가
-		var score_11 = {
-			ele:document.createElement("div"),
-			mark:0,
-			init:function(){
-				this.ele.style.position="absolute";
-				this.update(0);						//갱신점수
-				//document.body.appendChild(this.ele);
-			},
-			update:function(s){
-				//원점수에 s점수 추가
-				this.mark += s;
-
-				//dom 요소에 업데이트하기
-				//this.ele.innerHTML = this.mark;
-			}
-		}
-
-		//구름 추가
-		function Cloud(){
-			//속성
-			this.ele = document.createElement("div");
-			this.height = getRandom(30,100);
-			this.width = 2  * this.height; //그림의 크기에 비례하여 관계를 유지하기 위해 *2입니다.원도는 1:2이다.
-			this.ele.style.backgroundImage = "url(./assets/img/game-11-img/cloud.png)";
-			this.ele.style.backgroundRepeat = "no-repeat";
-			this.ele.style.backgroundSize = this.width+"px "+this.height+"px";
-			this.ele.style.width = this.width +"px";
-			this.ele.style.height = this.height +"px";
-			this.ele.style.position="absolute";
-			this.ele.style.top  = getRandom(0,100) + "px";
-			this.ele.style.left = getRandom(0,document.documentElement.offsetWidth-this.width) + "px";
+function checkCorrScore(btnName, scoreName){
+    setTimeout(function(){
+        window.alert(scoreName+' 완료되었습니다. \n다른 퀴즈를 풀어주세요!');
+    }, 500);
+    var btn = $('.'+btnName).attr('onclick', '');
+    btn.attr('style', 'cursor: Default;');
+    $('.nextButton').attr('style', 'visibility: hidden;');
+}
 
 
-			this.speed = getRandom(1,4); //수평 이동 속도
+// drag N drop =============================================================================================
+const game11_gameContainer = document.querySelectorAll(".game11_gameContainer");
+const dragElem = document.querySelectorAll("#card");
 
+function onDragOver(event){
+    event.preventDefault();
+}
 
-			//body에 추가하기
-			// document.body.appendChild(this.ele);
-			document.getElementById('game_11_board').appendChild(this.ele);
+function onDragStart(event){
+    event
+        .dataTransfer
+        .setData('text/plain', event.target.id);
+}
 
-			
-		}
-		//구름 추가 무브 방법
-		Cloud.prototype.move = function(){
-			//좌우 이동
-			//left 값만 바꾸면 왼쪽으로 이동한다고 가정합니다 (상당히 left 값을 계속 작게 변경합니다)
-			var oldleft = this.ele.offsetLeft;
-			if(oldleft < -1 * this.width){ //맨 왼쪽으로 날아가다
-				var newLeft = document.documentElement.offsetWidth ;//화면 맨 오른쪽
-				this.ele.style.top  = getRandom(0,100) + "px"; //구름의 top 위치 재설정
-				this.ele.style.left = newLeft +"px";
-				this.speed = getRandom(1,4); //구름 재설정 속도
-			}
-			else{
-				var newLeft = oldleft - this.speed;
+function onDrop(event){
+    const id = event
+        .dataTransfer
+        .getData('text');
 
-				this.ele.style.left = newLeft +"px";
-			}
+    var draggableElement = document.getElementById(id);
+    const dropZone = event.target;
+    
+    var exElement = $('#dropZone')[0].childNodes[0];
 
-		}
-		var background = {
-			src:"img/bg.jpg",  //기본 배경
-			setSrc:function(newSrc){
-				var newSrc  = newSrc || this.src;
-				// document.body.style.backgroundImage = "url("+ newSrc + ")";
-				document.getElementById('game_11_board').style.backgroundImage = "url("+ newSrc + ")";
-			}
-		}
-		
-		// 문제 문구
-		var koreanQuestionsWirte = {
-			init:function() {
-				currentQuestion = questions.dequeue();
-				const quizText = document.createElement('h3');
-				quizText.innerHTML = `${koreanQuestions[currentQuestion]}를 맞춰주세요.`;
-				quizText.classList.add('quiz-text');
-				// document.body.append(quizText);
-				document.getElementById('game_11_board').append(quizText);
-			},
-			update:function() {
-				currentQuestion = questions.dequeue();
-				document.querySelector('.quiz-text').innerHTML = `${koreanQuestions[currentQuestion]}를 맞춰주세요.`;
-			},
-			gameover:function(){
-				document.querySelector('.quiz-text').innerHTML = `Stage Clear!! 탈출에 성공하셨습니다!`;
-			}
-		}
+    if(exElement === undefined){
+        dropZone.appendChild(draggableElement);
+    } else{
+        dropZone.appendChild(draggableElement);
+        exElement.setAttribute('id', draggableElement.id);
+        exElement.setAttribute('value', draggableElement.getAttribute('value'));
+        exElement.setAttribute('src', draggableElement.getAttribute('src'));
+    }
+    
+    event
+        .dataTransfer
+        .clearData();
+    
+    // var choice = Number(event.target.getAttribute('value'));
+    var choice = Number(draggableElement.getAttribute('value'));
+    // console.log(choice);
+    // console.log(event.target.getAttribute('value'));
+    check(choice);
+}
 
-
-		var game = {
-
-			frameIndex:0,
-			ballnoonNumber:10,    /*게임 내 풍선 총 개수*/
-			currentBallNumber:0,  /*현재 풍선 개수*/
-			actors : [],
-			start : function(){
-				var that = this;  /*저장 this*/
-
-				koreanQuestionsWirte.init();
-				background.setSrc('./assets/img/game-11-img/gamebg.jpg'); /*배경 설정*/
-				score_11.init();        //초기화 점수
-				gun.init();          //gun 초기화
-
-				//body에 클릭 이벤트 추가하기
-				// document.body.addEventListener("click",function(e){
-                    document.getElementById('game_11_board').addEventListener("click", function(e){
-
-					document.getElementById("audio").play();//총 쏘는 소리
-					//console.info(e.clientX,e.clientY);
-
-					//현재 마우스 위치에서 각 풍선의 중심점을 계산합니다.
-					for (var i = 0;i< that.actors.length;i++){
-
-						var obj = that.actors[i];
-						if(obj.constructor === Balloon){	//풍선 하나하나에 대해서
-							//중심점 획득
-							var x = obj.ele.offsetLeft +  96/2;
-							var y = obj.ele.offsetTop +  96/2;
-
-							// 마우스 위치와 중심점 사이의 거리를 계산합니다. 이 거리가 24 이하면 맞습니다.
-							if( Math.pow(x-e.clientX,2) + Math.pow(y-e.clientY,2) < Math.pow(24,2) ){
-								//console.info( " 여기 이 풍선이 맞았어. ");
-								//console.info(obj)
-								console.log(obj.mark);
-								console.log(currentQuestion + 1);
-								if(obj.mark - 1 == currentQuestion) {
-									koreanQuestionsWirte.update();
-									obj.die();
-								}
-								// 문제가 다 되면
-								if(questions.isEmpty()) {
-									let current_page = parseInt(document.getElementById('current-page').innerText);
-									// console.log("여기는 22가 나와야 함 : "+current_page); //23이 나오넹??ㅎ
-									setTimeout(() => {
-										sections[22].addClass("hidden");
-										sections[23].removeClass("hidden");
-									}, 2000);
-									// alert('클리어하였습니다!');
-									gun.ele.remove();
-									$('#game_11_board').css('cursor', 'default');
-									koreanQuestionsWirte.gameover();
-									Balloon.prototype.gameover();
-								}
-							}
-							
-						}
-					}
-					
-				})
-
-				for(var i=0;i<3;i++){ /*구름 넣기*/
-					this.actors.push( new Cloud() );
-				}
-
-
-				setInterval(function(){
-
-					that.frameIndex++;
-
-					//모든 풍선이 생성되었는지 검사해 보도록 하겠습니다.
-					if(that.frameIndex % 10 == 0 && that.currentBallNumber < that.ballnoonNumber)
-					{
-						//5. 5초 간격으로 풍선 하나 만들어 볼 필요가 있는지 체크하기
-						//console.info(Date.now() +  "시간 간격이 되면, 풍선이 생길지 여부를 검사하러 간다." );
-						that.currentBallNumber++ ;//풍선의 수에 1을 더한다.
-						that.actors.push( new Balloon() );      //풍선을 액터스에 넣는다.
-						
-					}
-					
-					for (var i = 0;i< that.actors.length;i++){
-						that.actors[i].move();
-					}
-
-					//console.info(that.frameIndex);
-
-				},50)
-			}
-		}
-		
-		game.start();
+function endGame(){
+    if(corrScore === 10){
+        alert('축하합니다! 카드퀴즈의 방을 클리어하여 모든 미션을 클리어하셨습니다!!!');
+        let current_page = parseInt(document.getElementById('current-page').innerText);
+        if(current_page + 1 === 24){
+            sections[current_page-1].addClass("hidden");
+            sections[current_page].removeClass("hidden");
+            console.log(sections[current_page])
+            document.getElementById('current-page').innerText = current_page+1;
+        }
+    }
+}
