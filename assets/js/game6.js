@@ -3,7 +3,7 @@ import Circle from "./lib/circle.js";
 // import $ from "jquery";
 
 // let countdownStarted = false;
-let canvas = document.querySelector('canvas');
+let canvas = document.querySelector('#game_6 canvas');
 canvas.width = 1440;
 canvas.height = 880;
 canvas.marinTop = 135;
@@ -77,9 +77,9 @@ function reset(){
   brickOffsetTop = 777;
   brickOffsetLeft = 122;
   game6_score = 0;
-  circle1.inplay = true;
-  circle2.inplay = true;
-  circle3.inplay = true;
+  // circle1.inplay = true;
+  // circle2.inplay = true;
+  // circle3.inplay = true;
   // timeLeft = 45;
 }
 
@@ -99,7 +99,7 @@ var rectWidth = 6;
 function drawLine(){
   ctx.beginPath();
   ctx.rect(x, y+80, rectWidth,rectHeight);
-  ctx.fillStyle ='pink';
+  // ctx.fillStyle ='pink';
   ctx.fill();
   ctx.closePath();
 }
@@ -133,9 +133,9 @@ const bomb2 = new Bomb();
 const bomb3 = new Bomb();
 
 
-const circle1 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.4, 2, 1,'./assets/img/game6/ball15.png',55,55) //제일큰 갈색공
-const circle2 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.3, 1, 2, './assets/img/game6/ball6.png',34,34) //초록색 제일 작은공
-const circle3 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.4, 1, 1, './assets/img/game6/ball20.png',60,60) //노란색 중간위치 공
+// const circle1 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.49, 2, 1,'./assets/img/game6/ball15.png',55,55) //제일큰 갈색공
+// const circle2 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.40, 1, 2, './assets/img/game6/ball6.png',34,34) //초록색 제일 작은공
+// const circle3 = new Circle(Math.random()*innerWidth/2, document.documentElement.scrollHeight / 1.48, 1, 1, './assets/img/game6/ball20.png',60,60) //노란색 중간위치 공
 // const circle1 = new Circle(Math.random()*innerWidth/2, 800, 2, 1,'./assets/img/game6/ball15.png',55,55)
 // const circle2 = new Circle(Math.random()*innerWidth/2, 850, 1, 2, './assets/img/game6/ball6.png',34,34)
 // const circle3 = new Circle(Math.random()*innerWidth/2, 810, 1, 1, './assets/img/game6/ball20.png',60,60)
@@ -164,8 +164,8 @@ function draw(){
 
   if (!doAnimation) {
     // timesUp();
-    end();
-    youwin.play();
+    // end();
+    // youwin.play();
 
     started = false
   } else {
@@ -185,20 +185,20 @@ function draw(){
 
     bomb3.draw(canvas, ctx);
     bomb3.moveBomb3(canvas);
-    if(circle1.inplay){
-      circle1.draw(ctx);
-      circle1.moveCircle(canvas);
-    }
+    // if(circle1.inplay){
+    //   circle1.draw(ctx);
+    //   circle1.moveCircle(canvas);
+    // }
 
-    if(circle2.inplay){
-      circle2.draw(ctx);
-      circle2.moveCircle(canvas);
-    }
+    // if(circle2.inplay){
+    //   circle2.draw(ctx);
+    //   circle2.moveCircle(canvas);
+    // }
 
-    if(circle3.inplay){
-      circle3.draw(ctx);
-      circle3.moveCircle(canvas);
-    }
+    // if(circle3.inplay){
+    //   circle3.draw(ctx);
+    //   circle3.moveCircle(canvas);
+    // }
     collisionDetection();
 
     drawMagnet();
@@ -261,10 +261,10 @@ for(var c=0; c<brickColumnCount; c++) {
 
 function drawBricks() {
   for(var c=0; c<brickColumnCount; c++) {
-    for(var r=0; r<brickRowCount; r++) {
+     for(var r=0; r<brickRowCount; r++) {
       if(bricks[c][r].status == 1) {
         var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-        var brickY = (r*(brickHeight+brickPadding))+document.documentElement.scrollHeight / 1.25;
+        var brickY = (r*(brickHeight+brickPadding))+document.documentElement.scrollHeight / 1.45;
         // console.log(brickY);
         // console.log(r*(brickHeight+brickPadding));
         // console.log(brickOffsetTop); // 777
@@ -289,75 +289,72 @@ bomb.src = "./assets/img/game6/bomb.mp3"
 
 function collisionDetection() {
 
-  if(x > circle1.x && x < circle1.x + 60 && y + 67 > circle1.y - 50  && y + 100 < circle1.y + 50 && dy > 0) {
-    dy = -dy;
-    game6_score += 15;
-    if(game6_score >= 20) {
-      // timesUp();
-      end();
-      // youwin.play();
-      let current_page = parseInt(document.getElementById('current-page').innerText);
-      console.log(current_page);
-      if(current_page + 1 === 14){
-          sections[current_page-1].addClass("hidden");
-          sections[current_page].removeClass("hidden");
-          console.log(sections[current_page])
-          document.getElementById('current-page').innerText = current_page+1;
-      }
-    }
-    circle1.inplay = false;
-    ball2.play();
+  // if(x > circle1.x && x < circle1.x + 60 && y + 67 > circle1.y - 50  && y + 100 < circle1.y + 50 && dy > 0) {
+  //   dy = -dy;
+  //   game6_score += 5;
+  //   // if(game6_score >= 20) {
+  //     // timesUp();
+  //     // end();
+  //     // youwin.play();
+  //   // }
+  //   circle1.inplay = false;
+  //   ball2.play();
 
-  } else if(x > circle2.x && x < circle2.x + 39 && y + 46 > circle2.y - 50  && y + 100 < circle2.y + 50 && dy > 0) {
-    dy = -dy;
-    circle2.inplay = false;
-    ball2.play();
-    game6_score += 6;
+  // } else if(x > circle2.x && x < circle2.x + 39 && y + 46 > circle2.y - 50  && y + 100 < circle2.y + 50 && dy > 0) {
+  //   dy = -dy;
+  //   circle2.inplay = false;
+  //   ball2.play();
+  //   game6_score += 5;
     
-    if(game6_score >= 20) {
-      // timesUp();
-      end();
-      // youwin.play();
-      var next_button = $("#next");
-      next_button.removeClass('disabled');
-      next_button.addClass('next');
-    }
-  } else if(x > circle3.x && x < circle3.x + 65 && y + 72 > circle3.y - 50  && y + 100 < circle3.y + 50 && dy > 0) {
-    dy = -dy;
-    circle3.inplay = false;
-    ball2.play();
-    game6_score += 20;
+  //   // if(game6_score >= 20) {
+  //     // timesUp();
+  //     // end();
+  //     // youwin.play();
+  //   // }
+  // } else if(x > circle3.x && x < circle3.x + 65 && y + 72 > circle3.y - 50  && y + 100 < circle3.y + 50 && dy > 0) {
+  //   dy = -dy;
+  //   circle3.inplay = false;
+  //   ball2.play();
+  //   game6_score += 5;
     
-    // timesUp();
-    end();
-    // youwin.play();
-    var next_button = $("#next");
-    next_button.removeClass('disabled');
-    next_button.addClass('next');
-  }
+  //   // timesUp();
+  //   // end();
+  //   // youwin.play();
+  // }
 
-  if(x-20 > bomb1.xx - 20 && x-20 < bomb1.xx + 20 && y + 20 > bomb1.y - 90  && y + 20 < bomb1.y + 90 && dy > 0) {
-    bomb.play();
-    // alert("GAME OVER");
-    game6_score -= 5;
-    started = false
-    // document.location.reload();
-    // startGame(e);
-  } else if (x-20 > bomb2.xx - 20 && x-20 < bomb2.xx + 20 && y + 20 > bomb2.y - 90  && y + 20 < bomb2.y + 90 && dy > 0) {
-    bomb.play();
-    game6_score -= 5;
-    // alert("GAME OVER");
-    started = false;
-   game6_score -= 5;
-    // document.location.reload();
-    // startGame(e);
-  } else if (x-20 > bomb3.xx - 20 && x-20 < bomb3.xx + 20 && y + 20 > bomb3.y - 90  && y + 20 < bomb3.y + 90 && dy > 0) {
-    bomb.play();
-    // alert("GAME OVER");
-    started = false;
-    // document.location.reload();
-    // startGame(e);
-  }
+  // if(game6_score >= 15) {
+  //   youwin.play();
+  //   end();
+  // }
+
+  // if(x-20 > bomb1.xx - 20 && x-20 < bomb1.xx + 20 && y + 20 > bomb1.y - 90  && y + 20 < bomb1.y + 90 && dy > 0) {
+  //   bomb.play();
+  //   console.log('bomb1');
+  //   alert("GAME OVER");
+  //   started = false
+  //   // document.location.reload();
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   // startGame(e);
+  //   drawStart()
+  // } else if (x-20 > bomb2.xx - 20 && x-20 < bomb2.xx + 20 && y + 20 > bomb2.y - 90  && y + 20 < bomb2.y + 90 && dy > 0) {
+  //   bomb.play();
+  //   console.log('bomb2');
+  //   alert("GAME OVER");
+  //   started = false;
+  //   //  game6_score -= 5;
+  //   // document.location.reload();
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   // startGame(e);
+  //   drawStart()
+  // } else if (x-20 > bomb3.xx - 20 && x-20 < bomb3.xx + 20 && y + 20 > bomb3.y - 90  && y + 20 < bomb3.y + 90 && dy > 0) {
+  //   bomb.play();
+  //   console.log('bomb3');
+  //   alert("GAME OVER");
+  //   started = false;
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   // startGame(e);
+  //   drawStart()
+  // }
 
   for(var c=0; c<brickColumnCount; c++) {
     for(var r=0; r<brickRowCount; r++) {
@@ -366,7 +363,7 @@ function collisionDetection() {
         if(x-20 > b.x - ballRadius && x-20 < b.x + ballRadius && y+90 > b.y - ballRadius && y+ 90 < b.y + ballRadius) {
           b.status = 2;
           dy = -dy;
-          game6_score += 4;
+          game6_score += 5;
           ball.play();
         }
       }else if (b.status == 2 ){
@@ -380,28 +377,82 @@ function collisionDetection() {
       }
     }
   }
+  
+  if(x-20 > bomb1.xx - 20 && x-20 < bomb1.xx + 20 && y + 20 > bomb1.y - 90  && y + 20 < bomb1.y + 90 && dy > 0) {
+    game6_score = 0;
+    bomb.play();
+    console.log('bomb1');
+    // alert("GAME OVER");
+    // started = false
+    // started = true;
+    // document.location.reload();
+    // startGame(e);
+    // drawStart()
+    doAnimation = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    $('#game_6 canvas').attr('style', 'visibility:hidden');
+    setTimeout(drawStart(), 1000);
+  } else if (x-20 > bomb2.xx - 20 && x-20 < bomb2.xx + 20 && y + 20 > bomb2.y - 90  && y + 20 < bomb2.y + 90 && dy > 0) {
+    game6_score = 0;
+    bomb.play();
+    console.log('bomb2');
+    // alert("GAME OVER");
+    // started = false;
+    // started = true;
+    // document.location.reload();
+    // startGame(e);
+    // drawStart();
+    doAnimation = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    $('#game_6 canvas').attr('style', 'visibility:hidden');
+    setTimeout(drawStart(), 1000);
+  } else if (x-20 > bomb3.xx - 20 && x-20 < bomb3.xx + 20 && y + 20 > bomb3.y - 90  && y + 20 < bomb3.y + 90 && dy > 0) {
+    game6_score = 0;
+    bomb.play();
+    console.log('bomb3');
+    // alert("GAME OVER");
+    // started = false;
+    // started = true;
+    // startGame(e);
+    // drawStart();
+    doAnimation = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    $('#game_6 canvas').attr('style', 'visibility:hidden');
+    setTimeout(drawStart(), 1000);
+  }
 }
 
 
 function drawScore(){
   ctx.beginPath();
-  ctx.rect(14, 320, 121,120);
+  // ctx.rect(14, 320, 121,120);
   ctx.fillStyle ='grey';
   ctx.fill();
   ctx.closePath();
-  ctx.font = 'bold 23px Arial';
-  ctx.fillStyle = "white";
-  ctx.fillText("Score:" + game6_score,29,360);
-  ctx.font = 'bold 23px Arial';
+  // ctx.font = 'bold 23px Arial';
+  // ctx.fillStyle = "white";
+  // ctx.fillText("Score:" + game6_score,29,360);
+  // ctx.font = 'bold 23px Arial';
   // ctx.fillText(timeLeft + " s", 29, 415);
   
-  if(game6_score >= 20) {
+  if(game6_score >= 15) {
     // timesUp();
     end();
-    // youwin.play();
-    var next_button = $("#next");
-    next_button.removeClass('disabled');
-    next_button.addClass('next');
+    youwin.play();
+    alert('축하합니다, 당구공 뽑기의 방의 미션을 클리어 하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+      let current_page = parseInt(document.getElementById('current-page').innerText);
+      console.log(current_page);
+      if(current_page + 1 === 14){
+          sections[current_page-1].addClass("hidden");
+          sections[current_page].removeClass("hidden");
+          console.log(sections[current_page])
+          document.getElementById('current-page').innerText = current_page+1;
+          $('.navigation-container').attr('style', 'display:block');
+      }
+      game6_score = 0;
+      spaceKey = '';
   }
 }
 
@@ -483,9 +534,6 @@ function end(){
 
   if(game6_score >= 20) {
     ctx.strokeText('You Win!',500, canvas.height/3);
-    var next_button = $("#next");
-    next_button.removeClass('disabled');
-    next_button.addClass('next');
     doAnimation = false;
   } else{
     ctx.strokeText('Game Over!',500, canvas.height/3);
@@ -499,7 +547,17 @@ function end(){
   ctx.font = 'bold 35px Arial';
   ctx.fillStyle = "white";
   ctx.fillText("Your Score:" + game6_score,617,545);
-  
+
+  // alert('축하합니다, 당구공 뽑기의 방의 미션을 클리어 하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+  //     let current_page = parseInt(document.getElementById('current-page').innerText);
+  //     console.log(current_page);
+  //     if(current_page + 1 === 14){
+  //         sections[current_page-1].addClass("hidden");
+  //         sections[current_page].removeClass("hidden");
+  //         console.log(sections[current_page])
+  //         document.getElementById('current-page').innerText = current_page+1;
+  //         $('.navigation-container').attr('style', 'display:block');
+  //     }
 }
 
 document.addEventListener('keydown', e => playSound(e));

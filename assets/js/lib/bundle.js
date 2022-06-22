@@ -395,16 +395,22 @@ function collisionDetection() {
     // alert("GAME OVER");
     // started = false
     // document.location.reload();
+	console.log('잇힝')
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   } else if (x-20 > bomb2.xx - 20 && x-20 < bomb2.xx + 20 && y + 20 > bomb2.y - 90  && y + 20 < bomb2.y + 90 && dy > 0) {
     // bomb.play();
     // alert("GAME OVER");
     // started = false;
     // document.location.reload();
-  } else if (x-20 > bomb3.xx - 20 && x-20 < bomb3.xx + 20 && y + 20 > bomb3.y - 90  && y + 20 < bomb3.y + 90 && dy > 0) {
-    // bomb.play();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	console.log('잇힝')
+} else if (x-20 > bomb3.xx - 20 && x-20 < bomb3.xx + 20 && y + 20 > bomb3.y - 90  && y + 20 < bomb3.y + 90 && dy > 0) {
+	// bomb.play();
     // alert("GAME OVER");
     // started = false;
     // document.location.reload();
+	console.log('잇힝')
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
   for(var c=0; c<brickColumnCount; c++) {

@@ -7,13 +7,13 @@ class Bomb {
     // this.y =723
     // this.y =623
     // this.y =580
-    this.y = document.documentElement.scrollHeight / 1.5;
+    this.y = document.documentElement.scrollHeight / 1.7;
     this.pic = new Image()
     this.pic.src = './assets/img/game6/bomb.png'
   }
 
   draw(canvas, ctx) {
-    ctx.drawImage(this.pic,this.xx,this.y,canvas.width/13, canvas.height/9);
+    ctx.drawImage(this.pic,this.xx,this.y,canvas.width/13, canvas.height/9.6);
     // console.log(canvas.height/9) // 97.777
     // console.log(document.documentElement.clientHeight)
     // console.log(document.documentElement.scrollHeight)

@@ -16,6 +16,7 @@ let game5_mission = [
 	['위풍당당 사랑의 인사를 작곡한 영국 작곡자는?', ['17']],
 	['가극 라보엠 토스카 나비부인을 작곡한 작곡자는?', ['19']],
     ['백조의 호수 호두까기 인형 교향곡 6번 비창을 작곡한 작곡자는?', ['18']],
+    ['test.png', ['1']]	
 ];
 
 let game5_imgList = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'];
@@ -31,9 +32,27 @@ let game5_imgList = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12
     // 랜덤 Mission생성
     var missionText = document.getElementById('game5_missionArea');
     var ranNum = Math.floor(Math.random() * game5_mission.length);
+    
+    if(missionText.childElementCount === 1){
+        missionText.removeChild(missionText.childNodes[0]);
+    }
+
+    var missionIorT = game5_mission[ranNum][0].split('.')[1];
+    // console.log(missionIorT);
+    if(missionIorT === 'png'){
+        console.log(1)
+        var missionImg = document.createElement('img');
+        missionImg.src = './assets/img/game5/'+game5_mission[ranNum][0];
+        missionText.appendChild(missionImg);
+        missionText.setAttribute('value', ranNum);
+    } else{        
+        // console.log(2)
+        missionText.setAttribute('value', ranNum);
+        missionText.innerText = game5_mission[ranNum][0];
+    }
   
-    missionText.setAttribute('value', ranNum);
-    missionText.innerText = game5_mission[ranNum][0];
+    // missionText.setAttribute('value', ranNum);
+    // missionText.innerText = game5_mission[ranNum][0];
   }
   
   function game5_setImg(){
@@ -73,8 +92,11 @@ let game5_imgList = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12
   
   // 정답체크 & 다음 문제로 넘어가기
   function game5_checkAnswer(){
+    var missionText = document.getElementById('game5_missionArea');
    var answerArea = document.getElementById('game5_answerArea');
    var answerCnt = document.getElementById('game5_missionArea').getAttribute('value');
+
+   missionText.innerHTML = '';
   
     var answerArea = document.getElementById('game5_answerArea');
     for(var i = 0; i < answerArea.childElementCount; i++){
@@ -93,15 +115,16 @@ let game5_imgList = ['1', '2', '3', '4', '5', '6', '7','8', '9', '10', '11', '12
     if(corrCnt === game5_mission[answerCnt][1].length){
         game5_score += 1;
         if(game5_score === 2){
-            alert('축하합니다, 모든 퀴즈를 다 푸셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+            alert('축하합니다, 작곡가 퀴즈의 방의 미션을 클리어 하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
             
             let current_page = parseInt(document.getElementById('current-page').innerText);
             console.log(current_page);
-            if(current_page + 1 === 10){
+            if(current_page + 1 === 12){
                 sections[current_page-1].addClass("hidden");
                 sections[current_page].removeClass("hidden");
                 console.log(sections[current_page])
                 document.getElementById('current-page').innerText = current_page+1;
+                $('.navigation-container').attr('style', 'display:block');
             }
 
             var btn = document.getElementById('game5_check');

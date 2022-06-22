@@ -12,9 +12,10 @@
   #game4_container{
     margin: 10px;
     padding : 10px;
-    height: 65%;
+    height: 70%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
   
     border: 1px solid black;
     border-radius: 20px;
@@ -39,14 +40,18 @@
 
     line-height: 94px;
   }
+  #game4_missionArea img{
+    width: 600px;
+    height: 210px;
+  }
   
   #game4_answerArea{
     display: flex;
     flex-direction: row;
     background-color: pink;
     width: 70vw;
-    height: 15vh;
-    justify-content: space-evenly;
+    height: 20vh;
+    justify-content: center;
     align-items: center;
   }
   
@@ -65,6 +70,7 @@
   
   #game4_check{
     width: 320px;
+    height: 60px;
     padding: 0px;
     margin: 3% 4px;
     color: #fff;

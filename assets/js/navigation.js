@@ -29,7 +29,6 @@ var sections = [
 
 $(next_button).click(function () {
     let current_page = parseInt(document.getElementById('current-page').innerText);
-    // for (let i = 0; i < 24; i++) {
     for (let i = 0; i < 24; i++) {
         if (i + 1 === current_page + 1) {
             sections[i].removeClass("hidden");
@@ -38,43 +37,47 @@ $(next_button).click(function () {
         }
     }
     current_page++;
-    if(current_page === 1 || current_page % 2 === 0) {
-        $('.navigation-container').attr('style', 'display: block');
-    } else{
-        $('.navigation-container').attr('style', 'display: none')
-    }
+
     if (current_page === 24) {
         $('.navigation-container').attr('style', 'display:none');
     }
-     else if(current_page === 3){
+    else if(current_page === 3){
+        //  $('.navigation-container').attr('style', 'display:none');
+    }
+    else if(current_page === 5){
+        //  $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 5){
+    else if(current_page === 7){
+        // $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 7){
+    else if(current_page === 9){
+        // $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 9){
+    else if(current_page === 11){
+        //  $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 11){
+    else if(current_page === 13){
+        //  $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 13){
+    else if(current_page === 15){
+        //  $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 15){
+    else if(current_page === 17){
+        //  $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 17){
+    else if(current_page === 19){
+        //  $('.navigation-container').attr('style', 'display:none');
     } 
-     else if(current_page === 19){
-    } 
-     else if(current_page === 21){
+    else if(current_page === 21){
+         $('.navigation-container').attr('style', 'display:none');
         // stopTimer();
-
+        
         let num = [3, 4, 5];
         let random = Math.floor(Math.random() * num.length);
         imagePuzzle.startGame(game10_Reimages, num[random]);
     } 
-     else if(current_page === 23){
-        // console.log(current_page);
-        // next_button.addClass('disabled');
-        // next_button.removeClass('next');
+    else if(current_page === 23){
+        $('.navigation-container').attr('style', 'display:none');
         timer();
     } 
     // else if (current_page === 5) {
@@ -117,9 +120,10 @@ $(prev_button).click(function () {
     document.getElementById('current-page').innerText = current_page;
 });
 
-function playSound(sound){
+function playSound(){
     var backGroundMusic = document.getElementById('backGroundMusic');
-    backGroundMusic.volume = .25;
+    backGroundMusic.volume = .5;
+    backGroundMusic.src = "./assets/music/harry_potter_theme.mp3";
     if(backGroundMusic.paused){
         backGroundMusic.play();
         // document.getElementById("music-stop").style.visibility = "visible";

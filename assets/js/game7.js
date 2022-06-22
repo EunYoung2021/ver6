@@ -114,21 +114,27 @@ function collisonDetection() {
           ++game7_score;
           var audio1 = new Audio("./assets/sounds/game7/Blocks.mp3");
           audio1.play();
-          if (brickCCount * brickRCount == game7_score) {
+          if (brickCCount * brickRCount - 5 == game7_score) {
+            lives=0;
             // WIN
             // document.getElementById("res1").innerHTML = "축하합니다!";
             // document.getElementById("res2").innerHTML = "스테이지를 클리어하셨습니다!";
-            alert('축하합니다, 모든 퀴즈를 다 푸셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
-            scoreScreen.style.display = "block";
-            scr.innerHTML = game7_score;
+              setTimeout(() => {
+                alert('축하합니다, 미션을 클리어 하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+                scoreScreen.style.display = "block";
+                scr.innerHTML = game7_score;
 
-            let current_page = parseInt(document.getElementById('current-page').innerText);
-            if(current_page + 1 === 16){
-                sections[current_page-1].addClass("hidden");
-                sections[current_page].removeClass("hidden");
-                console.log(sections[current_page])
-                document.getElementById('current-page').innerText = current_page+1;
-            }
+                let current_page = parseInt(document.getElementById('current-page').innerText);
+                if(current_page + 1 === 16){
+                    sections[current_page-1].addClass("hidden");
+                    sections[current_page].removeClass("hidden");
+                    console.log(sections[current_page])
+                    document.getElementById('current-page').innerText = current_page+1;
+                    $('.navigation-container').attr('style', 'display:block');
+                }
+              }, 900);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            audio1.pause(); 
           }
         }
       }
@@ -200,26 +206,26 @@ function draw() {
   }
 }
 
-// document.getElementById("playAgainYes").addEventListener("click", () => {
-//     scoreScreen.style.display = "none";
-//     lives = 3;
-//     game7_score = 0;
-//     x = canvas.width / 2;
-//     y = canvas.height - 30;
-//     dx = 2;
-//     dy = -2;
-//     paddleX = (canvas.width - paddleWidth) / 2;
+document.getElementById("playAgainYes").addEventListener("click", () => {
+    scoreScreen.style.display = "none";
+    lives = 3;
+    game7_score = 0;
+    x = canvas.width / 2;
+    y = canvas.height - 30;
+    dx = 2;
+    dy = -2;
+    paddleX = (canvas.width - paddleWidth) / 2;
 
-//     bricks = [];
-//         for (let c = 0; c < brickCCount; c++) {
-//         bricks[c] = [];
-//         for (let r = 0; r < brickRCount; r++) {
-//             bricks[c][r] = { x: 0, y: 0, status: 1 };
-//         }
-//     }
-//     drawBricks();
-// //   location.reload();
-// });
+    bricks = [];
+        for (let c = 0; c < brickCCount; c++) {
+        bricks[c] = [];
+        for (let r = 0; r < brickRCount; r++) {
+            bricks[c][r] = { x: 0, y: 0, status: 1 };
+        }
+    }
+    drawBricks();
+  // location.reload();
+});
 
 // document.getElementById("playAgainNo").addEventListener("click", () => {
 //   location.href = "../First Page/firstPage.html";

@@ -44,6 +44,7 @@ var imagePuzzle = {
                         sections[current_page].removeClass("hidden");
                         console.log(sections[current_page])
                         document.getElementById('current-page').innerText = current_page+1;
+                        $('.navigation-container').attr('style', 'display:block');
                     }
                 }
                 else {

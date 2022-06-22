@@ -24,6 +24,19 @@ h2, h3, h4, h5 {
     background-position: center;
     height: 104vh;
 }
+#title_sequence i{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+#title_sequence i:hover{
+    cursor: pointer;
+}
+#title_sequence p{
+    position: relative;
+    left: 98%;
+    transform: translate(-50%);
+}
 
 .start_container {
     display: flex;

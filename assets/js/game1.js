@@ -67,14 +67,17 @@ $(".play-again").click(function () {
   $(".who-won").hide();
   modal.addClass("show");
   $(".player_in_board").remove();
+
+  //카렛
+  caret_dom.removeClass("nextturn");
 });
 
 document.getElementById("lets-roll").addEventListener("click", function () {
 // lets_roll.click(function () {
-  var selected_avatar    = "",
+  var selected_avatar    = "one",
   selected_who_first = "";
   instructions.removeClass("error");
-  selected_avatar = $("input[name=choose-avatar]:checked").val();
+  // selected_avatar = $("input[name=choose-avatar]:checked").val();
   selected_who_first = 'me';
   
   if ( selected_avatar !== undefined && selected_who_first !== undefined ) {
@@ -173,13 +176,16 @@ var game1_endGame = function () {
 
     if ( $(self).attr("data-currentboxno") == 25 ) {
       var who_won_temp = $(self).attr("src");
+      console.log("누가 이겼나 : "+who_won_temp);
 
       var temp2 = {
         "one": "1",
         "two": "2"
       };
 
-      if ( who_won_temp.match(/\d+/) == temp2[my_avatar] ) {
+      console.log(who_won_temp.match(/\d/g)[1]+" typeOf : "+typeof(who_won_temp.match(/\d/g)[1]));
+      console.log(temp2[my_avatar] + "typeOf : "+typeof(temp2[my_avatar]));
+      if ( who_won_temp.match(/\d/g)[1] == temp2[my_avatar] ) {
         has_my_avatar_won = true;
       }
 
@@ -187,13 +193,12 @@ var game1_endGame = function () {
       if ( has_my_avatar_won ) {
         $(".greetings").html("Congratulations!")
         $(".won-or-lose").html("You Won!");
-        alert('축하합니다, 미션을 클리어하셨습니다. \n 잠시 후 다음 방으로 이동합니다!')
-
-        // let current_page = parseInt(document.getElementById('current-page').innerText);
-        // if(current_page === 3){
+        window.setTimeout(function() {
+          alert('축하합니다, 미션을 클리어하셨습니다. \n 잠시 후 다음 방으로 이동합니다!')
           let moveToNext = window.setTimeout(moveToNextPage, 100);
           moveToNext;
-        // } 
+        }, 1000);
+        break;
       }
       else {
         $(".greetings").html("Whoops!");
@@ -206,15 +211,26 @@ var game1_endGame = function () {
         if(current_page + 1 === 4){
           sections[current_page-1].addClass("hidden");
           sections[current_page].removeClass("hidden");
-          console.log(sections[current_page])
           document.getElementById('current-page').innerText = current_page+1;
+          $('.navigation-container').attr('style', 'display:block');
         }
       }
     }
   }
   reached_end = true;
-
-
+  // if ( has_my_avatar_won ) {
+  //   $(".greetings").html("Congratulations!")
+  //   $(".won-or-lose").html("You Won!");
+  //   window.setTimeout(function() {
+  //     alert('축하합니다, 미션을 클리어하셨습니다. \n 잠시 후 다음 방으로 이동합니다!')
+  //     let moveToNext = window.setTimeout(moveToNextPage, 100);
+  //     moveToNext;
+  //   }, 1000);
+  // }
+  // else {
+  //   $(".greetings").html("Whoops!");
+  //   $(".won-or-lose").html("You Lose!")
+  // }
 }
 
 var moveThePlayer = function (x) {
@@ -252,7 +268,7 @@ var moveThePlayer = function (x) {
 
       })
       var temp_ = nexthop;
-      console.log(temp_)
+      // console.log(temp_);
       nexthop = nexthop.replace(" ", ".");
       nexthop = $("." + nexthop).position();
       

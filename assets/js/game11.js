@@ -175,7 +175,12 @@ function check(value){
     }
     resultOfCheck(result);
     scoreControl(quizCtt[3], result);
+    
     stopTimer();
+
+    // window.setTimeout(function() {
+    //     setNextQuiz();
+    // }, 900);
 }
 
 function scoreControl(quizName, result){
@@ -197,11 +202,12 @@ function scoreControl(quizName, result){
             }
             break;
     }
-    
+
     var insertScore = $('.'+className);
     insertScore[0].innerText = game11_score;
 
-    if(bgScoreCorr === 10){
+    if(bgScoreCorr === 3){
+        stopTimer();
         $('.endPopup').attr('style', 'visibility: visible;');
         window.setTimeout(function(){
             alert('축하합니다! 카드퀴즈의 방을 클리어하여 모든 미션을 클리어하셨습니다!!!');
@@ -231,7 +237,13 @@ function resultOfCheck(result){
         resultSound.attr('src', './assets/sounds/game11/false.wav');
         resultSound.attr('autoplay', 'true');
     }
-    $('.nextButton').attr('style', 'visibility: visible;');
+    // $('.nextButton').attr('style', 'visibility: visible;');
+    console.log(bgScoreCorr);
+    if(bgScoreCorr < 2){
+        setTimeout(setNextQuiz, 800);
+    } else{
+        stopTimer();
+    }
     $('#dropZone').attr('onDragOver', '');
 }
 
@@ -343,15 +355,15 @@ function onDrop(event){
     check(choice);
 }
 
-function endGame(){
-    if(corrScore === 10){
-        alert('축하합니다! 카드퀴즈의 방을 클리어하여 모든 미션을 클리어하셨습니다!!!');
-        let current_page = parseInt(document.getElementById('current-page').innerText);
-        if(current_page + 1 === 24){
-            sections[current_page-1].addClass("hidden");
-            sections[current_page].removeClass("hidden");
-            console.log(sections[current_page])
-            document.getElementById('current-page').innerText = current_page+1;
-        }
-    }
-}
+// function endGame(){
+//     if(corrScore === 1){
+//         alert('축하합니다! 카드퀴즈의 방을 클리어하여 모든 미션을 클리어하셨습니다!!!');
+//         let current_page = parseInt(document.getElementById('current-page').innerText);
+//         if(current_page + 1 === 24){
+//             sections[current_page-1].addClass("hidden");
+//             sections[current_page].removeClass("hidden");
+//             console.log(sections[current_page])
+//             document.getElementById('current-page').innerText = current_page+1;
+//         }
+//     }
+// }

@@ -64,6 +64,6 @@ a:hover {
 
 @media only screen and (max-height: 800px) {
   .navigation-container{
-    top: 66%;
+    top: 80%;
   }
 }

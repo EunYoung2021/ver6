@@ -1,9 +1,9 @@
 let game4_mission = [
     ['다음 중 건반악기를 골라주세요.', ['piano']],
-  ['다음 중 플루트를 골라주세요.', ['flute']],
-  ['다음 중 호른을 골라주세요.', ['horn']],
-  ['다음 중 오보에를 골라주세요.', ['oboe']],
-  ['다음 중 트럼본을 골라주세요.', ['trombone']],
+    ['다음 중 플루트를 골라주세요.', ['flute']],
+    ['다음 중 호른을 골라주세요.', ['horn']],
+    ['다음 중 오보에를 골라주세요.', ['oboe']],
+    ['다음 중 트럼본을 골라주세요.', ['trombone']],
     ['다음 중 트럼펫을 골라주세요.', ['trumpet']],
     ['다음 중 튜바를 골라주세요.', ['tuba']],
     ['다음 중 바이올린을 골라주세요.', ['violin1']],
@@ -17,9 +17,10 @@ let game4_mission = [
     ['다음 중 현악 4중주를 구성하는 악기를 골라주세요.', ['cello', 'viola', 'violin1', 'violin2']],
     ['다음 중 피아노트리오를 골라주세요.', ['piano', 'violin1', 'cello']],		
     ['다음 중 피아노 5중주를 구성하는 악기를 골라주세요.', ['cello', 'viola', 'violin1', 'violin2', 'piano']],	
-    ['다음 중 목관 5중주를 구성하는 악기를 골라주세요.', ['oboe', 'clarinet', 'bassoon', 'flute', 'horn']],	
+    ['다음 중 목관 5중주를 구성하는 악기를 골라주세요.', ['oboe', 'clarinet', 'bassoon', 'flute', 'horn']],
+    ['test.png', ['piano']]	
   ];
-  
+
   let game4_imgList = ['bassoon', 'cabasa', 'castanets', 'cello', 'chime', 'clarinet', 'contrabass',
   'cymbals', 'drum', 'flute', 'gong', 'horn', 'oboe', 'piano', 'snare', 'trombone', 'trumpet', 'tuba', 'viola', 'violin1', 'violin2'];
   
@@ -35,8 +36,22 @@ let game4_mission = [
     var missionText = document.getElementById('game4_missionArea');
     var ranNum = Math.floor(Math.random() * game4_mission.length);
   
-    missionText.setAttribute('value', ranNum);
-    missionText.innerText = game4_mission[ranNum][0];
+    // missionText.setAttribute('value', ranNum);
+    // missionText.innerText = game4_mission[ranNum][0];
+    if(missionText.childElementCount === 1){
+        missionText.removeChild(missionText.childNodes[0]);
+    }
+    
+    var missionIorT = game4_mission[ranNum][0].split('.')[1];
+    if(missionIorT === 'png'){
+        var missionImg = document.createElement('img');
+        missionImg.src = './assets/img/game4/'+game4_mission[ranNum][0];
+        missionText.appendChild(missionImg);
+        missionText.setAttribute('value', ranNum);
+    } else{        
+        missionText.setAttribute('value', ranNum);
+        missionText.innerText = game4_mission[ranNum][0];
+    }
   }
   
   function game4_setImg(){
@@ -80,8 +95,11 @@ let game4_mission = [
   
   // 정답체크 & 다음 문제로 넘어가기
   function game4_checkAnswer(){
-   var answerArea = document.getElementById('game4_answerArea');
-   var answerCnt = document.getElementById('game4_missionArea').getAttribute('value');
+    var missionText = document.getElementById('game4_missionArea');
+    var answerArea = document.getElementById('game4_answerArea');
+    var answerCnt = document.getElementById('game4_missionArea').getAttribute('value');
+
+    missionText.innerHTML = '';
   
     var answerArea = document.getElementById('game4_answerArea');
     for(var i = 0; i < answerArea.childElementCount; i++){
@@ -100,15 +118,16 @@ let game4_mission = [
     if(corrCnt === game4_mission[answerCnt][1].length){
         score += 1;
         if(score === 2){
-            alert('축하합니다, 모든 퀴즈를 다 푸셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
+            alert('축하합니다, 악기퀴즈의 방이 미션을 클리어 하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
             
             let current_page = parseInt(document.getElementById('current-page').innerText);
             console.log(current_page);
-            if(current_page + 1 === 8){
+            if(current_page + 1 === 10){
                 sections[current_page-1].addClass("hidden");
                 sections[current_page].removeClass("hidden");
                 console.log(sections[current_page])
                 document.getElementById('current-page').innerText = current_page+1;
+                $('.navigation-container').attr('style', 'display:block');
             }
 
             var btn = document.getElementById('game4_check');

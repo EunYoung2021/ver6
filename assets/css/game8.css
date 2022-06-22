@@ -178,10 +178,10 @@ div>.restart{
 
 .keynote {
     position: absolute;
-    bottom: 2px;
-    left: 2px;
+    bottom: -5px;
+    left: 53px;
     height: 40%;
-    width: 90%;
+    width: 77%;
 }
 
 /* Media queries */

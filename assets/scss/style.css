@@ -305,7 +305,7 @@ Main components
       @media only screen and (min-width: 960px) {
         .side-container .players #player1 {
           width: 88px;
-          left: 1030px; } }
+        left: 1030px;} }
     .side-container .players #player2 {
       width: 48px; 
     }

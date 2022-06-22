@@ -5,29 +5,29 @@ let game2_mission = [
     ['missionA-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     ['missionA-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
 
-    ['missionB-1', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionB-2', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionB-3', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionB-4', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionB-5', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
+    ['missionB-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionB-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionB-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionB-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionB-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     
-    ['missionC-1', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionC-2', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionC-3', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionC-4', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionC-5', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
+    ['missionC-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionC-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionC-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionC-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionC-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     
-    ['missionD-1', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionD-2', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionD-3', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionD-4', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionD-5', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
+    ['missionD-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionD-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionD-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionD-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionD-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     
-    ['missionE-1', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionE-2', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionE-3', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionE-4', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionE-5', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
+    ['missionE-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionE-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionE-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionE-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionE-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
 
     ['missionF-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     ['missionF-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
@@ -35,29 +35,29 @@ let game2_mission = [
     ['missionF-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     ['missionF-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     
-    ['missionG-1', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionG-2', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionG-3', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionG-4', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
-    ['missionG-5', ['a', 'b', 'c', 'd', 'e'], 'b', 'testImg'],
+    ['missionG-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionG-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionG-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionG-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionG-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
    
-    ['missionH-1', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionH-2', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionH-3', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionH-4', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
-    ['missionH-5', ['a', 'b', 'c', 'd', 'e'], 'c', 'testImg'],
+    ['missionH-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionH-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionH-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionH-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionH-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
     
-    ['missionI-1', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionI-2', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionI-3', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionI-4', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
-    ['missionI-5', ['a', 'b', 'c', 'd', 'e'], 'd', 'testImg'],
+    ['missionI-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionI-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionI-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionI-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionI-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
 
-    ['missionJ-1', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionJ-2', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionJ-3', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionJ-4', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg'],
-    ['missionJ-5', ['a', 'b', 'c', 'd', 'e'], 'e', 'testImg']
+    ['missionJ-1', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionJ-2', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionJ-3', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionJ-4', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg'],
+    ['missionJ-5', ['a', 'b', 'c', 'd', 'e'], 'a', 'testImg']
 ];
 var game2_crrCnt = 0;
 
@@ -71,10 +71,10 @@ var game2_crrCnt = 0;
 // document.addEventListener('mousemove',move);
 // document.addEventListener('touchpad',move);
 
-function openModal(){
+function openModal(imgClsName){
     $('.game2_quizModal_background').css('visibility', 'visible');
     $('.game2_quizModal').css('visibility', 'visible');
-    setRdmMission();
+    setRdmMission(imgClsName);
 }
 
 function closeModal_game2(){
@@ -82,12 +82,14 @@ function closeModal_game2(){
     $('.game2_quizModal').css('visibility', 'hidden');
 }
 
-function setRdmMission(){    
+function setRdmMission(imgClsName){    
     var game2_missionText = document.getElementById('game2_mission');
     var game2_quizImg = $('#game2_quizImg');
     var rndNum = Math.floor(Math.random() * game2_mission.length);
     // console.log(rndNum);
     
+    $('.option').attr('onclick', '');
+
     //missionText 삽입
     game2_missionText.innerHTML = game2_mission[rndNum][0];
     game2_missionText.setAttribute('value', rndNum);
@@ -102,28 +104,34 @@ function setRdmMission(){
         var game2_quizOptions = document.getElementById('game2_quizOption_'+(i+1));
         game2_quizOptions.innerHTML = game2_mission[rndNum][1][i];
         game2_quizOptions.setAttribute('value', game2_mission[rndNum][1][i]);
+        game2_quizOptions.setAttribute('onclick', 'game2_checkAnswer('+(i+1)+', "'+imgClsName+'")');
     }
-
-    $(document).ready(function() {
-        $('.option').on('click', function(e) {
-            game2_checkAnswer(e);
-        })
-    })
+    // $(document).ready(function() {
+    //     $('.option').on('click', function(e) {
+    //         game2_checkAnswer(e, imgClsName);
+    //     })
+    // })
 }
 
-function game2_checkAnswer(event){
+function game2_checkAnswer(optionNum, imgClsName){
+    console.log('요호')
     var game2_answer = game2_mission[document.getElementById('game2_mission').getAttribute('value')][2];
     // console.log(game2_answer);
-
-    if(game2_answer === event.target.getAttribute('value')){
+    console.log(event.currentTarget);
+    
+    if(game2_answer === $('#game2_quizOption_'+optionNum).attr('value')){
+    // if(game2_answer === event.currentTarget.getAttribute('value')){
+    // if(game2_answer === event.target.getAttribute('value')){
         alert('정답입니다!');
         game2_crrCnt += 1;
         closeModal_game2();
+        $('.'+imgClsName).attr('style', 'filter: brightness(100%)');
+        $('.'+imgClsName).attr('onclick', '');
     } else{
         alert('오답입니다..');
         closeModal_game2();
     }
-
+    
     if(game2_crrCnt === 5){
         alert('축하합니다, 미션을 클리어하셨습니다. \n 잠시 후 다음 방으로 이동합니다!');
         closeModal_game2();
@@ -135,9 +143,7 @@ function game2_checkAnswer(event){
           sections[current_page].removeClass("hidden");
           console.log(sections[current_page])
           document.getElementById('current-page').innerText = current_page+1;
+          $('.navigation-container').attr('style', 'display:block');
         }
     }
-    event
-    .dataTransfer
-    .clearData();
 }

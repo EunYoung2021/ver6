@@ -84,7 +84,6 @@ options.forEach( (option) => {
         if(choice === quizList[missionNum][3]){
             result = 't';
             intervalID = setInterval(hide, 70);
-            console.log(result);
             moveThePlayer($('#dice_img').attr('value'));
         } else {
             result = 'f';
