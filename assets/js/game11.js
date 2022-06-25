@@ -154,9 +154,7 @@ function setNextQuiz(){
         case 'rymQuiz':
             index = 3;
             break;
-    }
-    console.log("이번 퀴즈는 "+quizName+"입니다.");
-    $('#dropZone').attr('onDragOver', 'onDragOver(event);');
+    }$('#dropZone').attr('onDragOver', 'onDragOver(event);');
     $('.nextButton').attr('value', quizCtt[3]);
     $('#resultImg').attr('style', 'visibility: hidden;')
     reloadCard(index);
@@ -215,7 +213,6 @@ function scoreControl(quizName, result){
             if(current_page + 1 === 24){
                 sections[current_page-1].addClass("hidden");
                 sections[current_page].removeClass("hidden");
-                console.log(sections[current_page])
                 document.getElementById('current-page').innerText = current_page+1;
             }
         }, 1000);
@@ -238,7 +235,7 @@ function resultOfCheck(result){
         resultSound.attr('autoplay', 'true');
     }
     // $('.nextButton').attr('style', 'visibility: visible;');
-    console.log(bgScoreCorr);
+    // console.log(bgScoreCorr);
     if(bgScoreCorr < 2){
         setTimeout(setNextQuiz, 800);
     } else{
