@@ -77,7 +77,7 @@ $(next_button).click(function () {
         imagePuzzle.startGame(game10_Reimages, num[random]);
     } 
     else if(current_page === 23){
-        $('.navigation-container').attr('style', 'display:none');
+        // $('.navigation-container').attr('style', 'display:none');
         timer();
     } 
     // else if (current_page === 5) {
