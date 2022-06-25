@@ -280,6 +280,10 @@ var moveThePlayer = function (x) {
           'top': nexthop.top + 10,
           'left': nexthop.left + 3,
         });
+        var sound = new Audio();
+        sound.src = './assets/sounds/game1/board1.mp3';
+        sound.autoplay = false;
+        sound.play();
         iti++;
       }
 
@@ -358,7 +362,7 @@ var checkInEndForSnakeOrLadder = function () {
   var currentpos_arr = getCurrentBox();
 
   var ans = isOnSnakeOrLadder(getNumberFromRowString(currentpos_arr[0]), getNumberFromColString(currentpos_arr[0]));
-  // console.log(ans.length);
+  console.log(ans);
   if ( ans.length > 0 ) {
     move(ans);
   }
@@ -413,8 +417,16 @@ var getNextHop = function (c, no) {
 };
 var isOnSnakeOrLadder = function (r, c) {
   var current = "row" + r + " col" + c;
+  var sounds = new Audio();
   for (pos in snakeorladderobj) {
     if ( pos == current ) {
+      if(snakeorladderobj[pos].type === '1'){
+        sounds.src = './assets/sounds/game1/board2.mp3';
+      } else{
+        sounds.src = './assets/sounds/game1/board3.mp3';
+      }
+      sounds.play();
+      sounds.autoplay = false;
       return snakeorladderobj[pos].end;
     }
   }

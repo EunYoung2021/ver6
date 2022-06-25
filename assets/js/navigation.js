@@ -69,7 +69,7 @@ $(next_button).click(function () {
         //  $('.navigation-container').attr('style', 'display:none');
     } 
     else if(current_page === 21){
-         $('.navigation-container').attr('style', 'display:none');
+        //  $('.navigation-container').attr('style', 'display:none');
         // stopTimer();
         
         let num = [3, 4, 5];

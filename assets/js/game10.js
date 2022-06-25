@@ -19,12 +19,7 @@ var game10_images = [
     { src: './assets/img/game10/17.jpg', title: '17' },
     { src: './assets/img/game10/18.jpg', title: '18' },
     { src: './assets/img/game10/19.jpg', title: '19' },
-    { src: './assets/img/game10/20.jpg', title: '20' },
-    { src: './assets/img/game10/21.jpg', title: '21' },
-    { src: './assets/img/game10/22.jpg', title: '22' },
-    { src: './assets/img/game10/23.jpg', title: '23' },
-    { src: './assets/img/game10/24.jpg', title: '24' },
-    { src: './assets/img/game10/25.jpg', title: '25' },				
+    { src: './assets/img/game10/20.jpg', title: '20' }			
     ];
 
 

@@ -4,8 +4,12 @@ Filename: game.js
 @author: KITSANTAS FOTIOS (17421808)
 Date: 30/04/17
 */
-
 /*Create a Javascript Object for a horse with 3 parameters: HTML ID, position x and y*/
+var horseSound = new Audio();
+horseSound.src = './assets/sounds/game3/horse.mp3';
+horseSound.autoplay = false;
+horseSound.loop = true;
+
 function Horse(id, x, y){
 	this.element = document.getElementById(id);/*HTML element of the horse*/
 	this.speed = Math.random()*10 + 10; /*Initiate a random speed for each horse, the greater speed, the faster horse. The value is between 10 and 20*/
@@ -142,6 +146,7 @@ function Horse(id, x, y){
 					$('.navigation-container').attr('style', 'display:block');
 				}
 			}
+			horseSound.pause();
 		}
 	}
 }
@@ -161,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		// amount = parseInt(document.getElementById('amount').value);
 		// num_lap = parseInt(document.getElementById('num_lap').value);
 		bethorse = parseInt(document.getElementById('bethorse').value);
+		horseSound.play();
 
 		// if (funds < amount){
 		// 	alert('Not enough funds.');
